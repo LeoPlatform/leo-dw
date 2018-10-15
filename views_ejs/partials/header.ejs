@@ -1,0 +1,47 @@
+<header class="page-header">
+
+	<div class="page-logo theme-dropdown-left">
+		<img src="//cdnleo.s3.amazonaws.com/logos/leo_icon.png" />
+		<ul>
+			<li><a class="active" href="/dw">Datawarehouse</a></li>
+			<li><a href="/botmon">Botmon</a></li>
+		</ul>
+	</div>
+
+	<div class="page-title">
+		Datawarehouse
+	</div>
+
+	<nav class="page-nav">
+		<ul>
+			<li class="hoverPortalList theme-dropdown-right">
+				<a href="portals" class="<%= ((path && path.split('/').indexOf('portals') != -1) ? 'active' : '') %>">
+					<i class="icon-spinner fixed-width-icon"></i>
+					Dashboards
+				</a>
+			</li>
+			<li class="hoverDataExplorerList theme-dropdown-right">
+				<a href="builder" class="<%= ((path && path.split('/').indexOf('builder') != -1) ? 'active' : '') %>">
+					<i class="icon-layers fixed-width-icon"></i>
+					Data Explorer
+				</a>
+			</li>
+			<li class="hoverVisualExplorerList theme-dropdown-right">
+				<a href="chart" class="<%= ((path && path.split('/').indexOf('chart') != -1) ? 'active' : '') %>">
+					<i class="icon-chart-line fixed-width-icon"></i>
+					Visual Explorer
+				</a>
+			</li>
+		</ul>
+
+		<ul>
+			<li>
+				<a href="http://docs.leoinsights.com/v1.0/docs" target="documentation">
+					<i class="icon-help-circled fixed-width-icon"></i>
+				</a>
+			</li>
+		</ul>
+
+	</nav>
+
+</header>

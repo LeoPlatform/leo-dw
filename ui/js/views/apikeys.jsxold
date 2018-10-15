@@ -1,0 +1,101 @@
+var React = require('react');
+var ReactDOM = require('react-dom');
+
+var Key = require('./apikey.jsx');
+
+var Keys = React.createClass({
+
+	getInitialState: function() {
+		return {
+			addKey: false,
+			keys: []
+		};
+	},
+
+
+	componentDidMount: function() {
+		User.clientKeys(function(data) {
+			if (this.isMounted()) {
+				this.setState({
+					keys: data
+				});
+			}
+		}.bind(this));
+	},
+	
+	
+	addKey: function() {
+		var keys = this.state.keys;
+		keys.push({
+			name:'',
+			permissions:'',
+			key: '',
+			_key: new Date().valueOf()
+		});
+		this.setState({
+			keys: keys
+		});
+	},
+
+
+	removeKey: function(keyIndex) {
+		var keys = this.state.keys;
+		delete(keys[keyIndex]);
+		this.setState({
+			keys: keys
+		});
+	},
+
+
+	updateKey: function(key) {
+		var keys = this.state.keys;
+		keys[key.index] = {
+			name: key.name,
+			admin: key.admin,
+			read: key.read,
+			write: key.write,
+			key: key.key,
+		}
+		this.setState({
+			keys: keys
+		});
+	},
+
+
+	render: function() {
+
+		var thisComponent = this;
+
+		return (
+			<div>
+				<table id="api-keys" className="uk-table uk-table-striped">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Permissions</th>
+							<th>Key</th>
+							<th className="action-column"></th>
+						</tr>
+					</thead>
+					<tbody className="uk-form xloading-large">
+						{this.state.keys.map(function(key, index) {
+							var permissions = (key.admin?' admin':'')+(key.read?' read':'')+(key.write?' write':'');
+
+							return <Key keyIndex={index} key={key.key ? key.key : key._key} name={key.name} admin={key.admin} read={key.read} write={key.write} keyCode={key.key} removeKey={thisComponent.removeKey} updateKey={thisComponent.updateKey}  />
+						})}
+					</tbody>
+				</table>
+				
+				<button id="create-key" className="uk-button uk-button-primary pull-center" onClick={this.addKey}>new key</button>
+				
+			</div>
+		);
+
+	}
+
+});
+
+ReactDOM.render(
+	<Keys />,
+	document.getElementById('keys')
+);

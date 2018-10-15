@@ -1,0 +1,30 @@
+{
+	"name": "leo_dw_install",
+	"version": "1.0.0",
+	"description": "Installs Default Settings",
+	"main": "index.js",
+	"directories": {
+		"test": "test"
+	},
+	"scripts": {
+		"test": "nodemon --exec \"mocha --recursive -w\" "
+	},
+	"config": {
+		"leo": {
+			"type": "raw",
+			"handler": "handler",
+			"memory": 512,
+			"timeout": 300,
+			"env": {
+				"Resources": {
+					"Region": "${AWS::Region}",
+					"Fields": "${Fields}",
+					"DwKmsKey": "${DwKmsKey}"
+				}
+			}
+		}
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
+}

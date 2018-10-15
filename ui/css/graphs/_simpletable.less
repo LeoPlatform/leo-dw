@@ -1,0 +1,296 @@
+/*********************************************************************
+* @TABLES
+*********************************************************************/
+
+.simple-table-wrapper {
+	overflow: hidden;
+	height: 100%;
+
+	.odd-even-fix,
+	.top-filler,
+	.bottom-filler {
+		&,
+		td {
+			height: 0;
+			padding: 0;
+		}
+	}
+
+	.fixed-spacing td {
+		height: 1px;
+		padding: 0;
+		margin: 0;
+		border-bottom: none;
+		background: none;
+	}
+
+	thead {
+		xposition: absolute;
+		top: 0;
+
+		.icon-download {
+			cursor: pointer;
+		}
+
+		.title td i {
+			float: right;
+			line-height: inherit;
+			width: 30px;
+			font-size: 20px;
+			+ span {
+				display: block;
+				float: none
+			}
+		}
+	}
+
+	.table-body {
+		height: calc(~"100% - 48px - 43px");
+		overflow-y: scroll;
+
+		&.has-totals {
+			height: calc(~"100% - 73px - 43px");
+			background: #ddd;
+		}
+	}
+
+	> table {
+		display: block;
+		overflow-y: scroll;
+
+		&::-webkit-scrollbar {
+			background: #e4e4e4;
+		}
+
+	}
+
+	thead,
+	tbody,
+	tfoot tr {
+		display: table;
+		width: 100%;
+		table-layout: fixed;
+
+		th, td {
+			overflow: hidden;
+		}
+
+	}
+
+
+	tfoot {
+		position: absolute;
+		bottom: 0;
+		overflow-y: scroll;
+
+		&::-webkit-scrollbar {
+			background: #e4e4e4;
+		}
+
+	}
+
+}
+
+
+table.leo-simpletable {
+	font-size: 11px;
+	/*table-layout: fixed;*/
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+
+	&.width-1-2 {
+		width: 50%;
+	}
+
+	thead .headers,
+	tbody,
+	tfoot {
+		td:not(:last-child) {
+			border-right: 1px solid #aaa;
+		}
+	}
+
+	tr {
+		td {
+			color: #7b7b7b;
+			line-height: 12px;
+			overflow: hidden;
+			padding: 6px 5px;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			background: white;
+
+			input.filter {
+				width: calc(~'100% - 6px');
+			}
+		}
+		td.money {
+			text-align: right;
+		}
+		td.numeric {
+			/* padding-right: 10px;*/
+			text-align: right;
+			input.filter {
+				text-align: right;
+				width: 46px;
+				box-sizing: border-box;
+			}
+		}
+		td.quicklink {
+			cursor: pointer;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+	thead {
+		tr.headers {
+			td {
+				font-family: 'Roboto', sans-serif;
+				cursor: pointer;
+				font-size: 16px;
+				line-height: 19px;
+				font-weight: lighter;
+				/* padding-left: 10px; */
+				position: relative;
+
+				/*
+				&.numeric {
+					span {
+						min-width: calc(~"100% - 20px");
+						+ i {
+							float: right;
+						}
+					}
+				}*/
+				&.numeric span {
+					min-width: 100%;
+				}
+
+				span {
+					/* min-width: 100%; */
+					max-width: 100%;
+					overflow: hidden;
+					padding: 0;
+					text-overflow: ellipsis;
+					margin: 0;
+					float: left;
+				}
+				.icon-sort,
+				.icon-down-dir,
+				.icon-up-dir {
+					margin: 0 -6px 0 -6px;
+					float: left;
+					width: 6px;
+				}
+				.icon-up-dir,
+				.icon-down-dir {
+					color: black;
+				}
+				.icon-sort {
+					display: none;
+					color: silver;
+				}
+				span.parent {
+					display: block;
+					font-size: .8em;
+				}
+				input.filter {
+					background-color: #fefefe;
+					border: 1px solid #a0a0a0;
+					box-sizing: border-box;
+					display: inline;
+					font-size: 10px;
+					font-weight: normal;
+					height: 19px;
+					line-height: 19px;
+					max-width: 200px;
+					outline: 0;
+					padding: 0px 2px;
+					width: 100%;
+				}
+			}
+
+			td.active,
+			td:hover {
+				span {
+					max-width: calc(~"100% - 12px");
+					min-width: calc(~"100% - 12px");
+					padding-right: 9px;
+				}
+
+				.icon-sort {
+					display: inline-block;
+				}
+			}
+
+		}
+		tr.title {
+			td {
+				padding:0;
+				height: 36px;
+				line-height:36px;
+				font-weight: lighter;
+				font-size: 20px;
+				background: #d2d1d9;
+				color: #231f20;
+				border-bottom: 1px solid #4b4b4b;
+				font-family: 'Roboto', sans-serif;
+
+				&:first-child {
+					padding-left: 10px;
+				}
+			}
+		}
+		tr.filters {
+			td {
+				background-color: #e8e5ee;
+				height: 16px;
+				line-height: 16px;
+				padding: 2px 1px;
+				vertical-align: top;
+			}
+		}
+	}
+	tbody tr {
+		&:nth-child(even) {
+			td {
+				background-color: #F9F9F9; /*#dedce5;*/
+			}
+		}
+		&:hover td,
+		&.selected td {
+			background: lightblue !important;
+			cursor: pointer;
+		}
+
+		span[data-sparkline] {
+			width: 100%;
+			height: 20px;
+			display: inline-block;
+		}
+
+	}
+	tr.inactive {
+		td {
+			background-color: #FFf6f6;
+			color: #dd0000;
+			&:first-child {
+				text-decoration: line-through;
+			}
+		}
+	}
+
+	tfoot td {
+		font-weight: bold;
+		font-size: 1.2em;
+		background-color: #e4e4e4;
+		border-top: 1px solid white;
+	}
+
+}
+
+.spaced-20 table.leo-simpletable tr.title td {
+	background: white;
+}

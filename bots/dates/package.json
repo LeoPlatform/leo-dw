@@ -1,0 +1,82 @@
+{
+	"name": "leo_dw_dates",
+	"version": "1.0.0",
+	"description": "Ingest Dates into the Data Warehouse",
+	"main": "index.js",
+	"scripts": {
+		"test": "leo-cli test ."
+	},
+	"config": {
+		"leo": {
+			"type": "cron",
+			"handler": "handler",
+			"role": "ApiRole",
+			"env": {
+				"Resources": {
+					"Region": "${AWS::Region}",
+					"Fields": "${Fields}"
+				},
+				"RedshiftEndpoint": {
+					"Fn::If": [
+						"CreateRedshiftResources",
+						{
+							"Fn::Sub": "${Redshift.Endpoint.Address}:${Redshift.Endpoint.Port}/datawarehouse"
+						},
+						""
+					]
+				},
+				"AuroraEndpoint": {
+					"Fn::If": [
+						"CreateAuroraResources",
+						{
+							"Fn::Sub": "${AuroraInstance.Endpoint.Address}:${AuroraInstance.Endpoint.Port}/datawarehouse"
+						},
+						""
+					]
+				},
+				"AuroraType": "${AuroraType}",
+				"DBUsername": "${DBUsername}",
+				"DBPassword": "KMS:${EncryptedPassword.Value}",
+				"CustomDBEndpoint": "${CustomDBEndpoint}",
+				"CustomDBType": "${CustomDBType}"
+			},
+			"cron": {
+				"id": {
+					"Fn::Sub": "${AWS::StackName}-leo_dw_dates"
+				},
+				"paused": false,
+				"settings": {}
+			},
+			"memory": 1536,
+			"timeout": 300,
+			"VpcConfig": {
+				"SecurityGroupIds": [
+					{
+						"Fn::Sub": "${Security}"
+					}
+				],
+				"SubnetIds": [
+					{
+						"Fn::Sub": "${LambdaSubnetA}"
+					},
+					{
+						"Fn::Sub": "${LambdaSubnetB}"
+					},
+					{
+						"Fn::Sub": "${LambdaSubnetC}"
+					}
+				]
+			},
+			"build": {
+				"include": [
+					"../../node_modules/pg",
+					"../../node_modules/pg-format"
+				]
+			}
+		}
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {}
+}

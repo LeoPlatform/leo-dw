@@ -1,0 +1,252 @@
+
+	.editable-input {
+		display: inline-block;
+		max-height: 100%;
+		max-width: 100%;
+		border: none;
+		background: transparent;
+		outline: none;
+	}
+
+	.icon-filter.active {
+		text-shadow: 1px 1px 2px black;
+		transform: translate(-1px, -1px);
+	}
+
+
+	.metric-filter {
+
+		.input {
+			background: #2E2D2D;
+
+			input,
+			i {
+				background: transparent;
+				border: 0 none;
+				padding: 15px;
+				outline: none;
+				margin: 0;
+			}
+
+			input + i {
+				color: #C2E36C;
+			}
+		}
+
+	}
+
+
+	.drop-down-arrow {
+		position: relative;
+
+		&:after {
+			content: ' ';
+			position: absolute;
+			right: 1em;
+			top: 50%;
+			margin: -2px 0;
+			border-style: solid;
+			border-width: 4px;
+			border-color: currentColor transparent transparent;
+		}
+	}
+
+
+	.column-block {
+
+		.block-top {
+			background: #D7E8F7; /* overwritten later */
+			padding: 2px 10px;
+			border-radius: 5px 5px 0 0;
+
+			i {
+				padding: .5rem 2px; /* 8px */
+				line-height: .5em;
+				margin: -2px .125rem -2px -.25rem; /* 2px ... -4px */
+				font-weight: bold;
+			}
+
+			span {
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: block;
+				text-transform: uppercase;
+				font-size: 0.5625rem; /* 9px; */
+				line-height: 1.25rem; /* 20px; */
+			}
+
+			> i,
+			span:nth-of-type(2) {
+				display: none;
+			}
+
+			&:hover > i,
+			&:hover span:nth-of-type(2) {
+				display: block;
+			}
+
+			span i {
+				margin: -2px 2px;
+				cursor: pointer;
+				.icon-filter { font-size: .8em; }
+			}
+		}
+
+		.block-bottom {
+			font-size: .65em;
+			margin: 2px 0;
+			max-width: 100%;
+			overflow: hidden;
+
+			.column-name {
+				line-height: 1.25em;
+				box-sizing: border-box;
+				max-width: calc(~"100% - 38px");
+
+				div {
+					overflow: hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+					margin-right: 1em;
+
+					&:first-child {
+						text-transform: uppercase;
+						font-weight: bold;
+					}
+				}
+
+				&:only-child {
+					max-width: 100%;
+				}
+			}
+
+			.column-aggregate {
+				margin-left: 2px;
+				font-size: .9em;
+				text-transform: uppercase;
+				font-weight: bold;
+				line-height: 1.25em;
+				text-align: center;
+				box-sizing: border-box;
+				padding: 5px 0;
+				width: 100%;
+				max-width: 40px;
+
+				div:first-child {
+					line-height: 2.5em;
+				}
+
+			}
+
+
+			> div {
+				background: #D7E8F7;
+				padding: 5px 8px;
+				display: inline-block;
+				cursor: pointer;
+				max-width: 100%;
+
+				&:first-child { border-bottom-left-radius: 5px; }
+				&:last-child { border-bottom-right-radius: 5px; }
+
+			}
+
+			+ div {
+
+			}
+
+		}
+
+		.block-attribute,
+		.block-dimension {
+			margin: 2px 0;
+			cursor: pointer;
+
+			padding: 5px 10px;
+			margin: 2px 0;
+			line-height: 1.25em;
+			border-radius: 5px;
+			font-size: .8125rem; /* 13px; */
+
+			span { font-size: .65em; }
+
+			i {
+				margin: 0 5px 0 0;
+				font-weight: bold;
+
+				float:left;
+				padding: 8px 2px;
+				line-height: .5em;
+			}
+
+			div {
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				line-height: 1.25em;
+
+				&.gray-out {
+					font-size: .8em;
+					line-height: 2em;
+				}
+
+				i {	float: right; }
+
+				div div {
+					font-size: .65em;
+
+					&:nth-child(2) {
+						text-transform: uppercase;
+						font-weight: bold;
+					}
+				}
+			}
+
+		}
+
+	}
+
+
+	.metric-block {
+
+		i { color: #C2E36C; }
+
+		.block-top {
+			background: #EAF4D3;
+			i.icon-filter { font-size: .8em; }
+		}
+
+		.block-bottom > div { background: #F0F8DA; }
+
+		.block-dimension { background: #F0F8DA; }
+	}
+
+	.attribute-block,
+	.dimension-block {
+
+		i { color: #A4BAE5; }
+
+		.block-top { background: #D7E8F7; }
+
+		.block-bottom > div { background: #D7E8F7; }
+	}
+
+
+	.dimensions-wrapper .block-top .icon-menu,
+	.reorder-columns li .block-top .icon-menu {
+		cursor: ew-resize;
+	}
+
+	.series-wrapper .block-top .icon-menu,
+	.reorder-rows li .block-top .icon-menu {
+		cursor: ns-resize;
+	}
+
+	.font-sans {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+	.font-serif {
+		font-family: "Times New Roman", Times, serif;
+	}

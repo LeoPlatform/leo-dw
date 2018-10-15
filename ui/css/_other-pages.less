@@ -1,0 +1,103 @@
+
+
+/* development tools page */
+
+.uk-table thead {
+	font-weight: bold;
+	background-color: #eee;
+}
+
+th, td {
+	&.action-column {
+		width: 70px;
+		text-align: center;
+	}
+}
+
+
+/* documentation */
+.uk-switcher pre {
+	height: 400px;
+	min-height: 400px;
+
+	&.has-focus {
+		overflow: visible;
+	}
+
+	margin: 0 0 1em;
+	padding: 0;
+
+	.line-number {
+		float: left;
+		margin: 0 1em 0 0;
+		text-align: right;
+		color: olive;
+		position: relative;
+		z-index: 20;
+		background-color: inherit;
+		border-right: 1px solid green;
+
+		span {
+			display:block;
+			padding:0 .5em 0 1em;
+		}
+	}
+
+	code {
+		position:relative;
+		z-index:10;
+		background-color: inherit;
+		display:block;
+		outline: 1px solid #ddd;
+		box-shadow: 0 16px 8px -8px rgba(0,0,0,.25);
+		min-height: 400px;
+	}
+
+	&:after {
+		content: '';
+		display:block;
+		clear:both;
+	}
+
+}
+
+.copy-buttons {
+	float: right;
+	position: relative;
+	z-index: 30;
+	font: 12px Arial;
+	margin: 0 0 -4px;
+}
+
+.copy-buttons button {
+	margin: 4px;
+}
+
+
+.side-nav {
+	width: 10%;
+	position: fixed;
+	margin: 4% 1% 0 0;
+
+	ul {
+		list-style: none;
+		margin: 0; padding: 0;
+
+		li {
+			list-style: none;
+			margin: .5em 0 0 2em; padding: 0;
+
+			a {
+				text-indent: -1em;
+				display: inline-block;
+			}
+
+		}
+	}
+	+ .content-wrapper {
+		margin-left: 12%;
+		margin-bottom: 50%;
+	}
+}
+
+

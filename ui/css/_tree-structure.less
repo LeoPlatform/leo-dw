@@ -1,0 +1,136 @@
+
+/* tree structure */
+
+ul.bough {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	li.branch {
+		list-style: none;
+		margin: 0;
+		padding: 0 0 0 26px;
+		background-repeat: no-repeat;
+		background-position: 0 0;
+
+		cursor: pointer;
+
+		&.fact {
+			background-image: url(../images/fact-node-open.png);
+			&.closed {
+				background-image: url(../images/fact-node-closed.png);
+			}
+		}
+
+		&.dimension {
+			background-image: url(../images/dimension-node-open.png);
+			&.closed {
+				background-image: url(../images/dimension-node-closed.png);
+			}
+		}
+
+		&.has_outrigger {
+			background-image: url(../images/has-outrigger-node-open.png);
+			&.closed {
+				background-image: url(../images/has-outrigger-node-closed.png);
+			}
+		}
+
+		&.is_outrigger {
+			background-image: url(../images/is-outrigger-node-open.png);
+			&.closed {
+				background-image: url(../images/is-outrigger-node-closed.png);
+			}
+		}
+
+		&.is_outrigger.is_last_outrigger {
+			background-image: url(../images/is-outrigger-node-last-open.png);
+			&.closed {
+				background-image: url(../images/is-outrigger-node-last-closed.png);
+			}
+		}
+
+		&.closed ul.twig {
+			display:none;
+		}
+	}
+
+	ul.twig {
+		margin: 0 0 0px -17px;
+		padding: 0 0 0 4px;
+
+		background-repeat: repeat-y;
+		background-position: 0 0;
+
+		&.metrics {
+			background-image: url(../images/fact-line.png);
+		}
+
+		&.attributes {
+			background-image: url(../images/dimension-line.png);
+		}
+	}
+
+
+	.branch.is_last_outrigger .twig,
+	.branch:not(.has_outrigger):not(.is_outrigger) .twig {
+		margin-bottom: 20px;
+	}
+
+	.leaf {
+		list-style: none;
+		margin: 0;
+		padding: 0 0 0 24px;
+
+		background-repeat: no-repeat;
+		background-position: -2px center;
+
+		position: relative;
+		cursor: default;
+
+		&:before {
+			content: ' ';
+			display: block;
+			left: -10px;
+			top: 0;
+			width: 10px;
+			height: 100%;
+			position: absolute;
+		}
+
+		&.metric, &.virtual, &.derived, &.lag, &.fact-add {
+			background-image: url(../images/fact-node.png);
+		}
+
+		&.attribute, &.dimension-add {
+			background-image: url(../images/dimension-node.png);
+		}
+
+	}
+
+	.branch.is_last_outrigger .leaf:last-of-type,
+	.branch:not(.has_outrigger):not(.is_outrigger) .leaf:last-of-type {
+		height: 16px;
+		background-position: -2px 0;
+	}
+
+	.branch,
+	.leaf {
+		> div:hover {
+			background-color: highlight;
+			color: highlighttext;
+		}
+	}
+
+
+	.facts.trunk > div {
+		&:before,
+		i { color: @fact; }
+	}
+
+	.dimensions.trunk > div {
+		&:before,
+		i { color: @dimension; }
+	}
+
+}

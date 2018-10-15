@@ -1,0 +1,46 @@
+
+	/* dialogs *
+
+	.leo-dialog {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		margin: -315px -400px;
+		z-index: 1030;
+		transform: translateY(0);
+
+		label {
+			white-space: nowrap;
+		}
+
+		.req-parameter > :not(:empty):first-child:before {
+			content: '*';
+			color: red;
+			margin: -2px 2px;
+			font-size: 1.25em;
+		}
+
+		.column-builder-error {
+			box-shadow: 0 0 1px 2px red;
+		}
+
+		input + .column-builder-clear-field {
+			position: relative;
+			left: -1.5em;
+			cursor: pointer;
+			color: firebrick;
+			z-index: 20;
+			padding: 8px;
+			margin: 0 -8px;
+			float: right;
+		}
+
+		i.icon-level-up,
+		i.icon-right {
+			font-size: 20px;
+			margin: 0 -4px 0 4px;
+		}
+
+	}
+
+	/* */

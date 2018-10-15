@@ -1,0 +1,286 @@
+
+	/* @import '_blocks.less'; */
+
+
+	.icon-chart-bar {
+		transform: scaleX(-1) rotate(270deg);
+	}
+
+
+	.dimensions-wrapper {
+		box-sizing: border-box;
+		background: #F7FBFD;
+		border: 1px dashed #E9E9E9;
+		height: 84px;
+		min-height: 84px; /* force highcharts to behave */
+
+		.add-button {
+			cursor: pointer;
+			text-transform: uppercase;
+			padding: 20px;
+			margin: 12px 0;
+		}
+	}
+
+	.metric-wrapper {
+		box-sizing: border-box;
+		background: #FAFCF5;
+		border: 1px dashed #E9E9E9;
+		width: 220px;
+
+		.add-button {
+			cursor: pointer;
+			text-transform: uppercase;
+			padding: 20px;
+			margin: 12px 0;
+		}
+	}
+
+	.series-wrapper {
+
+		i.active {
+			color: #ccc;
+		}
+
+		.form-table {
+			width: 100%;
+			box-sizing: border-box;
+			border-radius: 5px;
+			background: whitesmoke;
+			padding: 8px 2px;
+			margin: 4px;
+			border-spacing: 0;
+
+			.form-row > label {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				max-width: 50%;
+				text-transform: none;
+				width: 50%;
+				+ * {
+					width: 95%;
+				}
+			}
+
+		}
+	}
+
+	.series-type button {
+		padding: 10px;
+		background: #313232;
+		border: none;
+		margin: 5px;
+
+		&:hover {
+			background: #A1C43A;
+		}
+	}
+
+	.series-type {
+		label {
+			padding: 10px;
+			background: #313232;
+			border: none;
+			margin: 5px;
+			color: white;
+		}
+
+		input:checked + label,
+		label:hover {
+			background: #A1C43A;
+		}
+
+		input { display:none; }
+
+	}
+
+
+	.series-block {
+		border-bottom: 1px dashed #E9E9E9;
+
+		form {
+			font-size: .8rem;
+		}
+
+		.series-chart,
+		.series-label,
+		.series-icons i {
+			display: inline-block;
+			margin: 9px 0;
+			text-transform: capitalize;
+			&:first-child { margin-left: 9px; }
+			&:last-child { margin-right: 9px; }
+		}
+
+		.series-chart:hover {
+			background: #F4F6FC;
+		}
+
+		.series-chart {
+			position: relative;
+
+			> i {
+				display: inline-block;
+				width: 14px; height: 14px;
+				padding: 8px;
+				cursor: pointer;
+			}
+
+			&.active {
+				color: white;
+				background: #5FA4DE;
+				.change-chart { display: block; }
+			}
+
+			.change-chart {
+				display: none;
+				left: 14px;
+				top: 35px;
+				width: 132px;
+				padding: 5px;
+				z-index: 10;
+
+				.icon-button {
+					z-index: 110;
+					position: relative;
+				}
+
+			}
+
+		}
+
+		.series-label {
+			flex:1;
+
+			span {
+				display: inline-block;
+				padding: 7px 5px;
+				height: 30px;
+
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				max-width: 100%;
+				box-sizing: border-box;
+
+				input {
+					background: transparent;
+				}
+
+			}
+		}
+
+		.series-icons {
+			white-space: nowrap;
+
+			i {
+				display: inline-block;
+				padding: 9px 5px;
+				cursor: pointer;
+			}
+
+			&:hover {
+				color: black;
+			}
+		}
+
+		> div:first-child:hover .series-icons { display: block; }
+
+		.series-label:focus + .series-icons { display: none; }
+
+		.metrics-wrapper {
+			padding: 0 0 12px 0;
+
+			&:empty {
+				height: 10px;
+				background: #F0F8DA;
+				border: 1px dashed silver;
+				border-radius: 5px;
+				margin: 0 12px;
+			}
+
+			> div {
+				xposition: relative;
+			}
+
+		}
+
+		.metric-block {
+			margin: 4px 10px;
+		}
+
+	}
+
+	/* temp */
+	.icon-target {
+		/*
+		border-radius: 50%;
+		width: 10px;
+		height: 10px;
+		display: inline-block;
+		box-shadow: 0 0 1px black;
+		background: white;
+		*/
+		margin: 1em 1em 0 3em;
+	}
+
+	#pickingCenter {
+		position: fixed;
+		top: 0; left: 0; right: 0; bottom: 0;
+		background: rgba(128,128,128,.25);
+		z-index: 2000;
+		pointer-events: none;
+		text-align: center;
+		color: black;
+		font-size: 1.25rem; /* 20px; */
+		display: table;
+		height: 100%;
+		width: 100%;
+		span {
+			vertical-align: middle;
+			display: table-cell;
+		}
+	}
+
+	.leo-style .metric-wrapper .form-row > label {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width: 100%;
+		max-width: 50px;
+		text-transform: none;
+	}
+
+	.form-row > input[type=checkbox]:first-child {
+		display: inline-block;
+		margin: 1.01em 5px 0;
+		vertical-align: top;
+		float: right;
+		+ label {
+			text-align: left;
+		}
+	}
+
+
+	.icon-button {
+		padding: 10px; margin: 5px;
+		color: white; background: black;
+		width: 14px; height: 14px;
+
+		&.active { background: #5FA4DE; }
+		&:hover { background: #95CA22; }
+	}
+
+
+	.dimension-block {
+		margin: 8px 5px;
+		width: 190px;
+
+		&:first-child { margin-left: 20px; }
+		&:not(:first-child) { filter: grayscale(80%); }
+		&:last-child { margin-right: 20px; }
+	}
+
+	#chart-preview {
+		width: 100%;
+		height: 100%;
+	}

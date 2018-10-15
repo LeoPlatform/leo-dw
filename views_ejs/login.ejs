@@ -1,0 +1,59 @@
+<% var title = 'LeoInsights | Login' %>
+<% path = 'login' %>
+<% include partials/dochead %>
+<link rel="stylesheet" href="${leo.CustomCSS}" />
+<body>
+	<% include partials/header %>
+	<% //include partials/nav %>
+	<div id="main" class="content-wrapper text-center">
+
+		<form id="login" class="uk-form aside-box wide-form" method="post" action="https://clients.leoinsights.com/auth">
+			<div><%= (typeof message === 'undefined' ? '' : message) %></div>
+
+			<div class="form-row">
+				<label>Username</label>
+				<input type="email" name="username" placeholder="Username" required="required" />
+			</div>
+			<div class="form-row">
+				<label>Password</label>
+				<input type="password" name="password" placeholder="Password" required="required" />
+			</div>
+
+			<input type="hidden" name="bounceback" value="<%= (typeof bounceback === 'undefined' ? '' : bounceback) %>" />
+			<input type="hidden" name="key" value="<%= (typeof key === 'undefined' ? '' : key) %>" />
+
+			<button class="uk-button">Log In</button>
+
+		</form>
+
+	</div>
+
+
+	<% //include partials/footer %>
+
+	<script>
+
+  		$(function() {
+
+			$(window).on('hashchange', function() {
+				if (document.location.hash == '#failed') {
+					$('#login')[0].reset();
+					$('#login div:first-of-type').text("Log in failed").show();
+					$('#login input:first-of-type').focus();
+					setTimeout(function() {
+						$('#login div:first-of-type').fadeOut(1600);
+						document.location.hash = '';
+					}, 2000);
+				}
+			}).trigger('hashchange');
+
+  		});
+
+	</script>
+
+
+</body>
+</html>
+
+
+

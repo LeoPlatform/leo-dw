@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<base href="${leo.baseHref}" />
+
+	<!-- link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" / -->
+	<!-- link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" -->
+	<!--<link rel="stylesheet" href="${leo.static.uri}css/jquery.comiseo.daterangepicker.css" />-->
+	<link href="//fonts.googleapis.com/css?family=Lato&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css" />
+	<link rel="icon" href="${leo.CustomFavicon}" type="image/png" />
+	<link rel="shortcut icon" href="${leo.CustomFavicon}" type="image/png" />
+	<!-- link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" -->
+	<!-- link href="${leo.static.uri}css/select2.min.css" rel="stylesheet" / -->
+
+
+	<title>
+		<%= title ? title : 'LeoInsights' %>
+	</title>
+
+	<script src="${leo.static.uri}js/common.js"></script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.5/clipboard.min.js"></script>
+
+	<script type="text/javascript" src="${leo.static.uri}js/vendor/jquery-ui.multidatespicker.js"></script>
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.0/moment.min.js"></script>
+
+	<script src="${leo.static.uri}js/jquery.leo.daterangepicker.js"></script>
+	<script src="${leo.static.uri}js/jquery.comiseo.daterangepicker.js"></script>
+
+
+	<!-- script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.20.0/js/uikit.min.js"></script -->
+
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.2/codemirror.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.2/theme/eclipse.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.2/addon/lint/lint.min.css" />
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.2/codemirror.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.2/mode/javascript/javascript.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.2/mode/sql/sql.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.2/addon/edit/closebrackets.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.2/addon/edit/matchbrackets.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jshint/2.9.1/jshint.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsonlint/1.6.0/jsonlint.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.2/addon/lint/lint.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.2/addon/lint/javascript-lint.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.2/addon/lint/json-lint.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/addon/hint/html-hint.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/addon/hint/sql-hint.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/addon/lint/html-lint.min.js"></script>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/mode/htmlembedded/htmlembedded.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/mode/htmlmixed/htmlmixed.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/mode/xml/xml.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/mode/css/css.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.14.2/addon/edit/matchbrackets.min.js"></script>
+
+	<!--<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAxfZaNQClIs9VEy-ZmF5tPyC8dQL4h__Y"></script>-->
+
+	<script src="${leo.static.uri}js/aws-sdk.min.js"></script>
+	<script src="${leo.static.uri}js/leoApiGateway.js"></script>
+
+	<script src="${leo.CustomJS}"></script>
+	<script>
+		window.dw = {
+			version: "${leo.version}",
+			ReportApi: "${leo.ReportApi}"
+		}
+		LEOCognito.start('${leo.CognitoId}', (window.leo && window.leo.getToken) || false, {
+			apiUri: "api/",
+			region: "${leo.Region}",
+			cognito_region: '${leo.Region}'
+		});
+
+		/*
+		$(function() {
+			$('[data-leo-dropdown]').mouseenter(function() {
+				$(this).addClass('theme-dialog-open');
+			}).mouseleave(function() {
+				$(this).removeClass('theme-dialog-open');
+			})
+		})
+		*/
+
+		try {
+			var hash = document.location.hash;
+			//if (document.location.pathname != '/dw/chart' && document.location.pathname != '/dw/builder' &&
+			if (document.location.pathname.split('/').indexOf('chart') == -1 && document.location.pathname.split('/').indexOf('builder') == -1 && JSON.parse(hash.slice(1)).rowMetrics) {
+				document.location = './builder' + hash;
+			}
+		} catch (e) {}
+
+		var url_params = {};
+		try {
+			var mysearch = window.parent.location.search.replace("?", "").split("&");
+		} catch (e) {
+			var mysearch = '';
+		}
+		for (var i in mysearch) {
+			var myParam = mysearch[i].split("=");
+			if (myParam.length >= 1) {
+				url_params[myParam[0]] = myParam[1];
+			}
+		}
+
+		/*
+		$(function() {
+
+			//preserve hash
+			$('#data-warehouse').on('click', 'a', function(event) {
+				var href = $(this).prop('href')+'&hash='+document.location.hash;
+				$(this).prop('href', href);
+			});
+
+			$(document.body).click(function() {
+				$('.uk-switcher pre').removeClass('has-focus');
+			});
+
+			$('.uk-switcher pre').click(function(event) {
+				event.stopPropagation();
+				$('.uk-switcher pre').removeClass('has-focus');
+				$(this).addClass('has-focus');
+			});
+			/* *
+
+			$('pre').each(function(i, pre) {
+				var pre = $(pre);
+				var num = pre.html().split(/\n/).length;
+				var line_num = $('<span class="line-number"></span>');
+				//var line_num = pre.children('span');
+				for (var j = 0; j < num; j++) {
+					line_num.append('<span>' + (j + 1) + '</span>');
+				}
+				var code_uid = 'code_' + new Date().valueOf()+Math.floor(Math.random()*1000);
+				pre.wrapInner('<code id="'+code_uid+'"></code>');
+				pre.prepend(line_num);
+				pre.prepend($('<div class="copy-buttons"><button type="button" class="uk-button select-all">Select All</button><button type="button" class="uk-button copy-to-clipboard" data-clipboard-target="#'+code_uid+'">Copy to Clipboard</button></div>'));
+
+				var client = new Clipboard(pre.find('.copy-to-clipboard')[0]);
+				if (client) {
+					client.on('success', function(readyEvent) {
+						alert('Code copied to clipboard');
+					});
+				}
+
+			})
+
+			$('.select-all').click(function () {
+				var code = $(this).closest('pre').find('code');
+				if (code[0].select) {
+					code[0].select();
+				} else if (document.selection) {
+					document.selection.empty();
+					var range = document.body.createTextRange();
+					range.moveToElementText(code[0]);
+					range.select();
+				} else if (window.getSelection) {
+					window.getSelection().removeAllRanges()
+					var range = document.createRange();
+					range.selectNode(code[0]);
+					window.getSelection().addRange(range);
+				}
+			});
+
+
+		})
+		*/
+	</script>
+</head>

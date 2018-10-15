@@ -1,0 +1,151 @@
+var React = require('react');
+
+module.exports = React.createClass({
+
+	getInitialState: function() {
+		return {
+			editing: (this.props.keyCode == '')
+		};
+	},
+
+
+	editKey: function() {
+		this.setState({
+			editing: true
+		});
+	},
+
+
+	cancelEdit: function() {
+		if (this.props.keyCode == '') {
+			this.props.removeKey(this.props.keyIndex);
+		}
+		this.setState({
+			editing: false
+		});
+	},
+
+
+	deleteKey: function() {
+		var thisComponent = this;
+		LeoKit.confirm('Are you sure?', function() {
+			User.deleteKey(this.props.keyCode, function(result) {
+				if (result.success == 0) {
+					LeoKit.alert(result.message)
+				} else {
+					thisComponent.props.removeKey(thisComponent.props.keyIndex);
+				}
+			});
+		});
+	},
+
+
+	saveKey: function() {
+		var thisComponent = this;
+
+		var keyRow = $(this);
+
+		var key = {
+			index: this.props.keyIndex,
+			name: $.trim(keyRow.find('.key-name input').val()),
+			admin: keyRow.find('.key-admin').is(':checked'),
+			read: keyRow.find('.key-read').is(':checked'),
+			write: keyRow.find('.key-write').is(':checked'),
+			key: this.props.keyCode
+		};
+
+		if (key.name == '') {
+			LeoKit.alert('Name is Required');
+			return false;
+		}
+
+		if (!key.read && !key.write && !key.admin) {
+			LeoKit.alert('At least one permission is Required');
+			return false;
+		}
+
+		if (this.props.keyCode) {
+			User.updateKey(key, function(result) {
+				if (result.success == 0) {
+					LeoKit.alert(result.message);
+				} else {
+					thisComponent.props.updateKey(key);
+					thisComponent.setState({
+						editing: false
+					});
+				}
+			});
+		} else {
+			User.createKey(key, function(result) {
+				if (result.success == 0) {
+					LeoKit.alert(result.message);
+				} else {
+					key.key = result.key;
+					thisComponent.props.updateKey(key);
+					thisComponent.setState({
+						editing: false
+					});
+				}
+			});
+		}
+
+	},
+
+	
+	adminChecked: function() {
+		var keyRow = $(this);
+		if (keyRow.find('.key-admin').is(':checked')) {
+			keyRow.find('.key-read').prop('checked', true)
+			keyRow.find('.key-write').prop('checked', true)
+		}
+	},
+
+	
+	readWriteUnchecked: function() {
+		var keyRow = $(this);
+		if (!keyRow.find('.key-read').is(':checked') || !keyRow.find('.key-write').is(':checked')) {
+			keyRow.find('.key-admin').prop('checked', false)
+		}
+	},
+
+
+	render: function() {
+
+		return (
+			<tr>
+				<td className="key-name" data-name={this.props.name}>{
+					this.state.editing
+						? <input placeholder="key name" defaultValue={this.props.name} />
+						: this.props.name
+				}</td>
+				<td className="key-permissions" admin={this.props.admin} read={this.props.read} write={this.props.write}>{
+					this.state.editing
+						? <div>
+							<label><input ref="adminInput" className="key-admin" type="checkbox" defaultChecked={this.props.admin} onChange={this.adminChecked} /> admin </label>
+							<label><input ref="readInput" className="key-read" type="checkbox" defaultChecked={this.props.read} onChange={this.readWriteUnchecked} /> read </label>
+							<label><input ref="writeInput" className="key-write" type="checkbox" defaultChecked={this.props.write} onChange={this.readWriteUnchecked} /> write </label>
+						</div>
+						: (this.props.admin ? 'admin' : '') + ' ' + (this.props.read ? 'read' : '') + ' ' + (this.props.write ? 'write' : '')
+				}</td>
+				<td className="key-key" data-key={this.props.keyCode}>{	this.props.keyCode 	}{
+					this.state.editing
+						? <button className="uk-button uk-button-primary pull-right save-key" onClick={this.saveKey}>Save</button>
+						: ''
+				}
+				</td>
+				<td className="action-column" data-key={this.props.keyCode}>{
+					this.state.editing
+						? <button className="uk-button uk-button-danger cancel-key" onClick={this.cancelEdit}>Cancel</button>
+						: <div>
+							<i className="icon-edit edit-key" title="edit" onClick={this.editKey}></i>
+							&nbsp; &nbsp;
+							<i className="icon-cancel delete-key" data-tooltip="{}" title="delete" onClick={this.deleteKey}></i>
+						</div>
+				}
+				</td>
+			</tr>
+		);
+
+	}
+
+});

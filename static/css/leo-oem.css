@@ -1,0 +1,5428 @@
+/* compiles to leo-oem.css */
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300italic,300);
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+[hidden],
+template {
+  display: none;
+}
+a {
+  background-color: transparent;
+}
+a:active,
+a:hover {
+  outline: 0;
+}
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+b,
+strong {
+  font-weight: bold;
+}
+dfn {
+  font-style: italic;
+}
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+mark {
+  background: #ff0;
+  color: #000;
+}
+small {
+  font-size: 80%;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+img {
+  border: 0;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+figure {
+  margin: 1em 40px;
+}
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+pre {
+  overflow: auto;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace,monospace;
+  font-size: 1em;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+button {
+  overflow: visible;
+}
+button,
+select {
+  text-transform: none;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+input {
+  line-height: normal;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+input[type="search"] {
+  -webkit-appearance: textfield;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+fieldset {
+  border: 1px solid silver;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+legend {
+  border: 0;
+  padding: 0;
+}
+textarea {
+  overflow: auto;
+}
+optgroup {
+  font-weight: bold;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,
+th {
+  padding: 0;
+}
+/*! jQuery UI - v1.11.4 - 2017-01-17
+* http://jqueryui.com
+* Includes: core.css, selectable.css, datepicker.css, theme.css
+* To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=&fsDefault=1.1em&fwDefault=normal&cornerRadius=0&bgColorHeader=%23cccccc&bgTextureHeader=flat&borderColorHeader=%23aaaaaa&fcHeader=%23222222&iconColorHeader=%23222222&bgColorContent=%23ffffff&bgTextureContent=flat&borderColorContent=%23aaaaaa&fcContent=%23222222&iconColorContent=%23222222&bgColorDefault=%23e6e6e6&bgTextureDefault=flat&borderColorDefault=%23d3d3d3&fcDefault=%23555555&iconColorDefault=%23888888&bgColorHover=%23dadada&bgTextureHover=flat&borderColorHover=%23999999&fcHover=%23212121&iconColorHover=%23454545&bgColorActive=%23ffffff&bgTextureActive=flat&borderColorActive=%23aaaaaa&fcActive=%23212121&iconColorActive=%23454545&bgColorHighlight=%23fbf9ee&bgTextureHighlight=flat&borderColorHighlight=%23fcefa1&fcHighlight=%23363636&iconColorHighlight=%232e83ff&bgColorError=%23fef1ec&bgTextureError=flat&borderColorError=%23cd0a0a&fcError=%23cd0a0a&iconColorError=%23cd0a0a&bgColorOverlay=%23aaaaaa&bgTextureOverlay=flat&bgImgOpacityOverlay=0&opacityOverlay=30&bgColorShadow=%23aaaaaa&bgTextureShadow=flat&bgImgOpacityShadow=0&opacityShadow=30&thicknessShadow=8px&offsetTopShadow=-8px&offsetLeftShadow=-8px&cornerRadiusShadow=8px&bgImgOpacityHeader=75&bgImgOpacityContent=75&bgImgOpacityDefault=75&bgImgOpacityHover=75&bgImgOpacityActive=65&bgImgOpacityHighlight=55&bgImgOpacityError=95
+* Copyright jQuery Foundation and other contributors; Licensed MIT */
+/* Layout helpers
+----------------------------------*/
+.ui-helper-hidden {
+  display: none;
+}
+.ui-helper-hidden-accessible {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+.ui-helper-reset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  line-height: 1.3;
+  text-decoration: none;
+  font-size: 100%;
+  list-style: none;
+}
+.ui-helper-clearfix:before,
+.ui-helper-clearfix:after {
+  content: "";
+  display: table;
+  border-collapse: collapse;
+}
+.ui-helper-clearfix:after {
+  clear: both;
+}
+.ui-helper-clearfix {
+  min-height: 0;
+  /* support: IE7 */
+}
+.ui-helper-zfix {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  /* support: IE8 */
+}
+.ui-front {
+  z-index: 100;
+}
+/* Interaction Cues
+----------------------------------*/
+.ui-state-disabled {
+  cursor: default !important;
+}
+/* Icons
+----------------------------------*/
+/* states and images */
+.ui-icon {
+  display: block;
+  text-indent: -99999px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+}
+/* Misc visuals
+----------------------------------*/
+/* Overlays */
+.ui-widget-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.ui-selectable {
+  -ms-touch-action: none;
+  touch-action: none;
+}
+.ui-selectable-helper {
+  position: absolute;
+  z-index: 100;
+  border: 1px dotted black;
+}
+.ui-datepicker {
+  width: 17em;
+  padding: .2em .2em 0;
+  display: none;
+}
+.ui-datepicker .ui-datepicker-header {
+  position: relative;
+  padding: .2em 0;
+}
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+  position: absolute;
+  top: 2px;
+  width: 1.8em;
+  height: 1.8em;
+}
+.ui-datepicker .ui-datepicker-prev-hover,
+.ui-datepicker .ui-datepicker-next-hover {
+  top: 1px;
+}
+.ui-datepicker .ui-datepicker-prev {
+  left: 2px;
+}
+.ui-datepicker .ui-datepicker-next {
+  right: 2px;
+}
+.ui-datepicker .ui-datepicker-prev-hover {
+  left: 1px;
+}
+.ui-datepicker .ui-datepicker-next-hover {
+  right: 1px;
+}
+.ui-datepicker .ui-datepicker-prev span,
+.ui-datepicker .ui-datepicker-next span {
+  display: block;
+  position: absolute;
+  left: 50%;
+  margin-left: -8px;
+  top: 50%;
+  margin-top: -8px;
+}
+.ui-datepicker .ui-datepicker-title {
+  margin: 0 2.3em;
+  line-height: 1.8em;
+  text-align: center;
+}
+.ui-datepicker .ui-datepicker-title select {
+  font-size: 1em;
+  margin: 1px 0;
+}
+.ui-datepicker select.ui-datepicker-month,
+.ui-datepicker select.ui-datepicker-year {
+  width: 45%;
+}
+.ui-datepicker table {
+  width: 100%;
+  font-size: .9em;
+  border-collapse: collapse;
+  margin: 0 0 .4em;
+}
+.ui-datepicker th {
+  padding: .7em .3em;
+  text-align: center;
+  font-weight: bold;
+  border: 0;
+}
+.ui-datepicker td {
+  border: 0;
+  padding: 1px;
+}
+.ui-datepicker td span,
+.ui-datepicker td a {
+  display: block;
+  padding: .2em;
+  text-align: right;
+  text-decoration: none;
+}
+.ui-datepicker .ui-datepicker-buttonpane {
+  background-image: none;
+  margin: .7em 0 0 0;
+  padding: 0 .2em;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+.ui-datepicker .ui-datepicker-buttonpane button {
+  float: right;
+  margin: .5em .2em .4em;
+  cursor: pointer;
+  padding: .2em .6em .3em .6em;
+  width: auto;
+  overflow: visible;
+}
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
+  float: left;
+}
+/* with multiple calendars */
+.ui-datepicker.ui-datepicker-multi {
+  width: auto;
+}
+.ui-datepicker-multi .ui-datepicker-group {
+  float: left;
+}
+.ui-datepicker-multi .ui-datepicker-group table {
+  width: 95%;
+  margin: 0 auto .4em;
+}
+.ui-datepicker-multi-2 .ui-datepicker-group {
+  width: 50%;
+}
+.ui-datepicker-multi-3 .ui-datepicker-group {
+  width: 33.3%;
+}
+.ui-datepicker-multi-4 .ui-datepicker-group {
+  width: 25%;
+}
+.ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header,
+.ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header {
+  border-left-width: 0;
+}
+.ui-datepicker-multi .ui-datepicker-buttonpane {
+  clear: left;
+}
+.ui-datepicker-row-break {
+  clear: both;
+  width: 100%;
+  font-size: 0;
+}
+/* RTL support */
+.ui-datepicker-rtl {
+  direction: rtl;
+}
+.ui-datepicker-rtl .ui-datepicker-prev {
+  right: 2px;
+  left: auto;
+}
+.ui-datepicker-rtl .ui-datepicker-next {
+  left: 2px;
+  right: auto;
+}
+.ui-datepicker-rtl .ui-datepicker-prev:hover {
+  right: 1px;
+  left: auto;
+}
+.ui-datepicker-rtl .ui-datepicker-next:hover {
+  left: 1px;
+  right: auto;
+}
+.ui-datepicker-rtl .ui-datepicker-buttonpane {
+  clear: right;
+}
+.ui-datepicker-rtl .ui-datepicker-buttonpane button {
+  float: left;
+}
+.ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current,
+.ui-datepicker-rtl .ui-datepicker-group {
+  float: right;
+}
+.ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header,
+.ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header {
+  border-right-width: 0;
+  border-left-width: 1px;
+}
+/* Component containers
+----------------------------------*/
+.ui-widget {
+  font-family: inherit;
+  font-size: 1.1em;
+}
+.ui-widget .ui-widget {
+  font-size: 1em;
+}
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+  font-family: inherit;
+  font-size: 1em;
+}
+.ui-widget-content {
+  border: 1px solid #fff;
+  background: #ffffff;
+  color: #222222;
+}
+.ui-widget-content a {
+  color: #222222;
+}
+.ui-widget-header {
+  border: 1px solid #aaaaaa;
+  background: #cccccc;
+  color: #222222;
+  font-weight: bold;
+}
+.ui-widget-header a {
+  color: #222222;
+}
+/* Interaction states
+----------------------------------*/
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+  border: 1px solid #d3d3d3;
+  background: #e6e6e6;
+  font-weight: normal;
+  color: #555555;
+}
+.ui-state-default a,
+.ui-state-default a:link,
+.ui-state-default a:visited {
+  color: #555555;
+  text-decoration: none;
+}
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+  border: 1px solid #999999;
+  background: #dadada;
+  font-weight: normal;
+  color: #212121;
+}
+.ui-state-hover a,
+.ui-state-hover a:hover,
+.ui-state-hover a:link,
+.ui-state-hover a:visited,
+.ui-state-focus a,
+.ui-state-focus a:hover,
+.ui-state-focus a:link,
+.ui-state-focus a:visited {
+  color: #212121;
+  text-decoration: none;
+}
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
+  border: 1px solid #aaaaaa;
+  background: #ffffff;
+  font-weight: normal;
+  color: #212121;
+}
+.ui-state-active a,
+.ui-state-active a:link,
+.ui-state-active a:visited {
+  color: #212121;
+  text-decoration: none;
+}
+/* Interaction Cues
+----------------------------------*/
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
+.ui-widget-header .ui-state-highlight {
+  border: 1px solid #fcefa1;
+  background: #fbf9ee;
+  color: #363636;
+}
+.ui-state-highlight a,
+.ui-widget-content .ui-state-highlight a,
+.ui-widget-header .ui-state-highlight a {
+  color: #363636;
+}
+.ui-state-error,
+.ui-widget-content .ui-state-error,
+.ui-widget-header .ui-state-error {
+  border: 1px solid #cd0a0a;
+  background: #fef1ec;
+  color: #cd0a0a;
+}
+.ui-state-error a,
+.ui-widget-content .ui-state-error a,
+.ui-widget-header .ui-state-error a {
+  color: #cd0a0a;
+}
+.ui-state-error-text,
+.ui-widget-content .ui-state-error-text,
+.ui-widget-header .ui-state-error-text {
+  color: #cd0a0a;
+}
+.ui-priority-primary,
+.ui-widget-content .ui-priority-primary,
+.ui-widget-header .ui-priority-primary {
+  font-weight: bold;
+}
+.ui-priority-secondary,
+.ui-widget-content .ui-priority-secondary,
+.ui-widget-header .ui-priority-secondary {
+  opacity: .7;
+  filter: alpha(opacity=70);
+  /* support: IE8 */
+  font-weight: normal;
+}
+.ui-state-disabled,
+.ui-widget-content .ui-state-disabled,
+.ui-widget-header .ui-state-disabled {
+  opacity: .35;
+  filter: alpha(opacity=35);
+  /* support: IE8 */
+  background-image: none;
+}
+.ui-state-disabled .ui-icon {
+  filter: alpha(opacity=35);
+  /* support: IE8 - See #6059 */
+}
+/* Icons
+----------------------------------*/
+/* states and images */
+.ui-icon {
+  width: 16px;
+  height: 16px;
+}
+.ui-icon,
+.ui-widget-content .ui-icon {
+  background-image: url("../images/ui-icons_222222_256x240.png");
+}
+.ui-widget-header .ui-icon {
+  background-image: url("../images/ui-icons_222222_256x240.png");
+}
+.ui-state-hover .ui-icon,
+.ui-state-focus .ui-icon {
+  background-image: url("../images/ui-icons_454545_256x240.png");
+}
+.ui-state-active .ui-icon {
+  background-image: url("../images/ui-icons_454545_256x240.png");
+}
+/* positioning */
+.ui-icon-blank {
+  background-position: 16px 16px;
+}
+.ui-icon-carat-1-n {
+  background-position: 0 0;
+}
+.ui-icon-carat-1-ne {
+  background-position: -16px 0;
+}
+.ui-icon-carat-1-e {
+  background-position: -32px 0;
+}
+.ui-icon-carat-1-se {
+  background-position: -48px 0;
+}
+.ui-icon-carat-1-s {
+  background-position: -64px 0;
+}
+.ui-icon-carat-1-sw {
+  background-position: -80px 0;
+}
+.ui-icon-carat-1-w {
+  background-position: -96px 0;
+}
+.ui-icon-carat-1-nw {
+  background-position: -112px 0;
+}
+.ui-icon-carat-2-n-s {
+  background-position: -128px 0;
+}
+.ui-icon-carat-2-e-w {
+  background-position: -144px 0;
+}
+.ui-icon-triangle-1-n {
+  background-position: 0 -16px;
+}
+.ui-icon-triangle-1-ne {
+  background-position: -16px -16px;
+}
+.ui-icon-triangle-1-e {
+  background-position: -32px -16px;
+}
+.ui-icon-triangle-1-se {
+  background-position: -48px -16px;
+}
+.ui-icon-triangle-1-s {
+  background-position: -64px -16px;
+}
+.ui-icon-triangle-1-sw {
+  background-position: -80px -16px;
+}
+.ui-icon-triangle-1-w {
+  background-position: -96px -16px;
+}
+.ui-icon-triangle-1-nw {
+  background-position: -112px -16px;
+}
+.ui-icon-triangle-2-n-s {
+  background-position: -128px -16px;
+}
+.ui-icon-triangle-2-e-w {
+  background-position: -144px -16px;
+}
+.ui-icon-arrow-1-n {
+  background-position: 0 -32px;
+}
+.ui-icon-arrow-1-ne {
+  background-position: -16px -32px;
+}
+.ui-icon-arrow-1-e {
+  background-position: -32px -32px;
+}
+.ui-icon-arrow-1-se {
+  background-position: -48px -32px;
+}
+.ui-icon-arrow-1-s {
+  background-position: -64px -32px;
+}
+.ui-icon-arrow-1-sw {
+  background-position: -80px -32px;
+}
+.ui-icon-arrow-1-w {
+  background-position: -96px -32px;
+}
+.ui-icon-arrow-1-nw {
+  background-position: -112px -32px;
+}
+.ui-icon-arrow-2-n-s {
+  background-position: -128px -32px;
+}
+.ui-icon-arrow-2-ne-sw {
+  background-position: -144px -32px;
+}
+.ui-icon-arrow-2-e-w {
+  background-position: -160px -32px;
+}
+.ui-icon-arrow-2-se-nw {
+  background-position: -176px -32px;
+}
+.ui-icon-arrowstop-1-n {
+  background-position: -192px -32px;
+}
+.ui-icon-arrowstop-1-e {
+  background-position: -208px -32px;
+}
+.ui-icon-arrowstop-1-s {
+  background-position: -224px -32px;
+}
+.ui-icon-arrowstop-1-w {
+  background-position: -240px -32px;
+}
+.ui-icon-arrowthick-1-n {
+  background-position: 0 -48px;
+}
+.ui-icon-arrowthick-1-ne {
+  background-position: -16px -48px;
+}
+.ui-icon-arrowthick-1-e {
+  background-position: -32px -48px;
+}
+.ui-icon-arrowthick-1-se {
+  background-position: -48px -48px;
+}
+.ui-icon-arrowthick-1-s {
+  background-position: -64px -48px;
+}
+.ui-icon-arrowthick-1-sw {
+  background-position: -80px -48px;
+}
+.ui-icon-arrowthick-1-w {
+  background-position: -96px -48px;
+}
+.ui-icon-arrowthick-1-nw {
+  background-position: -112px -48px;
+}
+.ui-icon-arrowthick-2-n-s {
+  background-position: -128px -48px;
+}
+.ui-icon-arrowthick-2-ne-sw {
+  background-position: -144px -48px;
+}
+.ui-icon-arrowthick-2-e-w {
+  background-position: -160px -48px;
+}
+.ui-icon-arrowthick-2-se-nw {
+  background-position: -176px -48px;
+}
+.ui-icon-arrowthickstop-1-n {
+  background-position: -192px -48px;
+}
+.ui-icon-arrowthickstop-1-e {
+  background-position: -208px -48px;
+}
+.ui-icon-arrowthickstop-1-s {
+  background-position: -224px -48px;
+}
+.ui-icon-arrowthickstop-1-w {
+  background-position: -240px -48px;
+}
+.ui-icon-arrowreturnthick-1-w {
+  background-position: 0 -64px;
+}
+.ui-icon-arrowreturnthick-1-n {
+  background-position: -16px -64px;
+}
+.ui-icon-arrowreturnthick-1-e {
+  background-position: -32px -64px;
+}
+.ui-icon-arrowreturnthick-1-s {
+  background-position: -48px -64px;
+}
+.ui-icon-arrowreturn-1-w {
+  background-position: -64px -64px;
+}
+.ui-icon-arrowreturn-1-n {
+  background-position: -80px -64px;
+}
+.ui-icon-arrowreturn-1-e {
+  background-position: -96px -64px;
+}
+.ui-icon-arrowreturn-1-s {
+  background-position: -112px -64px;
+}
+.ui-icon-arrowrefresh-1-w {
+  background-position: -128px -64px;
+}
+.ui-icon-arrowrefresh-1-n {
+  background-position: -144px -64px;
+}
+.ui-icon-arrowrefresh-1-e {
+  background-position: -160px -64px;
+}
+.ui-icon-arrowrefresh-1-s {
+  background-position: -176px -64px;
+}
+.ui-icon-arrow-4 {
+  background-position: 0 -80px;
+}
+.ui-icon-arrow-4-diag {
+  background-position: -16px -80px;
+}
+.ui-icon-extlink {
+  background-position: -32px -80px;
+}
+.ui-icon-newwin {
+  background-position: -48px -80px;
+}
+.ui-icon-refresh {
+  background-position: -64px -80px;
+}
+.ui-icon-shuffle {
+  background-position: -80px -80px;
+}
+.ui-icon-transfer-e-w {
+  background-position: -96px -80px;
+}
+.ui-icon-transferthick-e-w {
+  background-position: -112px -80px;
+}
+.ui-icon-folder-collapsed {
+  background-position: 0 -96px;
+}
+.ui-icon-folder-open {
+  background-position: -16px -96px;
+}
+.ui-icon-document {
+  background-position: -32px -96px;
+}
+.ui-icon-document-b {
+  background-position: -48px -96px;
+}
+.ui-icon-note {
+  background-position: -64px -96px;
+}
+.ui-icon-mail-closed {
+  background-position: -80px -96px;
+}
+.ui-icon-mail-open {
+  background-position: -96px -96px;
+}
+.ui-icon-suitcase {
+  background-position: -112px -96px;
+}
+.ui-icon-comment {
+  background-position: -128px -96px;
+}
+.ui-icon-person {
+  background-position: -144px -96px;
+}
+.ui-icon-print {
+  background-position: -160px -96px;
+}
+.ui-icon-trash {
+  background-position: -176px -96px;
+}
+.ui-icon-locked {
+  background-position: -192px -96px;
+}
+.ui-icon-unlocked {
+  background-position: -208px -96px;
+}
+.ui-icon-bookmark {
+  background-position: -224px -96px;
+}
+.ui-icon-tag {
+  background-position: -240px -96px;
+}
+.ui-icon-home {
+  background-position: 0 -112px;
+}
+.ui-icon-flag {
+  background-position: -16px -112px;
+}
+.ui-icon-calendar {
+  background-position: -32px -112px;
+}
+.ui-icon-cart {
+  background-position: -48px -112px;
+}
+.ui-icon-pencil {
+  background-position: -64px -112px;
+}
+.ui-icon-clock {
+  background-position: -80px -112px;
+}
+.ui-icon-disk {
+  background-position: -96px -112px;
+}
+.ui-icon-calculator {
+  background-position: -112px -112px;
+}
+.ui-icon-zoomin {
+  background-position: -128px -112px;
+}
+.ui-icon-zoomout {
+  background-position: -144px -112px;
+}
+.ui-icon-search {
+  background-position: -160px -112px;
+}
+.ui-icon-wrench {
+  background-position: -176px -112px;
+}
+.ui-icon-gear {
+  background-position: -192px -112px;
+}
+.ui-icon-heart {
+  background-position: -208px -112px;
+}
+.ui-icon-star {
+  background-position: -224px -112px;
+}
+.ui-icon-link {
+  background-position: -240px -112px;
+}
+.ui-icon-cancel {
+  background-position: 0 -128px;
+}
+.ui-icon-plus {
+  background-position: -16px -128px;
+}
+.ui-icon-plusthick {
+  background-position: -32px -128px;
+}
+.ui-icon-minus {
+  background-position: -48px -128px;
+}
+.ui-icon-minusthick {
+  background-position: -64px -128px;
+}
+.ui-icon-close {
+  background-position: -80px -128px;
+}
+.ui-icon-closethick {
+  background-position: -96px -128px;
+}
+.ui-icon-key {
+  background-position: -112px -128px;
+}
+.ui-icon-lightbulb {
+  background-position: -128px -128px;
+}
+.ui-icon-scissors {
+  background-position: -144px -128px;
+}
+.ui-icon-clipboard {
+  background-position: -160px -128px;
+}
+.ui-icon-copy {
+  background-position: -176px -128px;
+}
+.ui-icon-contact {
+  background-position: -192px -128px;
+}
+.ui-icon-image {
+  background-position: -208px -128px;
+}
+.ui-icon-video {
+  background-position: -224px -128px;
+}
+.ui-icon-script {
+  background-position: -240px -128px;
+}
+.ui-icon-alert {
+  background-position: 0 -144px;
+}
+.ui-icon-info {
+  background-position: -16px -144px;
+}
+.ui-icon-notice {
+  background-position: -32px -144px;
+}
+.ui-icon-help {
+  background-position: -48px -144px;
+}
+.ui-icon-check {
+  background-position: -64px -144px;
+}
+.ui-icon-bullet {
+  background-position: -80px -144px;
+}
+.ui-icon-radio-on {
+  background-position: -96px -144px;
+}
+.ui-icon-radio-off {
+  background-position: -112px -144px;
+}
+.ui-icon-pin-w {
+  background-position: -128px -144px;
+}
+.ui-icon-pin-s {
+  background-position: -144px -144px;
+}
+.ui-icon-play {
+  background-position: 0 -160px;
+}
+.ui-icon-pause {
+  background-position: -16px -160px;
+}
+.ui-icon-seek-next {
+  background-position: -32px -160px;
+}
+.ui-icon-seek-prev {
+  background-position: -48px -160px;
+}
+.ui-icon-seek-end {
+  background-position: -64px -160px;
+}
+.ui-icon-seek-start {
+  background-position: -80px -160px;
+}
+/* ui-icon-seek-first is deprecated, use ui-icon-seek-start instead */
+.ui-icon-seek-first {
+  background-position: -80px -160px;
+}
+.ui-icon-stop {
+  background-position: -96px -160px;
+}
+.ui-icon-eject {
+  background-position: -112px -160px;
+}
+.ui-icon-volume-off {
+  background-position: -128px -160px;
+}
+.ui-icon-volume-on {
+  background-position: -144px -160px;
+}
+.ui-icon-power {
+  background-position: 0 -176px;
+}
+.ui-icon-signal-diag {
+  background-position: -16px -176px;
+}
+.ui-icon-signal {
+  background-position: -32px -176px;
+}
+.ui-icon-battery-0 {
+  background-position: -48px -176px;
+}
+.ui-icon-battery-1 {
+  background-position: -64px -176px;
+}
+.ui-icon-battery-2 {
+  background-position: -80px -176px;
+}
+.ui-icon-battery-3 {
+  background-position: -96px -176px;
+}
+.ui-icon-circle-plus {
+  background-position: 0 -192px;
+}
+.ui-icon-circle-minus {
+  background-position: -16px -192px;
+}
+.ui-icon-circle-close {
+  background-position: -32px -192px;
+}
+.ui-icon-circle-triangle-e {
+  background-position: -48px -192px;
+}
+.ui-icon-circle-triangle-s {
+  background-position: -64px -192px;
+}
+.ui-icon-circle-triangle-w {
+  background-position: -80px -192px;
+}
+.ui-icon-circle-triangle-n {
+  background-position: -96px -192px;
+}
+.ui-icon-circle-arrow-e {
+  background-position: -112px -192px;
+}
+.ui-icon-circle-arrow-s {
+  background-position: -128px -192px;
+}
+.ui-icon-circle-arrow-w {
+  background-position: -144px -192px;
+}
+.ui-icon-circle-arrow-n {
+  background-position: -160px -192px;
+}
+.ui-icon-circle-zoomin {
+  background-position: -176px -192px;
+}
+.ui-icon-circle-zoomout {
+  background-position: -192px -192px;
+}
+.ui-icon-circle-check {
+  background-position: -208px -192px;
+}
+.ui-icon-circlesmall-plus {
+  background-position: 0 -208px;
+}
+.ui-icon-circlesmall-minus {
+  background-position: -16px -208px;
+}
+.ui-icon-circlesmall-close {
+  background-position: -32px -208px;
+}
+.ui-icon-squaresmall-plus {
+  background-position: -48px -208px;
+}
+.ui-icon-squaresmall-minus {
+  background-position: -64px -208px;
+}
+.ui-icon-squaresmall-close {
+  background-position: -80px -208px;
+}
+.ui-icon-grip-dotted-vertical {
+  background-position: 0 -224px;
+}
+.ui-icon-grip-dotted-horizontal {
+  background-position: -16px -224px;
+}
+.ui-icon-grip-solid-vertical {
+  background-position: -32px -224px;
+}
+.ui-icon-grip-solid-horizontal {
+  background-position: -48px -224px;
+}
+.ui-icon-gripsmall-diagonal-se {
+  background-position: -64px -224px;
+}
+.ui-icon-grip-diagonal-se {
+  background-position: -80px -224px;
+}
+/* Misc visuals
+----------------------------------*/
+/* Corner radius */
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-left,
+.ui-corner-tl {
+  border-top-left-radius: 0;
+}
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-right,
+.ui-corner-tr {
+  border-top-right-radius: 0;
+}
+.ui-corner-all,
+.ui-corner-bottom,
+.ui-corner-left,
+.ui-corner-bl {
+  border-bottom-left-radius: 0;
+}
+.ui-corner-all,
+.ui-corner-bottom,
+.ui-corner-right,
+.ui-corner-br {
+  border-bottom-right-radius: 0;
+}
+/* Overlays */
+.ui-widget-overlay {
+  background: #aaaaaa;
+  opacity: .3;
+  filter: alpha(opacity=30);
+  /* support: IE8 */
+}
+.ui-widget-shadow {
+  margin: -8px 0 0 -8px;
+  padding: 8px;
+  background: #aaaaaa;
+  opacity: .3;
+  filter: alpha(opacity=30);
+  /* support: IE8 */
+  border-radius: 8px;
+}
+/* tool bar *
+	#tool-bar {
+		height: 50px;
+		background: @babyblue;
+		color: #444444;
+
+		/*
+		& > * {
+			height:calc(~"100% - 15px"); /* ??? *
+		}
+		*
+
+	}*/
+#tool-bar .filters-wrapper,
+.filter-bar .filters-wrapper {
+  max-width: 100%;
+  height: 100%;
+  text-align: left;
+}
+#tool-bar .filters-wrapper > ul,
+.filter-bar .filters-wrapper > ul {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  display: table;
+  table-layout: fixed;
+}
+#tool-bar .filters-wrapper .filter-wrapper,
+.filter-bar .filters-wrapper .filter-wrapper {
+  display: table-cell;
+  height: 50px;
+  vertical-align: top;
+  /* */
+}
+#tool-bar .filters-wrapper .filter-wrapper .mask,
+.filter-bar .filters-wrapper .filter-wrapper .mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+}
+#tool-bar .filters-wrapper .filter-wrapper .mask + div,
+.filter-bar .filters-wrapper .filter-wrapper .mask + div {
+  z-index: 110;
+}
+#tool-bar .filters-wrapper .filter-wrapper.active,
+.filter-bar .filters-wrapper .filter-wrapper.active {
+  background: inherit;
+  position: relative;
+}
+#tool-bar .filters-wrapper .filter-wrapper.active .filter-values:after,
+.filter-bar .filters-wrapper .filter-wrapper.active .filter-values:after {
+  display: none;
+}
+#tool-bar .filters-wrapper .filter-wrapper.active .filter-heading,
+.filter-bar .filters-wrapper .filter-wrapper.active .filter-heading {
+  box-shadow: 0 4px 8px 1px rgba(0, 0, 0, 0.5);
+}
+#tool-bar .filters-wrapper .filter-wrapper .filter-heading,
+.filter-bar .filters-wrapper .filter-wrapper .filter-heading {
+  height: 50px;
+  box-sizing: border-box;
+  padding: 3px 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  z-index: 120;
+}
+#tool-bar .filters-wrapper .filter-wrapper .filter-heading i,
+.filter-bar .filters-wrapper .filter-wrapper .filter-heading i {
+  display: none;
+}
+#tool-bar .filters-wrapper .filter-wrapper .filter-heading:hover i,
+.filter-bar .filters-wrapper .filter-wrapper .filter-heading:hover i {
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+#tool-bar .filters-wrapper .filter-wrapper .filter-values > div,
+.filter-bar .filters-wrapper .filter-wrapper .filter-values > div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#tool-bar .filters-wrapper .filter-wrapper .filter-name,
+.filter-bar .filters-wrapper .filter-wrapper .filter-name,
+#tool-bar .filters-wrapper .filter-wrapper .filter-values,
+.filter-bar .filters-wrapper .filter-wrapper .filter-values {
+  max-width: 225px;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  text-overflow: ellipsis;
+}
+#tool-bar .filters-wrapper .filter-wrapper .filter-name,
+.filter-bar .filters-wrapper .filter-wrapper .filter-name {
+  padding: 0;
+  display: block;
+  color: gray;
+  text-transform: lowercase;
+  font-variant: small-caps;
+  font-size: 13px;
+  font-weight: normal;
+}
+#tool-bar .filters-wrapper .filter-wrapper .filter-values,
+.filter-bar .filters-wrapper .filter-wrapper .filter-values {
+  font-size: 16px;
+  color: #444;
+  position: relative;
+  padding-bottom: 0;
+}
+#tool-bar .filters-wrapper .filter-wrapper .filter-values:after,
+.filter-bar .filters-wrapper .filter-wrapper .filter-values:after {
+  content: '\f078';
+  /* down chevron */
+  font-family: FontAwesome;
+  margin: 0;
+  font-size: 8px;
+  display: inline-block;
+  position: absolute;
+  bottom: 1.5em;
+  right: -2em;
+}
+#tool-bar .filters-wrapper .filter-wrapper .filter-values em,
+.filter-bar .filters-wrapper .filter-wrapper .filter-values em {
+  padding-right: .125em;
+}
+#tool-bar .filters-wrapper .filter-wrapper .add-filter,
+.filter-bar .filters-wrapper .filter-wrapper .add-filter {
+  height: 50px;
+  padding: 3px 15px;
+  box-sizing: border-box;
+  position: relative;
+  white-space: nowrap;
+}
+#tool-bar .filters-wrapper .filter-wrapper .add-filter > div > label,
+.filter-bar .filters-wrapper .filter-wrapper .add-filter > div > label,
+#tool-bar .filters-wrapper .filter-wrapper .add-filter > label,
+.filter-bar .filters-wrapper .filter-wrapper .add-filter > label {
+  text-transform: uppercase;
+}
+#tool-bar .filters-wrapper .filter-wrapper .filter-select,
+.filter-bar .filters-wrapper .filter-wrapper .filter-select {
+  position: absolute;
+  background: white;
+  color: black;
+  z-index: 120;
+  box-shadow: 0 4px 8px 1px rgba(0, 0, 0, 0.5);
+  min-width: 400px;
+  font-size: 14px;
+}
+#tool-bar .filters-wrapper .filter-wrapper .filter-select.flow-up,
+.filter-bar .filters-wrapper .filter-wrapper .filter-select.flow-up {
+  bottom: 5em;
+}
+.popup-menu.arrow-up-right .filter-select {
+  right: 0;
+}
+.filter-select {
+  /* date range picker */
+  /* begin: jQuery UI Datepicker emphasis on selected dates */
+  /* end: jQuery UI Datepicker emphasis on selected dates */
+}
+.filter-select .heading {
+  text-transform: uppercase;
+  display: block;
+  margin: 0;
+  padding: 10px 0 0;
+  font-weight: bold;
+  text-align: center;
+}
+.filter-select .range-presets,
+.filter-select .range-custom {
+  height: auto;
+  text-align: center;
+  padding: 0 10px 10px;
+  background: white;
+  position: relative;
+}
+.filter-select .range-presets fieldset,
+.filter-select .range-custom fieldset {
+  display: block;
+  margin: 10px auto 0;
+  padding: 0 5px 5px 5px;
+  width: 350px;
+  border-color: transparent;
+  white-space: nowrap;
+}
+.filter-select .range-presets fieldset.active,
+.filter-select .range-custom fieldset.active {
+  background: highlight;
+  color: highlighttext;
+}
+.filter-select .range-presets fieldset legend,
+.filter-select .range-custom fieldset legend {
+  position: relative;
+  top: -0.5em;
+  text-transform: uppercase;
+  display: block;
+  margin: -0.5em auto;
+  padding: 0;
+  color: black;
+}
+.filter-select .range-presets .calendar,
+.filter-select .range-custom .calendar {
+  font-size: 9px;
+  display: inline-block;
+}
+.filter-select .range-presets .calendar .ui-datepicker-title span,
+.filter-select .range-custom .calendar .ui-datepicker-title span,
+.filter-select .range-presets .calendar .ui-datepicker th,
+.filter-select .range-custom .calendar .ui-datepicker th,
+.filter-select .range-presets .calendar .ui-datepicker th span,
+.filter-select .range-custom .calendar .ui-datepicker th span,
+.filter-select .range-presets .calendar .ui-datepicker td a,
+.filter-select .range-custom .calendar .ui-datepicker td a {
+  font-size: 10px;
+}
+.filter-select .range-presets .calendar .ui-datepicker td,
+.filter-select .range-custom .calendar .ui-datepicker td {
+  border: 1px solid transparent;
+}
+.filter-select .range-presets .toggle-custom,
+.filter-select .range-custom .toggle-custom {
+  cursor: pointer;
+  margin: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-weight: bold;
+}
+.filter-select .range-presets .preset-list {
+  max-height: 450px;
+  max-height: calc(100vh - 540px);
+  overflow: auto;
+}
+.filter-select .range-presets ul {
+  list-style: none;
+  display: table;
+  width: 90%;
+  padding: 0;
+  margin: 0 auto;
+}
+.filter-select .range-presets ul li {
+  display: table-row;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+.filter-select .range-presets ul li button {
+  display: table-cell;
+  width: 50%;
+  height: 50px;
+  text-transform: capitalize;
+  border: 0 none silver;
+  border-bottom: 1px solid silver;
+  box-sizing: border-box;
+  background: white;
+  vertical-align: top;
+}
+.filter-select .range-presets ul li button:first-child {
+  width: 40%;
+  text-align: right;
+  border-right: 1px solid silver;
+}
+.filter-select .range-presets ul li button:last-child {
+  width: 60%;
+  white-space: nowrap;
+  text-align: left;
+}
+.filter-select .range-presets ul li button.active,
+.filter-select .range-presets ul li button:hover {
+  color: highlighttext;
+  background: highlight;
+}
+.filter-select .ui-datepicker .ui-datepicker-calendar .ui-state-highlight a {
+  background: #743620 none;
+  /* a color that fits the widget theme */
+  color: white;
+  /* a color that is readeable with the color above */
+}
+.filter-select .filter-selected-values {
+  max-height: 50vh;
+  overflow: auto;
+}
+.filter-select .filter-selected-values > div {
+  border-bottom: 1px solid;
+  overflow: hidden;
+}
+.filter-select .filter-selected-values > div label {
+  display: inline-block;
+  padding: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 80%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.filter-select .filter-selected-values > div label input[type=radio],
+.filter-select .filter-selected-values > div label input[type=checkbox] {
+  margin: 5px;
+  xborder: 1px solid black;
+}
+.filter-select .filter-selected-values > div i {
+  float: right;
+  padding: 15px;
+  cursor: pointer;
+}
+.filter-select .filter-input-box {
+  background: #F4F4F5;
+}
+.filter-select .filter-input-box input {
+  display: inline-block;
+  width: 100%;
+  background: inherit;
+  border: none;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.filter-select .filter-search-results {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-height: 250px;
+  overflow: auto;
+}
+.filter-select .filter-search-results li {
+  margin: 0;
+  padding: 0;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.filter-select .filter-search-results li.hover,
+.filter-select .filter-search-results li:hover {
+  color: highlighttext;
+  background: highlight;
+}
+.filter-select .filter-search-results li.selected {
+  color: silver;
+}
+.filter-select .down-arrow-left {
+  position: relative;
+}
+.filter-select .down-arrow-left:before {
+  content: '\f037';
+  font-family: FontAwesome;
+}
+.filter-select input[type="number"].new-styled {
+  text-align: right;
+  width: 4em;
+}
+.filter-select button.new-styled,
+.filter-select input[type="text"].new-styled,
+.filter-select input[type="number"].new-styled,
+.filter-select select.new-styled {
+  background: #F5F6F6;
+  color: #444;
+  border: none;
+  padding: 8px;
+  border-radius: 2px;
+  margin: 5px;
+  line-height: 1.4em;
+}
+/********************************
+* @Report table area
+********************************/
+#reporttable {
+  font-size: 11px;
+  color: #444;
+  position: relative;
+  width: 90%;
+  width: calc(100% - 200px);
+  float: left;
+  height: 100%;
+  overflow: hidden;
+  margin-top: -8px;
+}
+#reporttable .row {
+  height: 100px;
+}
+#reporttable > div > header {
+  position: relative;
+  overflow: hidden;
+}
+#reporttable > div > header:first-child,
+#reporttable > div > header.dimensionRow {
+  float: left;
+  max-width: 50%;
+}
+#reporttable > div > header:first-child .row span,
+#reporttable > div > header.dimensionRow .row span {
+  background-color: #dbedf8;
+  display: inline-block;
+  border-top: 2px solid #3b86c7;
+  border-right: 2px solid #d6e6f3;
+  border-bottom: 1px solid #97c1e7;
+  box-sizing: border-box;
+  text-align: center;
+  color: #172945;
+  height: 100%;
+  vertical-align: middle;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#reporttable > div > header:first-child .row span:before,
+#reporttable > div > header.dimensionRow .row span:before {
+  content: ' ';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+#reporttable > div > header:first-child .row span:first-child,
+#reporttable > div > header.dimensionRow .row span:first-child {
+  border-left: 2px solid  #3b86c7;
+}
+#reporttable > div > header:first-child .inline-filters,
+#reporttable > div > header.dimensionRow .inline-filters {
+  height: 2em;
+}
+#reporttable > div > header:first-child .inline-filters span,
+#reporttable > div > header.dimensionRow .inline-filters span {
+  background-color: #eee;
+  position: relative;
+  cursor: pointer;
+}
+#reporttable > div > header:first-child .inline-filters input,
+#reporttable > div > header.dimensionRow .inline-filters input {
+  border: none;
+  padding: 2px 8px;
+  width: 100%;
+  cursor: auto;
+}
+#reporttable > div > header:first-child .inline-filters .icon-cancel,
+#reporttable > div > header.dimensionRow .inline-filters .icon-cancel {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  color: firebrick;
+  cursor: pointer;
+}
+#reporttable > div > header:nth-child(2) .row,
+#reporttable > div > header.metrics .row {
+  box-sizing: border-box;
+  border-botom: 1px solid #d6e6f3;
+}
+#reporttable > div > header:nth-child(2) .row.level0,
+#reporttable > div > header.metrics .row.level0 {
+  border-top: 1px solid #a8b8df;
+  border-bottom: 1px solid #c8de85;
+}
+#reporttable > div > header:nth-child(2) .row.level1,
+#reporttable > div > header.metrics .row.level1 {
+  border-bottom: 1px solid #b0b0bc;
+}
+#reporttable > div > header:nth-child(2) .row span,
+#reporttable > div > header.metrics .row span {
+  display: inline-block;
+  height: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 12px;
+  border-right: 2px solid #bfc0c3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#reporttable > div > header:nth-child(2) .row span:before,
+#reporttable > div > header.metrics .row span:before {
+  content: ' ';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+#reporttable > div > header:nth-child(2) .row span:first-child,
+#reporttable > div > header.metrics .row span:first-child {
+  border-left: 2px solid #b0b0bc;
+}
+#reporttable > div > header:nth-child(2) .row span:last-child,
+#reporttable > div > header.metrics .row span:last-child {
+  border-right: 2px solid #97c1e7;
+}
+#reporttable > div > header:nth-child(2) .row:first-child span,
+#reporttable > div > header.metrics .row:first-child span {
+  border-top: 2px solid #a8b8df;
+  background-color: #eeeeef;
+}
+#reporttable > div > header:nth-child(2) .row:nth-child(2) span,
+#reporttable > div > header.metrics .row:nth-child(2) span {
+  background-color: #f5f5f6;
+}
+#reporttable > div > header:nth-child(2) .row span.metric,
+#reporttable > div > header.metrics .row span.metric {
+  background-color: #eef5da;
+  border-top: 1px solid #a2c539;
+  color: #567e39;
+  border-left: 1px solid #edf1e2;
+}
+#reporttable > div > header:nth-child(2) .row span.metric.last,
+#reporttable > div > header.metrics .row span.metric.last {
+  border-right: 2px solid #a2c539;
+}
+#reporttable > div > header:nth-child(2) .row span.metric:first-child,
+#reporttable > div > header.metrics .row span.metric:first-child {
+  border-left: 2px solid #b0b0bc;
+}
+#reporttable > div > header:nth-child(2) .row span.metric:last-child,
+#reporttable > div > header.metrics .row span.metric:last-child {
+  border-right: 2px solid #7d9c5b;
+}
+#reporttable > div > aside {
+  float: left;
+  xpadding-bottom: 60px;
+  max-width: 50%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  box-sizing: border-box;
+  overflow: hidden;
+  flex-direction: column;
+}
+#reporttable > div > aside > div {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+#reporttable > div > aside table {
+  background: white;
+  text-align: left;
+  table-layout: fixed;
+  border-collapse: separate;
+  box-sizing: border-box;
+}
+#reporttable > div > aside table tr td,
+#reporttable > div > aside table tr th {
+  padding: 0px 8px;
+  box-sizing: border-box;
+  line-height: 28px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-left: 1px solid #d6e6f3;
+  border-bottom: 1px solid #d6e6f3;
+}
+#reporttable > div > aside table tr td:first-child,
+#reporttable > div > aside table tr th:first-child {
+  border-left: 2px solid #a8b8df;
+}
+#reporttable > div > aside table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+#reporttable > div > aside table tr:nth-last-child(-n+2) td,
+#reporttable > div > aside table tr:nth-last-child(-n+2) th {
+  border-bottom: 2px solid #a8b8df;
+}
+#reporttable > div > aside table tr.bottom-filler td,
+#reporttable > div > aside table tr.top-filler td {
+  border: none;
+}
+#reporttable #maintable {
+  table-layout: fixed;
+  border-collapse: separate;
+  box-sizing: border-box;
+  overflow: hidden;
+  flex-direction: column;
+}
+#reporttable #maintable tr td,
+#reporttable #maintable tr th {
+  text-align: right;
+  padding: 0px 8px;
+  box-sizing: border-box;
+  line-height: 28px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-right: 1px solid #d6e6f3;
+  border-bottom: 1px solid #d6e6f3;
+}
+#reporttable #maintable tr td:first-child,
+#reporttable #maintable tr th:first-child {
+  border-left: 2px solid #a8b8df;
+}
+#reporttable #maintable tr td:last-child,
+#reporttable #maintable tr th:last-child {
+  border-right: 2px solid #7d9c5b;
+}
+#reporttable #maintable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+#reporttable #maintable tr:nth-last-child(-n+2) td,
+#reporttable #maintable tr:nth-last-child(-n+2) th {
+  border-bottom: 2px solid #7d9c5b;
+}
+#reporttable #maintable tr.bottom-filler td,
+#reporttable #maintable tr.top-filler td {
+  border: none;
+}
+#reporttable .report-table-content {
+  height: 100%;
+  height: calc(100% - 62px);
+  overflow: hidden;
+}
+#reporttable .table-totals {
+  border-collapse: separate;
+  position: relative;
+  z-index: 10;
+}
+#reporttable .table-totals.metrics {
+  background-color: #eef5da;
+  xposition: relative;
+  xz-index: 10;
+}
+#reporttable .table-totals.dimensions {
+  background-color: #dbedf8;
+  xposition: absolute;
+  xbottom: 0;
+}
+.flexbox-parent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* align items in Main Axis */
+  align-items: stretch;
+  /* align items in Cross Axis */
+  align-content: stretch;
+  /* Extra space in Cross Axis */
+}
+.flexbox-item-grow {
+  flex: 1;
+  /* same as flex: 1 1 auto; */
+}
+.fill-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  /* align items in Main Axis */
+  align-items: stretch;
+  /* align items in Cross Axis */
+  align-content: stretch;
+  /* Extra space in Cross Axis */
+}
+.fill-area-content {
+  /* Needed for when the area gets squished too far and there is content that can't be displayed */
+  overflow: auto;
+}
+.sorted_asc,
+.sorted_desc {
+  position: relative;
+  padding-right: 20px;
+}
+.sorted_asc:after,
+.sorted_desc:after {
+  right: 4px;
+  border: solid transparent;
+  content: " ";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-width: 8px;
+}
+.sorted_desc:after {
+  top: 12px;
+  border-top-color: #000;
+}
+.sorted_asc:after {
+  top: 4px;
+  border-bottom-color: #000;
+}
+/* @import 'table.less'; */
+.leo-insights body,
+body.leo-insights {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+@media (min-width: 1900px) {
+  .leo-insights > :first-child {
+    padding: 50px 75px 0;
+  }
+  .leo-insights > :not(:first-child):not(:last-child) {
+    padding: 0 75px;
+  }
+  .leo-insights > :last-child {
+    padding: 0 75px 50px;
+  }
+}
+@media (max-width: 1900px) {
+  .leo-insights > :first-child {
+    padding: 20px 30px 0;
+  }
+  .leo-insights > :not(:first-child):not(:last-child) {
+    padding: 0 30px;
+  }
+  .leo-insights > :last-child {
+    padding: 0 30px 10px;
+  }
+}
+.leo-insights {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+.leo-insights .leo-logo {
+  clear: both;
+  text-align: center;
+}
+.leo-insights .leo-logo a {
+  display: inline-block;
+  margin: 0px auto;
+  vertical-align: middle;
+  color: black;
+  padding: 12px;
+  text-decoration: none;
+}
+.leo-insights .leo-logo a:hover {
+  text-decoration: underline;
+}
+.leo-insights .leo-logo img {
+  height: 30px;
+  vertical-align: middle;
+  display: inline-block;
+  margin: 5px;
+}
+/* generic */
+.pull-left {
+  float: left;
+}
+.pull-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+.pull-right {
+  float: right;
+}
+.align-left {
+  text-align: left;
+}
+.align-center {
+  text-align: center;
+}
+.align-right {
+  text-align: right;
+}
+.clear-fix:after,
+.clearfix:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.leo-clearboth,
+.clear-both,
+.clearboth {
+  clear: both;
+}
+[class^="leo-chart-"],
+[class*=" leo-chart-"] {
+  display: inline-block;
+  box-sizing: border-box;
+  max-width: 100%;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
+  min-height: 100px;
+}
+@media (min-width: 550px) {
+  [class^="leo-chart-"],
+  [class*=" leo-chart-"] {
+    min-width: 250px;
+  }
+}
+@media (max-width: 550px) {
+  [class^="leo-chart-"],
+  [class*=" leo-chart-"] {
+    min-width: 100%;
+    width: 100%;
+  }
+}
+.leo-chart-1-1,
+.leo-chart-2-2,
+.leo-chart-3-3,
+.leo-chart-4-4,
+.leo-chart-5-5,
+.leo-chart-6-6 {
+  width: 96%;
+}
+.leo-chart-6-7 {
+  width: 82%;
+}
+.leo-chart-5-6 {
+  width: 80%;
+}
+.leo-chart-4-5 {
+  width: 76.8%;
+}
+.leo-chart-3-4,
+.leo-chart-6-8 {
+  width: 72%;
+}
+.leo-chart-5-7 {
+  width: 68.6%;
+}
+.leo-chart-2-3,
+.leo-chart-4-6,
+.leo-chart-6-9 {
+  width: 64%;
+}
+.leo-chart-5-8 {
+  width: 60%;
+}
+.leo-chart-3-5,
+.leo-chart-6-10 {
+  width: 57.6%;
+}
+.leo-chart-4-7 {
+  width: 54.9%;
+}
+.leo-chart-5-9 {
+  width: 53.3%;
+}
+.leo-chart-1-2,
+.leo-chart-2-4,
+.leo-chart-3-6,
+.leo-chart-4-8,
+.leo-chart-5-10 {
+  width: 48%;
+}
+.leo-chart-4-9 {
+  width: 42.7%;
+}
+.leo-chart-3-7 {
+  width: 41%;
+}
+.leo-chart-3-8 {
+  width: 36%;
+}
+.leo-chart-2-5,
+.leo-chart-4-10 {
+  width: 38.4%;
+}
+.leo-chart-1-3,
+.leo-chart-2-6,
+.leo-chart-3-9 {
+  width: 32%;
+}
+.leo-chart-3-10 {
+  width: 28.8%;
+}
+.leo-chart-2-7 {
+  width: 27%;
+}
+.leo-chart-1-4,
+.leo-chart-2-8 {
+  width: 24%;
+}
+.leo-chart-2-9 {
+  width: 21%;
+}
+.leo-chart-1-5,
+.leo-chart-2-10 {
+  width: 19.2%;
+}
+.leo-chart-1-6 {
+  width: 16%;
+}
+.leo-chart-1-7 {
+  width: 13.7%;
+}
+.leo-chart-1-8 {
+  width: 12%;
+}
+.leo-chart-1-9 {
+  width: 10.7%;
+}
+.leo-chart-1-10 {
+  width: 9.6%;
+}
+.leo-height-900 {
+  min-height: 900px;
+}
+.leo-height-850 {
+  min-height: 850px;
+}
+.leo-height-800 {
+  min-height: 800px;
+}
+.leo-height-750 {
+  min-height: 750px;
+}
+.leo-height-700 {
+  min-height: 700px;
+}
+.leo-height-650 {
+  min-height: 650px;
+}
+.leo-height-600 {
+  min-height: 600px;
+}
+.leo-height-550 {
+  min-height: 550px;
+}
+.leo-height-500 {
+  min-height: 500px;
+}
+.leo-height-450 {
+  min-height: 450px;
+}
+.leo-height-400 {
+  max-height: 400px;
+}
+.leo-height-350 {
+  max-height: 350px;
+}
+.leo-height-300 {
+  max-height: 300px;
+}
+.leo-height-250 {
+  max-height: 250px;
+}
+.leo-height-200 {
+  max-height: 200px;
+}
+.leo-height-150 {
+  max-height: 150px;
+}
+.leo-height-100 {
+  max-height: 100px;
+}
+.leo-padding-1 {
+  padding: 1px;
+}
+.leo-padding-2 {
+  padding: 2px;
+}
+.leo-padding-3 {
+  padding: 3px;
+}
+.leo-padding-4 {
+  padding: 4px;
+}
+.leo-padding-5 {
+  padding: 5px;
+}
+.leo-padding-6 {
+  padding: 6px;
+}
+.leo-padding-7 {
+  padding: 7px;
+}
+.leo-padding-8 {
+  padding: 8px;
+}
+.leo-padding-9 {
+  padding: 9px;
+}
+.leo-padding-10 {
+  padding: 10px;
+}
+.leo-shadow {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
+  margin-bottom: 10px;
+}
+.leo-insights input,
+.leo-insights select,
+.leo-insights .ui-autocomplete {
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  padding: 5px 8px;
+  border-radius: 5px;
+  border: 1px solid silver;
+  margin: 2px;
+}
+/* autocomplete */
+.leo-insights .ui-autocomplete {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: block;
+  outline: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: default;
+  max-height: 400px;
+  overflow: auto;
+  z-index: 100;
+}
+.ui-helper-hidden-accessible {
+  display: none;
+}
+.leo-insights .ui-autocomplete-category {
+  font-weight: bold;
+}
+.leo-insights .ui-menu-item {
+  padding: 3px 1em 3px .4em;
+  cursor: pointer;
+  font-weight: normal;
+}
+.leo-insights .ui-state-active,
+.leo-insights .ui-state-hover,
+.leo-insights .ui-state-focus {
+  background: rgba(248, 248, 248, 0.9);
+  color: black;
+}
+/* loading message */
+.leo-insights .highcharts-loading,
+.leo-insights [data-canned-report]:empty,
+.leo-insights [data-table] tbody:empty {
+  font-weight: bold;
+  font-size: 24px;
+  font-family: sans-serif;
+  color: black;
+  text-shadow: 0 0 .5em white;
+}
+.leo-insights .highcharts-loading {
+  opacity: 1 !important;
+  /* override highcharts css */
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  /* override highcharts css */
+}
+.leo-insights .highcharts-loading span {
+  display: none;
+}
+.leo-insights [data-canned-report]:empty,
+.leo-insights [data-table] tbody:empty {
+  position: relative;
+  height: 400px;
+}
+.leo-insights [data-table] tbody:empty {
+  display: table-cell;
+}
+.leo-insights .highcharts-loading:before,
+.leo-insights [data-canned-report]:empty:before,
+.leo-insights [data-table] tbody:empty:before {
+  content: '';
+  display: inline-block;
+  border-top: 12px solid #404040;
+  border-right: 12px solid #c4c4c4;
+  border-bottom: 12px solid #c4c4c4;
+  border-left: 12px solid #c4c4c4;
+  animation: rotate .8s infinite linear;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin: -60px -37px;
+  z-index: 1;
+  box-shadow: 0 0 1px #888, inset 0 0 1px #888;
+}
+.leo-insights .highcharts-loading:after,
+.leo-insights [data-canned-report]:empty:after,
+.leo-insights [data-table] tbody:empty:after {
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 0;
+  content: 'Please Wait... Loading';
+  display: block;
+  width: 100%;
+  margin: 1em 0;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes hue_shift {
+  0%,
+  100% {
+    -webkit-filter: hue-rotate(0deg);
+  }
+  50% {
+    -webkit-filter: hue-rotate(180deg);
+  }
+}
+/*********************************************************************
+* @TABLES
+*********************************************************************/
+.simple-table-wrapper {
+  overflow: hidden;
+  height: 100%;
+}
+.simple-table-wrapper .odd-even-fix,
+.simple-table-wrapper .top-filler,
+.simple-table-wrapper .bottom-filler,
+.simple-table-wrapper .odd-even-fix td,
+.simple-table-wrapper .top-filler td,
+.simple-table-wrapper .bottom-filler td {
+  height: 0;
+  padding: 0;
+}
+.simple-table-wrapper .fixed-spacing td {
+  height: 1px;
+  padding: 0;
+  margin: 0;
+  border-bottom: none;
+  background: none;
+}
+.simple-table-wrapper thead {
+  xposition: absolute;
+  top: 0;
+}
+.simple-table-wrapper thead .icon-download {
+  cursor: pointer;
+}
+.simple-table-wrapper thead .title td i {
+  float: right;
+  line-height: inherit;
+  width: 30px;
+  font-size: 20px;
+}
+.simple-table-wrapper thead .title td i + span {
+  display: block;
+  float: none;
+}
+.simple-table-wrapper .table-body {
+  height: calc(100% - 48px - 43px);
+  overflow-y: scroll;
+}
+.simple-table-wrapper .table-body.has-totals {
+  height: calc(100% - 73px - 43px);
+  background: #ddd;
+}
+.simple-table-wrapper > table {
+  display: block;
+  overflow-y: scroll;
+}
+.simple-table-wrapper > table::-webkit-scrollbar {
+  background: #e4e4e4;
+}
+.simple-table-wrapper thead,
+.simple-table-wrapper tbody,
+.simple-table-wrapper tfoot tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+.simple-table-wrapper thead th,
+.simple-table-wrapper tbody th,
+.simple-table-wrapper tfoot tr th,
+.simple-table-wrapper thead td,
+.simple-table-wrapper tbody td,
+.simple-table-wrapper tfoot tr td {
+  overflow: hidden;
+}
+.simple-table-wrapper tfoot {
+  position: absolute;
+  bottom: 0;
+  overflow-y: scroll;
+}
+.simple-table-wrapper tfoot::-webkit-scrollbar {
+  background: #e4e4e4;
+}
+table.leo-simpletable {
+  font-size: 11px;
+  /*table-layout: fixed;*/
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+table.leo-simpletable.width-1-2 {
+  width: 50%;
+}
+table.leo-simpletable thead .headers td:not(:last-child),
+table.leo-simpletable tbody td:not(:last-child),
+table.leo-simpletable tfoot td:not(:last-child) {
+  border-right: 1px solid #aaa;
+}
+table.leo-simpletable tr td {
+  color: #7b7b7b;
+  line-height: 12px;
+  overflow: hidden;
+  padding: 6px 5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: white;
+}
+table.leo-simpletable tr td input.filter {
+  width: calc(100% - 6px);
+}
+table.leo-simpletable tr td.money {
+  text-align: right;
+}
+table.leo-simpletable tr td.numeric {
+  /* padding-right: 10px;*/
+  text-align: right;
+}
+table.leo-simpletable tr td.numeric input.filter {
+  text-align: right;
+  width: 46px;
+  box-sizing: border-box;
+}
+table.leo-simpletable tr td.quicklink {
+  cursor: pointer;
+}
+table.leo-simpletable tr td.quicklink:hover {
+  text-decoration: underline;
+}
+table.leo-simpletable thead tr.headers td {
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: lighter;
+  /* padding-left: 10px; */
+  position: relative;
+  /*
+				&.numeric {
+					span {
+						min-width: calc(~"100% - 20px");
+						+ i {
+							float: right;
+						}
+					}
+				}*/
+}
+table.leo-simpletable thead tr.headers td.numeric span {
+  min-width: 100%;
+}
+table.leo-simpletable thead tr.headers td span {
+  /* min-width: 100%; */
+  max-width: 100%;
+  overflow: hidden;
+  padding: 0;
+  text-overflow: ellipsis;
+  margin: 0;
+  float: left;
+}
+table.leo-simpletable thead tr.headers td .icon-sort,
+table.leo-simpletable thead tr.headers td .icon-down-dir,
+table.leo-simpletable thead tr.headers td .icon-up-dir {
+  margin: 0 -6px 0 -6px;
+  float: left;
+  width: 6px;
+}
+table.leo-simpletable thead tr.headers td .icon-up-dir,
+table.leo-simpletable thead tr.headers td .icon-down-dir {
+  color: black;
+}
+table.leo-simpletable thead tr.headers td .icon-sort {
+  display: none;
+  color: silver;
+}
+table.leo-simpletable thead tr.headers td span.parent {
+  display: block;
+  font-size: .8em;
+}
+table.leo-simpletable thead tr.headers td input.filter {
+  background-color: #fefefe;
+  border: 1px solid #a0a0a0;
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  font-weight: normal;
+  height: 19px;
+  line-height: 19px;
+  max-width: 200px;
+  outline: 0;
+  padding: 0px 2px;
+  width: 100%;
+}
+table.leo-simpletable thead tr.headers td.active span,
+table.leo-simpletable thead tr.headers td:hover span {
+  max-width: calc(100% - 12px);
+  min-width: calc(100% - 12px);
+  padding-right: 9px;
+}
+table.leo-simpletable thead tr.headers td.active .icon-sort,
+table.leo-simpletable thead tr.headers td:hover .icon-sort {
+  display: inline-block;
+}
+table.leo-simpletable thead tr.title td {
+  padding: 0;
+  height: 36px;
+  line-height: 36px;
+  font-weight: lighter;
+  font-size: 20px;
+  background: #d2d1d9;
+  color: #231f20;
+  border-bottom: 1px solid #4b4b4b;
+  font-family: 'Roboto', sans-serif;
+}
+table.leo-simpletable thead tr.title td:first-child {
+  padding-left: 10px;
+}
+table.leo-simpletable thead tr.filters td {
+  background-color: #e8e5ee;
+  height: 16px;
+  line-height: 16px;
+  padding: 2px 1px;
+  vertical-align: top;
+}
+table.leo-simpletable tbody tr:nth-child(even) td {
+  background-color: #F9F9F9;
+  /*#dedce5;*/
+}
+table.leo-simpletable tbody tr:hover td,
+table.leo-simpletable tbody tr.selected td {
+  background: lightblue !important;
+  cursor: pointer;
+}
+table.leo-simpletable tbody tr span[data-sparkline] {
+  width: 100%;
+  height: 20px;
+  display: inline-block;
+}
+table.leo-simpletable tr.inactive td {
+  background-color: #FFf6f6;
+  color: #dd0000;
+}
+table.leo-simpletable tr.inactive td:first-child {
+  text-decoration: line-through;
+}
+table.leo-simpletable tfoot td {
+  font-weight: bold;
+  font-size: 1.2em;
+  background-color: #e4e4e4;
+  border-top: 1px solid white;
+}
+.spaced-20 table.leo-simpletable tr.title td {
+  background: white;
+}
+/*
+
+	font sizing
+	padding
+	colors: banding, highlight
+	fixed header / footer
+	vertical lines
+	auto hide sort icons
+
+*/
+.data-table-wrapper {
+  height: 100%;
+  overflow: auto;
+}
+.data-table-wrapper table {
+  width: 100%;
+  height: 100%;
+  line-height: 12px;
+}
+.data-table-wrapper table .fixed-spacing {
+  height: 0px;
+}
+.data-table-wrapper table th,
+.data-table-wrapper table td {
+  text-align: left;
+  padding: 6px 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.data-table-wrapper table th.numeric,
+.data-table-wrapper table td.numeric {
+  text-align: right;
+}
+.data-table-wrapper table thead {
+  line-height: 19px;
+}
+.data-table-wrapper table thead th:not(:empty) {
+  padding: 6px 10px;
+}
+.data-table-wrapper table thead tr.fixed-spacing td {
+  border: 0 none;
+  padding: 0;
+}
+.data-table-wrapper table thead .title {
+  line-height: 36px;
+}
+.data-table-wrapper table thead .title th {
+  padding: 0 10px;
+}
+.data-table-wrapper table thead .headers {
+  cursor: pointer;
+}
+.data-table-wrapper table thead .headers .icon-down-dir,
+.data-table-wrapper table thead .headers .icon-up-dir,
+.data-table-wrapper table thead .headers .icon-sort {
+  display: none;
+}
+.data-table-wrapper table thead .headers th span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: middle;
+}
+.data-table-wrapper table thead .headers th.active span,
+.data-table-wrapper table thead .headers th:hover span {
+  max-width: calc(100% - 14px);
+}
+.data-table-wrapper table thead .headers th.active .icon-down-dir,
+.data-table-wrapper table thead .headers th:hover .icon-down-dir,
+.data-table-wrapper table thead .headers th.active .icon-up-dir,
+.data-table-wrapper table thead .headers th:hover .icon-up-dir,
+.data-table-wrapper table thead .headers th.active .icon-sort,
+.data-table-wrapper table thead .headers th:hover .icon-sort {
+  display: inline-block;
+  margin: 2px -1px 0 4px;
+  float: right;
+  vertical-align: middle;
+}
+.data-table-wrapper table thead .filters th {
+  height: 16px;
+  line-height: 16px;
+  padding: 2px 1px;
+  vertical-align: top;
+}
+.data-table-wrapper table thead .filters th input {
+  width: calc(100% - 6px);
+}
+.data-table-wrapper table thead .icon-download {
+  color: black;
+  line-height: inherit;
+}
+.data-table-wrapper table tbody tr.fixed-spacing td,
+.data-table-wrapper table tbody tr.bottom-filler td,
+.data-table-wrapper table tbody tr.top-filler td {
+  border: 0 none;
+  padding: 0;
+}
+/* font sizing */
+.data-table-wrapper {
+  font-size: 14px;
+}
+.data-table-wrapper thead {
+  font-weight: lighter;
+}
+.data-table-wrapper thead .title {
+  font-size: 1.429em;
+  /* 20px */
+}
+.data-table-wrapper thead .headers {
+  font-size: 1.143em;
+  /* 16px */
+}
+.data-table-wrapper thead .filters input {
+  font-size: .786em;
+  /* 11px */
+}
+.data-table-wrapper tbody {
+  font-size: .786em;
+  /* 11px */
+}
+.data-table-wrapper tfoot {
+  font-size: .929em;
+  /* 13px */
+}
+/* fixed header */
+.data-table-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.data-table-wrapper table {
+  display: block;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-top: 93px;
+  height: calc(100% - 93px);
+}
+.data-table-wrapper table.has-totals {
+  height: calc(100% - 93px - 24px);
+}
+.data-table-wrapper thead,
+.data-table-wrapper tfoot {
+  position: absolute;
+  width: 100%;
+  display: block;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.data-table-wrapper thead::-webkit-scrollbar,
+.data-table-wrapper tfoot::-webkit-scrollbar {
+  background: inherit;
+}
+.data-table-wrapper thead tr,
+.data-table-wrapper tfoot tr {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.data-table-wrapper thead {
+  top: 0;
+}
+.data-table-wrapper tbody {
+  display: table;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.data-table-wrapper tfoot {
+  bottom: 0;
+}
+/* colors / borders */
+.data-table-wrapper table {
+  background: #ddd;
+  color: #7b7b7b;
+}
+.data-table-wrapper table thead,
+.data-table-wrapper table tfoot {
+  background: #E4E4E4;
+}
+.data-table-wrapper table .title {
+  color: #231f20;
+  border-bottom: 1px solid #4b4b4b;
+}
+.data-table-wrapper table .headers,
+.data-table-wrapper table tbody {
+  background: #fff;
+}
+.data-table-wrapper table .headers th,
+.data-table-wrapper table tbody th,
+.data-table-wrapper table tfoot th,
+.data-table-wrapper table .headers td,
+.data-table-wrapper table tbody td,
+.data-table-wrapper table tfoot td {
+  border-right: 1px solid #aaa;
+}
+.data-table-wrapper table tbody tr:nth-child(odd) {
+  background: #DFE9E9;
+}
+.data-table-wrapper table tbody tr:hover {
+  background: lightblue;
+}
+/* colors / borders */
+.leo-style-gravity .data-table-wrapper table {
+  font-family: lato, "Helvetica Neueu", Helvetica, Verdana;
+  background: white;
+  color: #444;
+}
+.leo-style-gravity .data-table-wrapper table thead,
+.leo-style-gravity .data-table-wrapper table tfoot {
+  background: #EEE;
+}
+.leo-style-gravity .data-table-wrapper table .title {
+  color: black;
+  border-bottom: 1px solid #4b4b4b;
+}
+.leo-style-gravity .data-table-wrapper table tfoot .attribute,
+.leo-style-gravity .data-table-wrapper table tfoot .dimension,
+.leo-style-gravity .data-table-wrapper table .headers .attribute,
+.leo-style-gravity .data-table-wrapper table .headers .dimension {
+  background: #DBEDF8;
+  border: 1px solid #a8b8df;
+  margin: -1px;
+}
+.leo-style-gravity .data-table-wrapper table tfoot .fact,
+.leo-style-gravity .data-table-wrapper table .headers .fact,
+.leo-style-gravity .data-table-wrapper table tfoot .metric,
+.leo-style-gravity .data-table-wrapper table .headers .metric {
+  background: #EEF5DA;
+  border: 1px solid #7d9c5b;
+  margin: -1px;
+}
+.leo-style-gravity .data-table-wrapper table .filters th:first-child,
+.leo-style-gravity .data-table-wrapper table .headers th:first-child {
+  border-left: 2px solid #a8b8df;
+  margin-left: -2px;
+}
+.leo-style-gravity .data-table-wrapper table .filters th:last-child,
+.leo-style-gravity .data-table-wrapper table .headers th:last-child {
+  border-right: 2px solid #7d9c5b;
+  margin-right: -2px;
+}
+.leo-style-gravity .data-table-wrapper table .headers th,
+.leo-style-gravity .data-table-wrapper table tbody th,
+.leo-style-gravity .data-table-wrapper table tfoot th,
+.leo-style-gravity .data-table-wrapper table .headers td,
+.leo-style-gravity .data-table-wrapper table tbody td,
+.leo-style-gravity .data-table-wrapper table tfoot td {
+  border-right: 1px solid #aaa;
+}
+.leo-style-gravity .data-table-wrapper table td.attribute:first-child,
+.leo-style-gravity .data-table-wrapper table td.dimension:first-child {
+  border-left: 2px solid #a8b8df;
+  margin-left: -2px;
+}
+.leo-style-gravity .data-table-wrapper table td.attribute:first-child + td.fact,
+.leo-style-gravity .data-table-wrapper table td.dimension:first-child + td.fact,
+.leo-style-gravity .data-table-wrapper table td.attribute:first-child + td.metric,
+.leo-style-gravity .data-table-wrapper table td.dimension:first-child + td.metric {
+  border-left: 2px solid #a8b8df;
+  margin-left: -2px;
+}
+.leo-style-gravity .data-table-wrapper table td.fact:last-child,
+.leo-style-gravity .data-table-wrapper table td.metric:last-child {
+  border-right: 2px solid #7d9c5b;
+  margin-right: -2px;
+}
+.leo-style-gravity .data-table-wrapper table tr:nth-last-child(2) td.attribute {
+  border-bottom: 2px solid #a8b8df;
+  margin-bottom: -2px;
+}
+.leo-style-gravity .data-table-wrapper table tr:nth-last-child(2) td.fact,
+.leo-style-gravity .data-table-wrapper table tr:nth-last-child(2) td.metric {
+  border-bottom: 2px solid #7d9c5b;
+  margin-bottom: -2px;
+}
+.leo-style-gravity .data-table-wrapper table tbody tr:nth-child(odd) {
+  background: #F9F9F9;
+}
+.leo-style-gravity .data-table-wrapper table tbody tr:hover {
+  background: highlight;
+  color: highlighttext;
+}
+.leo-style-gravity {
+  font-family: 'Roboto', sans-serif;
+}
+.leo-style-gravity > header {
+  position: relative;
+  background: #676565;
+  padding: 2px 10px;
+  /*z-index: 20;*/
+  text-align: center;
+}
+.leo-style-gravity > header h1 {
+  font-size: 18px;
+  font-weight: lighter;
+  letter-spacing: .1em;
+  color: white;
+  line-height: normal;
+  margin: 0px;
+  float: left;
+}
+.leo-style-gravity > header .page-name {
+  display: none;
+  color: white;
+  width: 20vw;
+  margin: 0 auto;
+  text-align: center;
+}
+.leo-style-gravity > nav {
+  height: calc(100% - 25px);
+  font-family: 'Roboto', sans-serif;
+  background: #e4e4e4;
+  color: white;
+  width: 125px !important;
+  padding: 0 !important;
+  float: left;
+  font-size: 13px;
+  margin-right: 10px;
+  box-shadow: 0px 0px 8px -2px rgba(0, 0, 0, 0.75);
+  position: relative;
+  z-index: 10;
+  font-weight: lighter;
+  clear: both;
+}
+.leo-style-gravity > nav > ul {
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 100%;
+  width: 144px;
+}
+.leo-style-gravity > nav ul,
+.leo-style-gravity > nav li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.leo-style-gravity > nav a {
+  margin: 0;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  color: #231f20;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.leo-style-gravity > nav a.active {
+  background: #fafbfb;
+  position: relative;
+  xwidth: calc(100% + 20px);
+}
+.leo-style-gravity > nav a.active:before {
+  content: '';
+  width: 5px;
+  background-color: orange;
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+.leo-style-gravity > nav > ul > li > a {
+  padding: 10px 5px 10px;
+  xmargin: 30px 0 0;
+}
+.leo-style-gravity > nav > ul > li > ul > li > a {
+  padding: 5px 0px 5px 15px;
+  white-space: nowrap;
+}
+.leo-style-gravity > nav > ul > li > ul > li > ul > li > a {
+  padding: 1px 0px 1px 40px;
+  font-size: 12px;
+  line-height: 14px;
+  font-variant: small-caps;
+}
+.leo-style-gravity > div > aside,
+.leo-style-gravity #leo-viewfilter {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 30;
+  padding: 5px;
+  font-size: 14px;
+}
+.leo-style-gravity > div > aside ul,
+.leo-style-gravity #leo-viewfilter ul,
+.leo-style-gravity > div > aside li,
+.leo-style-gravity #leo-viewfilter li {
+  display: inline-block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  line-height: 15px;
+}
+.leo-style-gravity > div > aside input[type=checkbox],
+.leo-style-gravity #leo-viewfilter input[type=checkbox] {
+  display: none;
+}
+.leo-style-gravity > div > aside input[type=checkbox] + label,
+.leo-style-gravity #leo-viewfilter input[type=checkbox] + label {
+  position: relative;
+  margin: 30px;
+}
+.leo-style-gravity > div > aside input[type=checkbox] + label:before,
+.leo-style-gravity #leo-viewfilter input[type=checkbox] + label:before {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 2px;
+  background: currentColor;
+  background: gray;
+  top: 50%;
+  margin: -7px 0;
+  left: -20px;
+}
+.leo-style-gravity > div > aside input[type=checkbox] + label span,
+.leo-style-gravity #leo-viewfilter input[type=checkbox] + label span {
+  color: white;
+  font-weight: lighter;
+  vertical-align: middle;
+}
+.leo-style-gravity > div > aside input[type=checkbox]:checked + label,
+.leo-style-gravity #leo-viewfilter input[type=checkbox]:checked + label {
+  font-weight: lighter;
+}
+.leo-style-gravity > div > aside input[type=checkbox]:checked + label:before,
+.leo-style-gravity #leo-viewfilter input[type=checkbox]:checked + label:before {
+  background: currentColor;
+}
+.leo-style-gravity > div > article {
+  overflow: visible;
+  position: fixed;
+  background: #fafbfb;
+  top: 27px;
+  left: 125px;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.leo-style-gravity > div > article div[class^="width-"],
+.leo-style-gravity > div > article div[class*=" width-"] {
+  display: flex;
+  flex-wrap: wrap;
+}
+.leo-style-gravity > div > article figure,
+.leo-style-gravity > div > article .leo-charts-controller {
+  margin: 10px;
+  float: left;
+  /* width percentages */
+  width: calc(50% - 20px);
+  /* default */
+  /* height percentages */
+  height: calc(50% - 20px);
+  /* default */
+}
+.leo-style-gravity > div > article figure.width-1-5,
+.leo-style-gravity > div > article .leo-charts-controller.width-1-5 {
+  width: calc(100%*1/5 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-2-5,
+.leo-style-gravity > div > article .leo-charts-controller.width-2-5 {
+  width: calc(100%*2/5 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-3-5,
+.leo-style-gravity > div > article .leo-charts-controller.width-3-5 {
+  width: calc(100%*3/5 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-4-5,
+.leo-style-gravity > div > article .leo-charts-controller.width-4-5 {
+  width: calc(100%*4/5 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-1-7,
+.leo-style-gravity > div > article .leo-charts-controller.width-1-7 {
+  width: calc(100%*1/7 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-2-7,
+.leo-style-gravity > div > article .leo-charts-controller.width-2-7 {
+  width: calc(100%*2/7 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-3-7,
+.leo-style-gravity > div > article .leo-charts-controller.width-3-7 {
+  width: calc(100%*3/7 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-4-7,
+.leo-style-gravity > div > article .leo-charts-controller.width-4-7 {
+  width: calc(100%*4/7 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-5-7,
+.leo-style-gravity > div > article .leo-charts-controller.width-5-7 {
+  width: calc(100%*5/7 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-6-7,
+.leo-style-gravity > div > article .leo-charts-controller.width-6-7 {
+  width: calc(100%*6/7 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-1-8,
+.leo-style-gravity > div > article .leo-charts-controller.width-1-8 {
+  width: calc(100%*1/8 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-3-8,
+.leo-style-gravity > div > article .leo-charts-controller.width-3-8 {
+  width: calc(100%*3/8 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-5-8,
+.leo-style-gravity > div > article .leo-charts-controller.width-5-8 {
+  width: calc(100%*5/8 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-7-8,
+.leo-style-gravity > div > article .leo-charts-controller.width-7-8 {
+  width: calc(100%*7/8 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-1-9,
+.leo-style-gravity > div > article .leo-charts-controller.width-1-9 {
+  width: calc(100%*1/9 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-2-9,
+.leo-style-gravity > div > article .leo-charts-controller.width-2-9 {
+  width: calc(100%*2/9 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-4-9,
+.leo-style-gravity > div > article .leo-charts-controller.width-4-9 {
+  width: calc(100%*4/9 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-5-9,
+.leo-style-gravity > div > article .leo-charts-controller.width-5-9 {
+  width: calc(100%*5/9 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-7-9,
+.leo-style-gravity > div > article .leo-charts-controller.width-7-9 {
+  width: calc(100%*7/9 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-8-9,
+.leo-style-gravity > div > article .leo-charts-controller.width-8-9 {
+  width: calc(100%*8/9 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-1-12,
+.leo-style-gravity > div > article .leo-charts-controller.width-1-12 {
+  width: calc(100%*1/12 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-1-6,
+.leo-style-gravity > div > article .leo-charts-controller.width-1-6,
+.leo-style-gravity > div > article figure.width-2-12,
+.leo-style-gravity > div > article .leo-charts-controller.width-2-12 {
+  width: calc(100%*2/12 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-1-4,
+.leo-style-gravity > div > article .leo-charts-controller.width-1-4,
+.leo-style-gravity > div > article figure.width-2-8,
+.leo-style-gravity > div > article .leo-charts-controller.width-2-8,
+.leo-style-gravity > div > article figure.width-3-12,
+.leo-style-gravity > div > article .leo-charts-controller.width-3-12 {
+  width: calc(100%*3/12 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-1-3,
+.leo-style-gravity > div > article .leo-charts-controller.width-1-3,
+.leo-style-gravity > div > article figure.width-2-6,
+.leo-style-gravity > div > article .leo-charts-controller.width-2-6,
+.leo-style-gravity > div > article figure.width-3-9,
+.leo-style-gravity > div > article .leo-charts-controller.width-3-9,
+.leo-style-gravity > div > article figure.width-4-12,
+.leo-style-gravity > div > article .leo-charts-controller.width-4-12 {
+  width: calc(100%*4/12 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-5-12,
+.leo-style-gravity > div > article .leo-charts-controller.width-5-12 {
+  width: calc(100%*5/12 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-1-2,
+.leo-style-gravity > div > article .leo-charts-controller.width-1-2,
+.leo-style-gravity > div > article figure.width-2-4,
+.leo-style-gravity > div > article .leo-charts-controller.width-2-4,
+.leo-style-gravity > div > article figure.width-3-6,
+.leo-style-gravity > div > article .leo-charts-controller.width-3-6,
+.leo-style-gravity > div > article figure.width-4-8,
+.leo-style-gravity > div > article .leo-charts-controller.width-4-8,
+.leo-style-gravity > div > article figure.width-5-10,
+.leo-style-gravity > div > article .leo-charts-controller.width-5-10,
+.leo-style-gravity > div > article figure.width-6-12,
+.leo-style-gravity > div > article .leo-charts-controller.width-6-12 {
+  width: calc(100%*6/12 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-7-12,
+.leo-style-gravity > div > article .leo-charts-controller.width-7-12 {
+  width: calc(100%*7/12 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-2-3,
+.leo-style-gravity > div > article .leo-charts-controller.width-2-3,
+.leo-style-gravity > div > article figure.width-4-6,
+.leo-style-gravity > div > article .leo-charts-controller.width-4-6,
+.leo-style-gravity > div > article figure.width-6-9,
+.leo-style-gravity > div > article .leo-charts-controller.width-6-9,
+.leo-style-gravity > div > article figure.width-8-12,
+.leo-style-gravity > div > article .leo-charts-controller.width-8-12 {
+  width: calc(100%*8/12 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-3-4,
+.leo-style-gravity > div > article .leo-charts-controller.width-3-4,
+.leo-style-gravity > div > article figure.width-6-8,
+.leo-style-gravity > div > article .leo-charts-controller.width-6-8,
+.leo-style-gravity > div > article figure.width-9-12,
+.leo-style-gravity > div > article .leo-charts-controller.width-9-12 {
+  width: calc(100%*9/12 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-5-6,
+.leo-style-gravity > div > article .leo-charts-controller.width-5-6,
+.leo-style-gravity > div > article figure.width-10-12,
+.leo-style-gravity > div > article .leo-charts-controller.width-10-12 {
+  width: calc(100%*10/12 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-11-12,
+.leo-style-gravity > div > article .leo-charts-controller.width-11-12 {
+  width: calc(100%*11/12 - 20px);
+  box-sizing: border-box;
+}
+.leo-style-gravity > div > article figure.width-1-1,
+.leo-style-gravity > div > article .leo-charts-controller.width-1-1,
+.leo-style-gravity > div > article figure.width-2-2,
+.leo-style-gravity > div > article .leo-charts-controller.width-2-2,
+.leo-style-gravity > div > article figure.width-3-3,
+.leo-style-gravity > div > article .leo-charts-controller.width-3-3,
+.leo-style-gravity > div > article figure.width-4-4,
+.leo-style-gravity > div > article .leo-charts-controller.width-4-4,
+.leo-style-gravity > div > article figure.width-5-5,
+.leo-style-gravity > div > article .leo-charts-controller.width-5-5,
+.leo-style-gravity > div > article figure.width-6-6,
+.leo-style-gravity > div > article .leo-charts-controller.width-6-6,
+.leo-style-gravity > div > article figure.width-7-7,
+.leo-style-gravity > div > article .leo-charts-controller.width-7-7,
+.leo-style-gravity > div > article figure.width-8-8,
+.leo-style-gravity > div > article .leo-charts-controller.width-8-8,
+.leo-style-gravity > div > article figure.width-9-9,
+.leo-style-gravity > div > article .leo-charts-controller.width-9-9,
+.leo-style-gravity > div > article figure.width-10-10,
+.leo-style-gravity > div > article .leo-charts-controller.width-10-10,
+.leo-style-gravity > div > article figure.width-11-11,
+.leo-style-gravity > div > article .leo-charts-controller.width-11-11,
+.leo-style-gravity > div > article figure.width-12-12,
+.leo-style-gravity > div > article .leo-charts-controller.width-12-12 {
+  width: 100%;
+}
+.leo-style-gravity > div > article figure.height-1-5,
+.leo-style-gravity > div > article .leo-charts-controller.height-1-5 {
+  height: calc(100%*1/5 - 20px);
+}
+.leo-style-gravity > div > article figure.height-2-5,
+.leo-style-gravity > div > article .leo-charts-controller.height-2-5 {
+  height: calc(100%*2/5 - 20px);
+}
+.leo-style-gravity > div > article figure.height-3-5,
+.leo-style-gravity > div > article .leo-charts-controller.height-3-5 {
+  height: calc(100%*3/5 - 20px);
+}
+.leo-style-gravity > div > article figure.height-4-5,
+.leo-style-gravity > div > article .leo-charts-controller.height-4-5 {
+  height: calc(100%*4/5 - 20px);
+}
+.leo-style-gravity > div > article figure.height-1-7,
+.leo-style-gravity > div > article .leo-charts-controller.height-1-7 {
+  height: calc(100%*1/7 - 20px);
+}
+.leo-style-gravity > div > article figure.height-2-7,
+.leo-style-gravity > div > article .leo-charts-controller.height-2-7 {
+  height: calc(100%*2/7 - 20px);
+}
+.leo-style-gravity > div > article figure.height-3-7,
+.leo-style-gravity > div > article .leo-charts-controller.height-3-7 {
+  height: calc(100%*3/7 - 20px);
+}
+.leo-style-gravity > div > article figure.height-4-7,
+.leo-style-gravity > div > article .leo-charts-controller.height-4-7 {
+  height: calc(100%*4/7 - 20px);
+}
+.leo-style-gravity > div > article figure.height-5-7,
+.leo-style-gravity > div > article .leo-charts-controller.height-5-7 {
+  height: calc(100%*5/7 - 20px);
+}
+.leo-style-gravity > div > article figure.height-6-7,
+.leo-style-gravity > div > article .leo-charts-controller.height-6-7 {
+  height: calc(100%*6/7 - 20px);
+}
+.leo-style-gravity > div > article figure.height-1-8,
+.leo-style-gravity > div > article .leo-charts-controller.height-1-8 {
+  height: calc(100%*1/8 - 20px);
+}
+.leo-style-gravity > div > article figure.height-3-8,
+.leo-style-gravity > div > article .leo-charts-controller.height-3-8 {
+  height: calc(100%*3/8 - 20px);
+}
+.leo-style-gravity > div > article figure.height-5-8,
+.leo-style-gravity > div > article .leo-charts-controller.height-5-8 {
+  height: calc(100%*5/8 - 20px);
+}
+.leo-style-gravity > div > article figure.height-7-8,
+.leo-style-gravity > div > article .leo-charts-controller.height-7-8 {
+  height: calc(100%*7/8 - 20px);
+}
+.leo-style-gravity > div > article figure.height-1-9,
+.leo-style-gravity > div > article .leo-charts-controller.height-1-9 {
+  height: calc(100%*1/9 - 20px);
+}
+.leo-style-gravity > div > article figure.height-2-9,
+.leo-style-gravity > div > article .leo-charts-controller.height-2-9 {
+  height: calc(100%*2/9 - 20px);
+}
+.leo-style-gravity > div > article figure.height-4-9,
+.leo-style-gravity > div > article .leo-charts-controller.height-4-9 {
+  height: calc(100%*4/9 - 20px);
+}
+.leo-style-gravity > div > article figure.height-5-9,
+.leo-style-gravity > div > article .leo-charts-controller.height-5-9 {
+  height: calc(100%*5/9 - 20px);
+}
+.leo-style-gravity > div > article figure.height-7-9,
+.leo-style-gravity > div > article .leo-charts-controller.height-7-9 {
+  height: calc(100%*7/9 - 20px);
+}
+.leo-style-gravity > div > article figure.height-8-9,
+.leo-style-gravity > div > article .leo-charts-controller.height-8-9 {
+  height: calc(100%*8/9 - 20px);
+}
+.leo-style-gravity > div > article figure.height-1-12,
+.leo-style-gravity > div > article .leo-charts-controller.height-1-12 {
+  height: calc(100%*1/12 - 20px);
+}
+.leo-style-gravity > div > article figure.height-1-6,
+.leo-style-gravity > div > article .leo-charts-controller.height-1-6,
+.leo-style-gravity > div > article figure.height-2-12,
+.leo-style-gravity > div > article .leo-charts-controller.height-2-12 {
+  height: calc(100%*2/12 - 20px);
+}
+.leo-style-gravity > div > article figure.height-1-4,
+.leo-style-gravity > div > article .leo-charts-controller.height-1-4,
+.leo-style-gravity > div > article figure.height-2-8,
+.leo-style-gravity > div > article .leo-charts-controller.height-2-8,
+.leo-style-gravity > div > article figure.height-3-12,
+.leo-style-gravity > div > article .leo-charts-controller.height-3-12 {
+  height: calc(100%*3/12 - 20px);
+}
+.leo-style-gravity > div > article figure.height-1-3,
+.leo-style-gravity > div > article .leo-charts-controller.height-1-3,
+.leo-style-gravity > div > article figure.height-2-6,
+.leo-style-gravity > div > article .leo-charts-controller.height-2-6,
+.leo-style-gravity > div > article figure.height-3-9,
+.leo-style-gravity > div > article .leo-charts-controller.height-3-9,
+.leo-style-gravity > div > article figure.height-4-12,
+.leo-style-gravity > div > article .leo-charts-controller.height-4-12 {
+  height: calc(100%*4/12 - 20px);
+}
+.leo-style-gravity > div > article figure.height-5-12,
+.leo-style-gravity > div > article .leo-charts-controller.height-5-12 {
+  height: calc(100%*5/12 - 20px);
+}
+.leo-style-gravity > div > article figure.height-1-2,
+.leo-style-gravity > div > article .leo-charts-controller.height-1-2,
+.leo-style-gravity > div > article figure.height-2-4,
+.leo-style-gravity > div > article .leo-charts-controller.height-2-4,
+.leo-style-gravity > div > article figure.height-3-6,
+.leo-style-gravity > div > article .leo-charts-controller.height-3-6,
+.leo-style-gravity > div > article figure.height-4-8,
+.leo-style-gravity > div > article .leo-charts-controller.height-4-8,
+.leo-style-gravity > div > article figure.height-5-10,
+.leo-style-gravity > div > article .leo-charts-controller.height-5-10,
+.leo-style-gravity > div > article figure.height-6-12,
+.leo-style-gravity > div > article .leo-charts-controller.height-6-12 {
+  height: calc(100%*6/12 - 20px);
+}
+.leo-style-gravity > div > article figure.height-7-12,
+.leo-style-gravity > div > article .leo-charts-controller.height-7-12 {
+  height: calc(100%*7/12 - 20px);
+}
+.leo-style-gravity > div > article figure.height-2-3,
+.leo-style-gravity > div > article .leo-charts-controller.height-2-3,
+.leo-style-gravity > div > article figure.height-4-6,
+.leo-style-gravity > div > article .leo-charts-controller.height-4-6,
+.leo-style-gravity > div > article figure.height-6-9,
+.leo-style-gravity > div > article .leo-charts-controller.height-6-9,
+.leo-style-gravity > div > article figure.height-8-12,
+.leo-style-gravity > div > article .leo-charts-controller.height-8-12 {
+  height: calc(100%*8/12 - 20px);
+}
+.leo-style-gravity > div > article figure.height-3-4,
+.leo-style-gravity > div > article .leo-charts-controller.height-3-4,
+.leo-style-gravity > div > article figure.height-6-8,
+.leo-style-gravity > div > article .leo-charts-controller.height-6-8,
+.leo-style-gravity > div > article figure.height-9-12,
+.leo-style-gravity > div > article .leo-charts-controller.height-9-12 {
+  height: calc(100%*9/12 - 20px);
+}
+.leo-style-gravity > div > article figure.height-5-6,
+.leo-style-gravity > div > article .leo-charts-controller.height-5-6,
+.leo-style-gravity > div > article figure.height-10-12,
+.leo-style-gravity > div > article .leo-charts-controller.height-10-12 {
+  height: calc(100%*10/12 - 20px);
+}
+.leo-style-gravity > div > article figure.height-11-12,
+.leo-style-gravity > div > article .leo-charts-controller.height-11-12 {
+  height: calc(100%*11/12 - 20px);
+}
+.leo-style-gravity > div > article figure.height-1-1,
+.leo-style-gravity > div > article .leo-charts-controller.height-1-1,
+.leo-style-gravity > div > article figure.height-2-2,
+.leo-style-gravity > div > article .leo-charts-controller.height-2-2,
+.leo-style-gravity > div > article figure.height-3-3,
+.leo-style-gravity > div > article .leo-charts-controller.height-3-3,
+.leo-style-gravity > div > article figure.height-4-4,
+.leo-style-gravity > div > article .leo-charts-controller.height-4-4,
+.leo-style-gravity > div > article figure.height-5-5,
+.leo-style-gravity > div > article .leo-charts-controller.height-5-5,
+.leo-style-gravity > div > article figure.height-6-6,
+.leo-style-gravity > div > article .leo-charts-controller.height-6-6,
+.leo-style-gravity > div > article figure.height-7-7,
+.leo-style-gravity > div > article .leo-charts-controller.height-7-7,
+.leo-style-gravity > div > article figure.height-8-8,
+.leo-style-gravity > div > article .leo-charts-controller.height-8-8,
+.leo-style-gravity > div > article figure.height-9-9,
+.leo-style-gravity > div > article .leo-charts-controller.height-9-9,
+.leo-style-gravity > div > article figure.height-10-10,
+.leo-style-gravity > div > article .leo-charts-controller.height-10-10,
+.leo-style-gravity > div > article figure.height-11-11,
+.leo-style-gravity > div > article .leo-charts-controller.height-11-11,
+.leo-style-gravity > div > article figure.height-12-12,
+.leo-style-gravity > div > article .leo-charts-controller.height-12-12 {
+  height: calc(100% - 20px);
+}
+.leo-style-gravity > div > article .leo-charts-controller {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  box-sizing: border-box;
+  box-shadow: 4px 4px 17px -4px rgba(0, 0, 0, 0.75);
+  background: white;
+  width: calc(100% - 20px);
+  /* default */
+}
+.leo-style-gravity > div > article .leo-charts-controller #tool-bar {
+  margin: -10px -10px 10px -10px;
+  width: calc(100% + 20px);
+  height: 42px;
+}
+.leo-style-gravity > div > article .leo-charts-controller figure {
+  height: calc(100% - 55px - 10px);
+}
+.leo-style-gravity > div > article .leo-charts-controller figure.height-1-1 {
+  height: calc(100% - 55px - 10px);
+}
+.leo-style-gravity > div > article .leo-charts-controller figure.height-1-2 {
+  height: calc(50% - 27px - 10px);
+}
+.leo-style-gravity > div > article .leo-charts-controller figure.height-1-3 {
+  height: calc(33% - 18px - 10px);
+}
+.leo-style-gravity > div > article .leo-charts-controller figure.height-1-4 {
+  height: calc(25% - 13px - 10px);
+}
+.leo-style-gravity > div > article .leo-charts-controller figure.height-1-5 {
+  height: calc(20% - 11px - 10px);
+}
+.leo-style-gravity > div > article .leo-charts-controller figure.height-1-6 {
+  height: calc(16.6% - 9px - 10px);
+}
+.leo-style-gravity > div > article .leo-charts-controller figure.height-1-7 {
+  height: calc(14.2% - 7px - 10px);
+}
+.leo-style-gravity > div > article .leo-charts-controller figure.height-1-8 {
+  height: calc(12.5% - 6px - 10px);
+}
+.leo-style-gravity > div > article .leo-charts-controller figure.height-1-9 {
+  height: calc(11% - 6px - 10px);
+}
+.leo-style-gravity > div > article .leo-charts-controller figure.height-1-10 {
+  height: calc(10% - 5px - 10px);
+}
+.leo-style-gravity > div > article .leo-charts-controller figure.height-1-11 {
+  height: calc(9% - 5px - 10px);
+}
+.leo-style-gravity > div > article .leo-charts-controller figure.height-1-12 {
+  height: calc(8% - 4px - 10px);
+}
+.leo-style-gravity > div > article .leo-charts-controller figure.height-2-3 {
+  height: calc(66% - 36px - 10px);
+}
+.leo-style-gravity > div > article .leo-charts-controller figure.height-3-4 {
+  height: calc(75% - 40px - 10px);
+}
+.leo-style-gravity > div > article .icon-download {
+  color: black;
+}
+.leo-style-gravity > div > article section:first-child::-webkit-scrollbar {
+  width: initial;
+}
+.leo-style-gravity > div > article section:first-child::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 99px #E4E4E4;
+}
+@media (max-width: 1024px) {
+  .leo-style-gravity hr.vertical {
+    display: none;
+  }
+  .leo-style-gravity > div > article {
+    overflow: auto;
+  }
+  .leo-style-gravity > div > article div[class^="width-"],
+  .leo-style-gravity > div > article figure[class^="width-"],
+  .leo-style-gravity > div > article .leo-charts-controller[class^="width-"],
+  .leo-style-gravity > div > article div[class*=" width-"],
+  .leo-style-gravity > div > article figure[class*=" width-"],
+  .leo-style-gravity > div > article .leo-charts-controller[class*=" width-"] {
+    width: calc(100% - 20px);
+  }
+  .leo-style-gravity > div > article div[class^="height-"],
+  .leo-style-gravity > div > article figure[class^="height-"],
+  .leo-style-gravity > div > article .leo-charts-controller[class^="height-"],
+  .leo-style-gravity > div > article div[class*=" height-"],
+  .leo-style-gravity > div > article figure[class*=" height-"],
+  .leo-style-gravity > div > article .leo-charts-controller[class*=" height-"] {
+    height: auto;
+  }
+  .leo-style-gravity > div > article figure,
+  .leo-style-gravity > div > article .leo-charts-controller {
+    min-height: 200px;
+    max-height: 100vh;
+  }
+}
+.leo-style-gravity #tool-bar .filters-wrapper .filter-wrapper .filter-name {
+  color: #d2d1d9;
+  font-weight: lighter;
+}
+.leo-style-gravity #tool-bar .filters-wrapper .filter-wrapper .filter-values {
+  color: white;
+  font-weight: lighter;
+}
+.leo-style-gravity .leo-ranked-chart select {
+  background: #e4e4e4;
+  font-weight: lighter;
+}
+.leo-style-gravity table.leo-simpletable thead tr.filters td {
+  background: #e4e4e4;
+}
+.leo-style-gravity table.leo-simpletable thead tr.title td {
+  background: #e4e4e4;
+  font-weight: lighter;
+}
+.leo-style-gravity table.leo-simpletable tbody tr:nth-child(even) td {
+  background: #DFE9E9;
+}
+/*
+@import '_normalize.less';
+@import '_jqueryui.less';
+
+@import '_filters.less';
+
+@import 'table.less';
+
+@import '_leo.less';
+
+@import 'graphs/_simpletable.less';
+@import 'graphs/data_table.less';
+
+@import './styles/gravity.less';
+*/
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #fafbfb;
+}
+#leo-menu {
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  background: #e8e5ee;
+  color: white;
+  width: 125px !important;
+  padding: 0 !important;
+  float: left;
+  font-size: 14px;
+  margin-right: 10px;
+}
+#leo-menu h1 {
+  background: #676565;
+  padding: 10px 20px;
+  font-size: 15px;
+  margin: 0px;
+  font-weight: lighter;
+  letter-spacing: .1em;
+}
+#leo-menu ul,
+#leo-menu li {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none;
+}
+#leo-menu a {
+  margin: 0;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  color: #231f20;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#leo-menu a.active {
+  background: #fafbfb;
+  position: relative;
+}
+#leo-menu a.active:before {
+  content: '';
+  width: 10px;
+  background-color: #87c443;
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+#leo-menu > ul > li > a {
+  text-transform: uppercase;
+  padding: 10px 10px 10px;
+  xmargin: 30px 0 0;
+}
+#leo-menu > ul > li > ul > li > a {
+  padding: 8px 20px;
+}
+#leo-menu > ul > li > ul > li > ul {
+  margin-top: -8px !important;
+}
+#leo-menu > ul > li > ul > li > ul > li > a {
+  padding: 1px 0px 1px 40px;
+  font-size: 14px;
+  line-height: 14px;
+  font-variant: small-caps;
+}
+#leo-dashboard {
+  height: 100%;
+  margin: 0 10px;
+  overflow: hidden;
+  position: relative;
+  background: #fafbfb;
+}
+.leo-charts-wrapper {
+  display: block;
+  overflow: auto;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+}
+.leo-charts-wrapper.has-header {
+  top: 55px;
+}
+.leo-charts-wrapper.has-footer {
+  bottom: 30px;
+}
+.leo-charts-row-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.leo-charts-controller {
+  background: #e8e5ee;
+}
+.leo-charts-controller .leo-charts-row-wrapper {
+  margin: 12px;
+}
+.leo-charts-column-wrapper {
+  height: 100%;
+  max-height: 100%;
+  overflow: auto;
+  float: left;
+}
+.leo-charts-column-wrapper > figure {
+  width: 100%;
+  height: 100%;
+}
+.leo-charts-wrapper > figure,
+.leo-charts-row-wrapper > figure,
+.leo-charts-column-wrapper > figure {
+  display: none;
+  float: left;
+  overflow: hidden;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  max-height: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+.leo-charts-wrapper > figure.active,
+.leo-charts-row-wrapper > figure.active,
+.leo-charts-column-wrapper > figure.active {
+  display: inline-block;
+}
+.leo-chart {
+  position: relative;
+}
+.leo-charts-loading {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0.5;
+  text-align: center;
+  z-index: 10;
+  background-color: #fafbfb;
+}
+.leo-charts-loading span {
+  font-weight: bold;
+  font-size: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#tool-bar {
+  background: #676565;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  height: 55px;
+  margin-bottom: 10px;
+}
+#tool-bar .leo-filters {
+  display: none;
+}
+#tool-bar .leo-filters.active {
+  display: block;
+}
+#tool-bar .filters-wrapper {
+  margin: 0px;
+  padding: 0px;
+  max-width: 100%;
+  height: 55px;
+}
+#tool-bar .filters-wrapper .filter-wrapper {
+  height: 55px;
+}
+#tool-bar .filters-wrapper .filter-wrapper .filter-heading {
+  height: 55px;
+  width: 225px;
+  padding: 8px;
+}
+#tool-bar .filters-wrapper .filter-wrapper .filter-select {
+  position: absolute;
+}
+#tool-bar .filters-wrapper .filter-wrapper .filter-input-box {
+  xdisplay: none;
+}
+#tool-bar .filters-wrapper .filter-wrapper .filter-name {
+  color: white;
+}
+#tool-bar .filters-wrapper .filter-wrapper .filter-values {
+  color: #d2d1d9;
+}
+#tool-bar .filters-wrapper .leo-timeframe-period {
+  float: left;
+}
+#tool-bar .filters-wrapper .leo-timeframe-view-by {
+  float: right;
+  width: 140px;
+}
+#tool-bar .filters-wrapper .leo-timeframe-view-by .filter-heading {
+  width: 140px;
+  text-align: right;
+}
+section.leo-comparison {
+  width: 80%;
+  height: 80%;
+  position: relative;
+  color: white;
+  text-align: center;
+  xmax-width: 250px;
+  xmax-height: 375px;
+  margin: 0 auto;
+  background-image: radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+}
+section.leo-comparison.status_good {
+  background-color: green;
+}
+section.leo-comparison.status_good footer {
+  border-top: 1px solid #cef4bd;
+}
+section.leo-comparison.status_bad {
+  background-color: red;
+}
+section.leo-comparison.status_bad footer {
+  border-top: 0px solid #de7a56;
+}
+section.leo-comparison.status_warning {
+  background-color: orange;
+}
+section.leo-comparison.status_warning footer {
+  border-top: 0px solid #f9a21a;
+}
+section.leo-comparison.status_goal {
+  background-color: blue;
+}
+section.leo-comparison.status_goal footer {
+  border-top: 0px solid #69b4e2;
+}
+section.leo-comparison header {
+  font-size: 12px;
+  padding: 10px;
+}
+section.leo-comparison div.align-middle {
+  vertical-align: middle;
+  height: 80%;
+  white-space: nowrap;
+}
+section.leo-comparison div.align-middle:before {
+  content: '';
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+section.leo-comparison label {
+  font-size: 36px;
+  display: inline-block;
+  border: none;
+  line-height: initial;
+  height: auto;
+}
+section.leo-comparison label span {
+  border-bottom: 1px solid #d8d8d8;
+}
+section.leo-comparison label small {
+  display: block;
+  font-size: .5em;
+  color: #efefef;
+}
+section.leo-comparison div.footer {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  line-height: 1em;
+  height: 36px;
+  font-size: 14px;
+  border-top: 1px solid #cef4bd;
+  text-align: left;
+  vertical-align: text-bottom;
+  overflow: hidden;
+  white-space: nowrap;
+}
+section.leo-comparison div.footer div {
+  padding: 1% 2%;
+  display: inline-block;
+  font-size: .80em;
+  font-weight: bold;
+  text-align: center;
+}
+section.leo-comparison div.footer div small {
+  display: block;
+  font-size: .8em;
+}
+section.leo-comparison div.footer .delta {
+  float: right;
+}
+section.leo-comparison.size-3 div.align-middle {
+  height: 60%;
+}
+section.leo-comparison.size-3 div.align-middle label {
+  font-size: 19px;
+}
+section.leo-comparison.size-2 header {
+  font-size: 10px;
+}
+section.leo-comparison.size-2 div.align-middle {
+  height: 50%;
+}
+section.leo-comparison.size-2 div.align-middle label {
+  font-size: 18px;
+}
+section.leo-comparison.size-2 div.footer {
+  font-size: 10px;
+}
+section.leo-comparison.size-1 header {
+  font-size: 5px;
+}
+section.leo-comparison.size-1 div.align-middle {
+  height: 50%;
+}
+section.leo-comparison.size-1 div.align-middle label {
+  font-size: 8px;
+}
+section.leo-comparison.size-1 div.footer {
+  font-size: 5px;
+}
+.leo-single-number {
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  display: table;
+  vertical-align: middle;
+}
+.leo-single-number > div {
+  display: table-cell;
+  vertical-align: middle;
+}
+.leo-single-number > div > div {
+  padding: 1%;
+}
+.leo-single-number .label {
+  white-space: nowrap;
+  line-height: 1em;
+}
+.leo-single-number .label:not(:empty) {
+  min-height: 25px;
+}
+.leo-single-number .value {
+  white-space: nowrap;
+  font-size: 2em;
+  line-height: 1em;
+  min-height: 50px;
+}
+.leo-single-number .growth {
+  white-space: nowrap;
+  border-top: 1px solid silver;
+}
+.leo-single-number .growth div {
+  width: 50%;
+  height: 100%;
+  box-sizing: border-box;
+  display: inline-block;
+}
+.leo-single-number .growth div:first-child {
+  text-align: left;
+  padding-right: 1em;
+}
+.leo-single-number .growth div:last-child {
+  text-align: right;
+  padding-left: 1em;
+}
+.leo-single-number .growth div small {
+  display: block;
+  line-height: 1.5em;
+}
+.leo-ranked-chart {
+  height: 100%;
+  box-sizing: border-box;
+  margin: 0px 0px;
+}
+.leo-ranked-chart select {
+  border: none;
+  background: #d2d1d9;
+  padding: 5px;
+  width: 100%;
+  font-weight: lighter;
+  font-size: 20px;
+  color: #231f20;
+  border-bottom: 1px solid #4b4b4b;
+  font-family: 'Roboto', sans-serif;
+}
+.leo-ranked-chart select.disabled {
+  outline: none;
+  appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  pointer-events: none;
+}
+.leo-ranked-chart .table-wrapper {
+  height: calc(100% - 37px);
+  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-right: 10px;
+  max-height: 100vh;
+}
+.leo-ranked-chart table {
+  width: 100%;
+}
+.leo-ranked-chart tbody tr {
+  cursor: pointer;
+  transition: all .25s;
+}
+.leo-ranked-chart tbody tr.active {
+  font-weight: bold;
+}
+.leo-ranked-chart tbody tr.active div {
+  background: #bbb;
+}
+.leo-ranked-chart tbody tr.active span {
+  background-color: #BF8D30;
+  color: white;
+}
+.leo-ranked-chart tbody tr td:first-child {
+  width: 100%;
+  max-width: 1px;
+  /* wierd fix to force width unless used up by next cell */
+  overflow: hidden;
+  padding: 0;
+}
+.leo-ranked-chart tbody tr td:last-child {
+  width: 25%;
+  max-width: 100%;
+  /* wierd fix to force width at 25% */
+  text-align: right;
+  padding: 0;
+}
+.leo-ranked-chart tbody tr td:last-child div {
+  padding: 0 8px;
+}
+.leo-ranked-chart tbody tr td div {
+  background: #eee;
+  margin: 5px 0;
+  line-height: 32px;
+  white-space: nowrap;
+}
+.leo-ranked-chart tbody tr td div.gray-zero:empty:after {
+  content: '0';
+  color: #ddd;
+}
+.leo-ranked-chart tbody tr td span {
+  background: #ccc;
+  display: inline-block;
+  padding: 0;
+  background-color: orange;
+  color: black;
+  min-width: 4px;
+}
+.leo-ranked-chart tbody tr td span.negative {
+  background-color: firebrick;
+}
+.leo-ranked-chart tbody tr td span label {
+  padding: 0;
+  position: relative;
+  width: 0;
+  display: inline-block;
+  left: 8px;
+  pointer-events: none;
+  text-shadow: 0 0 4px white;
+  color: black;
+}
+.leo-ranked-chart tbody tr td span b {
+  display: inline-block;
+}
+figure.is-not-controller .leo-ranked-chart tbody tr {
+  pointer-events: none;
+  cursor: default;
+}
+.leo-charts-controller figure .leo-ranked-chart tbody tr {
+  pointer-events: initial;
+  cursor: pointer;
+}
+.leo-style-gravity div article figure.is-controller {
+  background: white;
+}
+.leo-style-gravity div article figure.is-controller .leo-ranked-chart {
+  margin: 20px;
+}
+.leo-style-gravity div article figure.is-controller .leo-ranked-chart .table-wrapper {
+  height: calc(100% - 37px - 42px);
+}
+.leo-style-gravity div article figure.is-controller .leo-ranked-chart header {
+  display: block;
+  width: calc(100% + 40px);
+  height: 42px;
+  background: #676565;
+  margin: -20px -20px 20px;
+}
+.leo-style-gravity div article figure.is-controller .leo-ranked-chart header ~ .table-wrapper {
+  height: calc(100% - 37px - 82px);
+}
+footer#leo-viewfilter {
+  position: fixed;
+  bottom: 0px;
+  height: 30px;
+  background: #ebebeb;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+}
+footer#leo-viewfilter ul,
+footer#leo-viewfilter li {
+  display: inline-block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  line-height: 30px;
+}
+footer#leo-viewfilter input[type=checkbox] {
+  display: none;
+}
+footer#leo-viewfilter input[type=checkbox] + label {
+  position: relative;
+  margin: 30px;
+}
+footer#leo-viewfilter input[type=checkbox] + label:before {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 2px;
+  background: currentColor;
+  background: gray;
+  top: 50%;
+  margin: -7px 0;
+  left: -20px;
+}
+footer#leo-viewfilter input[type=checkbox] + label span {
+  color: black;
+}
+footer#leo-viewfilter input[type=checkbox]:checked + label {
+  font-weight: bold;
+}
+footer#leo-viewfilter input[type=checkbox]:checked + label:before {
+  background: currentColor;
+}
+div.fixedDataTableLayout_main {
+  font-size: 12px;
+  border: none;
+}
+div.fixedDataTableLayout_main .overflow-ellipsis {
+  display: block;
+}
+div.fixedDataTableLayout_main .overflow-ellipsis div {
+  display: block;
+}
+div.fixedDataTableLayout_main .overflow-ellipsis .public_fixedDataTableCell_cellContent {
+  padding: 8px;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+div.fixedDataTableLayout_main .align-right {
+  text-align: right;
+}
+#leoChartDetails {
+  position: fixed;
+  background: wheat;
+  padding: 0;
+  border: none;
+  margin: 0;
+  z-index: 1005;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 4px black;
+}
+#leoChartDetails header {
+  background: #333;
+  color: white;
+  padding: 5px;
+  height: 20px;
+}
+#leoChartDetails header .leo-tableView,
+#leoChartDetails header .leo-addFilter {
+  float: right;
+  color: #A4BAE5;
+  cursor: pointer;
+  padding: 2px 8px;
+}
+#leoChartDetails main {
+  padding: 10px;
+}
+#leoChartDetails main .leo-tableView,
+#leoChartDetails main .leo-addFilter {
+  display: none;
+}
+#leoChartDetails main a[data-dashboard]:after {
+  content: '\E81D';
+  font-family: fontello;
+  display: inline-block;
+  margin: 2px;
+  font-size: .8em;
+}
+#leoChartDetails main .details-table div {
+  display: table-row;
+}
+#leoChartDetails main .details-table div label {
+  display: table-cell;
+  text-align: right;
+  font-weight: bold;
+  padding-right: .5em;
+}
+#leoChartDetails main .details-table div label:after {
+  content: ':';
+}
+.dialog-box {
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  z-index: 1010;
+  color: black;
+  background: white;
+  box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+.dialog-box header {
+  background: #ddd;
+  padding: 1em;
+  font-weight: bold;
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+}
+.dialog-box .close {
+  cursor: pointer;
+}
+.dialog-box .body {
+  padding: 1em;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  bottom: 66px;
+  overflow: auto;
+  height: auto !important;
+}
+.dialog-box footer {
+  position: absolute;
+  bottom: 0;
+  background: #ddd;
+  padding: 1em;
+  height: 66px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: right;
+}
+.dialog-box footer button {
+  padding: 8px 12px;
+  background: white;
+  border: none;
+  box-shadow: 0 0 1px silver;
+  border-radius: 5px;
+  margin: 0 10px;
+}
+.padding-1 {
+  padding: 1px;
+}
+.padding-2 {
+  padding: 2px;
+}
+.padding-5 {
+  padding: 5px;
+}
+.padding-10 {
+  padding: 10px;
+}
+.padding-20 {
+  padding: 20px;
+}
+.align-middle {
+  height: 100%;
+}
+.align-middle:before {
+  content: '';
+  height: 100%;
+  width: 0;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 -3px;
+}
+.align-middle > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+.align-middle > table {
+  display: inline-table;
+  vertical-align: middle;
+}
+.width-1-5 {
+  width: calc(100%*1/5);
+  box-sizing: border-box;
+}
+.width-2-5 {
+  width: calc(100%*2/5);
+  box-sizing: border-box;
+}
+.width-3-5 {
+  width: calc(100%*3/5);
+  box-sizing: border-box;
+}
+.width-4-5 {
+  width: calc(100%*4/5);
+  box-sizing: border-box;
+}
+.width-1-7 {
+  width: calc(100%*1/7);
+  box-sizing: border-box;
+}
+.width-2-7 {
+  width: calc(100%*2/7);
+  box-sizing: border-box;
+}
+.width-3-7 {
+  width: calc(100%*3/7);
+  box-sizing: border-box;
+}
+.width-4-7 {
+  width: calc(100%*4/7);
+  box-sizing: border-box;
+}
+.width-5-7 {
+  width: calc(100%*5/7);
+  box-sizing: border-box;
+}
+.width-6-7 {
+  width: calc(100%*6/7);
+  box-sizing: border-box;
+}
+.width-1-8 {
+  width: calc(100%*1/8);
+  box-sizing: border-box;
+}
+.width-3-8 {
+  width: calc(100%*3/8);
+  box-sizing: border-box;
+}
+.width-5-8 {
+  width: calc(100%*5/8);
+  box-sizing: border-box;
+}
+.width-7-8 {
+  width: calc(100%*7/8);
+  box-sizing: border-box;
+}
+.width-1-9 {
+  width: calc(100%*1/9);
+  box-sizing: border-box;
+}
+.width-2-9 {
+  width: calc(100%*2/9);
+  box-sizing: border-box;
+}
+.width-4-9 {
+  width: calc(100%*4/9);
+  box-sizing: border-box;
+}
+.width-5-9 {
+  width: calc(100%*5/9);
+  box-sizing: border-box;
+}
+.width-7-9 {
+  width: calc(100%*7/9);
+  box-sizing: border-box;
+}
+.width-8-9 {
+  width: calc(100%*8/9);
+  box-sizing: border-box;
+}
+.width-1-12 {
+  width: calc(100%*1/12);
+  box-sizing: border-box;
+}
+.width-1-6,
+.width-2-12 {
+  width: calc(100%*2/12);
+  box-sizing: border-box;
+}
+.width-1-4,
+.width-2-8,
+.width-3-12 {
+  width: calc(100%*3/12);
+  box-sizing: border-box;
+}
+.width-1-3,
+.width-2-6,
+.width-3-9,
+.width-4-12 {
+  width: calc(100%*4/12);
+  box-sizing: border-box;
+}
+.width-5-12 {
+  width: calc(100%*5/12);
+  box-sizing: border-box;
+}
+.width-1-2,
+.width-2-4,
+.width-3-6,
+.width-4-8,
+.width-5-10,
+.width-6-12 {
+  width: calc(100%*6/12);
+  box-sizing: border-box;
+}
+.width-7-12 {
+  width: calc(100%*7/12);
+  box-sizing: border-box;
+}
+.width-2-3,
+.width-4-6,
+.width-6-9,
+.width-8-12 {
+  width: calc(100%*8/12);
+  box-sizing: border-box;
+}
+.width-3-4,
+.width-6-8,
+.width-9-12 {
+  width: calc(100%*9/12);
+  box-sizing: border-box;
+}
+.width-5-6,
+.width-10-12 {
+  width: calc(100%*10/12);
+  box-sizing: border-box;
+}
+.width-11-12 {
+  width: calc(100%*11/12);
+  box-sizing: border-box;
+}
+.width-1-1,
+.width-2-2,
+.width-3-3,
+.width-4-4,
+.width-5-5,
+.width-6-6,
+.width-7-7,
+.width-8-8,
+.width-9-9,
+.width-10-10,
+.width-11-11,
+.width-12-12 {
+  width: 100%;
+}
+.height-1-5 {
+  height: calc(100%*1/5);
+}
+.height-2-5 {
+  height: calc(100%*2/5);
+}
+.height-3-5 {
+  height: calc(100%*3/5);
+}
+.height-4-5 {
+  height: calc(100%*4/5);
+}
+.height-1-7 {
+  height: calc(100%*1/7);
+}
+.height-2-7 {
+  height: calc(100%*2/7);
+}
+.height-3-7 {
+  height: calc(100%*3/7);
+}
+.height-4-7 {
+  height: calc(100%*4/7);
+}
+.height-5-7 {
+  height: calc(100%*5/7);
+}
+.height-6-7 {
+  height: calc(100%*6/7);
+}
+.height-1-8 {
+  height: calc(100%*1/8);
+}
+.height-3-8 {
+  height: calc(100%*3/8);
+}
+.height-5-8 {
+  height: calc(100%*5/8);
+}
+.height-7-8 {
+  height: calc(100%*7/8);
+}
+.height-1-9 {
+  height: calc(100%*1/9);
+}
+.height-2-9 {
+  height: calc(100%*2/9);
+}
+.height-4-9 {
+  height: calc(100%*4/9);
+}
+.height-5-9 {
+  height: calc(100%*5/9);
+}
+.height-7-9 {
+  height: calc(100%*7/9);
+}
+.height-8-9 {
+  height: calc(100%*8/9);
+}
+.height-1-12 {
+  height: calc(100%*1/12);
+}
+.height-1-6,
+.height-2-12 {
+  height: calc(100%*2/12);
+}
+.height-1-4,
+.height-2-8,
+.height-3-12 {
+  height: calc(100%*3/12);
+}
+.height-1-3,
+.height-2-6,
+.height-3-9,
+.height-4-12 {
+  height: calc(100%*4/12);
+}
+.height-5-12 {
+  height: calc(100%*5/12);
+}
+.height-1-2,
+.height-2-4,
+.height-3-6,
+.height-4-8,
+.height-5-10,
+.height-6-12 {
+  height: calc(100%*6/12);
+}
+.height-7-12 {
+  height: calc(100%*7/12);
+}
+.height-2-3,
+.height-4-6,
+.height-6-9,
+.height-8-12 {
+  height: calc(100%*8/12);
+}
+.height-3-4,
+.height-6-8,
+.height-9-12 {
+  height: calc(100%*9/12);
+}
+.height-5-6,
+.height-10-12 {
+  height: calc(100%*10/12);
+}
+.height-11-12 {
+  height: calc(100%*11/12);
+}
+.height-1-1,
+.height-2-2,
+.height-3-3,
+.height-4-4,
+.height-5-5,
+.height-6-6,
+.height-7-7,
+.height-8-8,
+.height-9-9,
+.height-10-10,
+.height-11-11,
+.height-12-12 {
+  height: 100%;
+}
+.height-100 {
+  height: 100px;
+  box-sizing: border-box;
+}
+.height-150 {
+  height: 150px;
+  box-sizing: border-box;
+}
+.height-200 {
+  height: 200px;
+  box-sizing: border-box;
+}
+.height-250 {
+  height: 250px;
+  box-sizing: border-box;
+}
+.height-300 {
+  height: 300px;
+  box-sizing: border-box;
+}
+.height-350 {
+  height: 350px;
+  box-sizing: border-box;
+}
+.height-400 {
+  height: 400px;
+  box-sizing: border-box;
+}
+.height-450 {
+  height: 450px;
+  box-sizing: border-box;
+}
+.height-500 {
+  height: 500px;
+  box-sizing: border-box;
+}
+.height-1-250 {
+  height: calc(100% - 250px);
+  box-sizing: border-box;
+}
+.spaced-20 .leo-charts-row-wrapper {
+  padding: 10px 0;
+}
+.spaced-20 figure {
+  margin: 10px;
+}
+.spaced-20 figure:first-child {
+  margin-left: 20px;
+}
+.spaced-20 figure:last-child {
+  margin-right: 20px;
+}
+.spaced-20 figure > * {
+  background-color: white;
+}
+.spaced-20 .width-1-1 {
+  width: calc(100% - 20px);
+}
+.spaced-20 .width-1-2 {
+  width: calc(50% - 30px);
+}
+.spaced-20 .width-1-3 {
+  width: calc(33% - 26px);
+}
+.spaced-20 .width-1-4 {
+  width: calc(25% - 25px);
+}
+.spaced-20 .width-1-5 {
+  width: calc(20% - 24px);
+}
+.spaced-20 .width-1-6 {
+  width: calc(15% - 23px);
+}
+.spaced-20 .width-2-3 {
+  width: calc(66% - 32px);
+}
+.spaced-20 .width-3-4 {
+  width: calc(75% - 35px);
+}
+.spaced-20 .width-2-5 {
+  width: calc(40% - 28px);
+}
+.spaced-20 .width-3-5 {
+  width: calc(60% - 32px);
+}
+.spaced-20 .width-4-5 {
+  width: calc(80% - 36px);
+}
+@media (max-width: 600px) {
+  [class^="width-"],
+  [class*=" width-"] {
+    width: 100%;
+  }
+  [class^="height-"],
+  [class*=" height-"] {
+    height: auto;
+  }
+}
+.google-map-wrapper {
+  width: 100%;
+  height: 100%;
+}
+.google-map-wrapper > .legend-boxes {
+  display: none;
+}
+.google-map-wrapper .google-map {
+  width: 100%;
+  height: 100%;
+}
+.google-map-wrapper .google-map .legend-boxes {
+  right: 0;
+}
+.google-map-wrapper .google-map .legend-box {
+  margin: 10px;
+  direction: ltr;
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+  color: #565656;
+  font-family: Roboto, Arial, sans-serif;
+  -webkit-user-select: none;
+  font-size: 11px;
+  border-radius: 2px;
+  -webkit-background-clip: padding-box;
+  box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
+  background-color: #ffffff;
+  background-clip: padding-box;
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: top;
+}
+.google-map-wrapper .google-map .legend-box > *:not(:empty) {
+  margin: 8px;
+}
+.google-map-wrapper .google-map .legend-wrapper {
+  width: 50%;
+  max-width: 50%;
+}
+.google-map-wrapper .google-map .legend-wrapper > * {
+  display: block;
+}
+.google-map-wrapper .google-map .legend-wrapper select {
+  width: calc(100% - 16px);
+}
+.google-map-wrapper .google-map .legend-wrapper .scale-wrapper {
+  display: table;
+  font-size: 12px;
+}
+.google-map-wrapper .google-map .legend-wrapper .scale-wrapper > * {
+  display: table-cell;
+  padding: 0 5px;
+}
+.google-map-wrapper .google-map .legend-wrapper .scale-wrapper .scale {
+  background: linear-gradient(90deg, #ffffff, #000000);
+  width: 100%;
+  height: 1em;
+  box-shadow: 0 0 1px black;
+}
+.google-map-wrapper .google-map .selected-region {
+  font-size: 14px;
+  line-height: 16px;
+}
+.google-map-wrapper .google-map .selected-region label:not(:empty):after {
+  content: ':';
+}
+.google-map-wrapper .google-map .selected-region > * {
+  display: inline-block;
+}
+/**
+ * FixedDataTable v0.6.0 
+ *
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule Scrollbar
+ *
+ */
+/**
+ * Scrollbars.
+ */
+/* Touching the scroll-track directly makes the scroll-track bolder */
+.public_Scrollbar_main.public_Scrollbar_mainActive,
+.public_Scrollbar_main:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.public_Scrollbar_mainOpaque,
+.public_Scrollbar_mainOpaque.public_Scrollbar_mainActive,
+.public_Scrollbar_mainOpaque:hover {
+  background-color: #fff;
+}
+.public_Scrollbar_face:after {
+  background-color: #c2c2c2;
+}
+.public_Scrollbar_main:hover .public_Scrollbar_face:after,
+.public_Scrollbar_mainActive .public_Scrollbar_face:after,
+.public_Scrollbar_faceActive:after {
+  background-color: #7d7d7d;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule fixedDataTable
+ *
+ */
+/**
+ * Table.
+ */
+.public_fixedDataTable_main {
+  border-color: #d3d3d3;
+}
+.public_fixedDataTable_header,
+.public_fixedDataTable_hasBottomBorder {
+  border-color: #d3d3d3;
+}
+.public_fixedDataTable_header .public_fixedDataTableCell_main {
+  font-weight: bold;
+}
+.public_fixedDataTable_header,
+.public_fixedDataTable_header .public_fixedDataTableCell_main {
+  background-color: #f6f7f8;
+  background-image: -webkit-linear-gradient(#fff, #efefef);
+  background-image: linear-gradient(#fff, #efefef);
+}
+.public_fixedDataTable_footer .public_fixedDataTableCell_main {
+  background-color: #f6f7f8;
+  border-color: #d3d3d3;
+}
+.public_fixedDataTable_topShadow {
+  background: 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAAF0lEQVR4AWPUkNeSBhHCjJoK2twgFisAFagCCp3pJlAAAAAASUVORK5CYII=) repeat-x;
+}
+.public_fixedDataTable_bottomShadow {
+  background: 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAECAYAAABP2FU6AAAAHElEQVQI12MwNjZmZdAT1+Nm0JDWEGZQk1GTBgAWkwIeAEp52AAAAABJRU5ErkJggg==) repeat-x;
+}
+.public_fixedDataTable_horizontalScrollbar .public_Scrollbar_mainHorizontal {
+  background-color: #fff;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule fixedDataTableCell
+ */
+/**
+ * Table cell.
+ */
+.public_fixedDataTableCell_main {
+  background-color: #fff;
+  border-color: #d3d3d3;
+}
+.public_fixedDataTableCell_highlighted {
+  background-color: #f4f4f4;
+}
+.public_fixedDataTableCell_cellContent {
+  padding: 8px;
+}
+.public_fixedDataTableCell_columnResizerKnob {
+  background-color: #0284ff;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule fixedDataTableColumnResizerLine
+ *
+ */
+/**
+ * Column resizer line.
+ */
+.public_fixedDataTableColumnResizerLine_main {
+  border-color: #0284ff;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule fixedDataTableRow
+ */
+/**
+ * Table row.
+ */
+.public_fixedDataTableRow_main {
+  background-color: #fff;
+}
+.public_fixedDataTableRow_highlighted,
+.public_fixedDataTableRow_highlighted .public_fixedDataTableCell_main {
+  background-color: #f6f7f8;
+}
+.public_fixedDataTableRow_fixedColumnsDivider {
+  border-color: #d3d3d3;
+}
+.public_fixedDataTableRow_columnsShadow {
+  background: 0 0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAABCAYAAAD5PA/NAAAAFklEQVQIHWPSkNeSBmJhTQVtbiDNCgASagIIuJX8OgAAAABJRU5ErkJggg==) repeat-y;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule ScrollbarLayout
+ */
+.ScrollbarLayout_main {
+  box-sizing: border-box;
+  outline: none;
+  overflow: hidden;
+  position: absolute;
+  -webkit-transition-duration: 250ms;
+  transition-duration: 250ms;
+  -webkit-transition-timing-function: ease;
+  transition-timing-function: ease;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.ScrollbarLayout_mainVertical {
+  bottom: 0;
+  right: 0;
+  top: 0;
+  -webkit-transition-property: background-color width;
+  transition-property: background-color width;
+  width: 15px;
+}
+.ScrollbarLayout_mainVertical.public_Scrollbar_mainActive,
+.ScrollbarLayout_mainVertical:hover {
+  width: 17px;
+}
+.ScrollbarLayout_mainHorizontal {
+  bottom: 0;
+  height: 15px;
+  left: 0;
+  -webkit-transition-property: background-color height;
+  transition-property: background-color height;
+}
+/* Touching the scroll-track directly makes the scroll-track bolder */
+.ScrollbarLayout_mainHorizontal.public_Scrollbar_mainActive,
+.ScrollbarLayout_mainHorizontal:hover {
+  height: 17px;
+}
+.ScrollbarLayout_face {
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+}
+/**
+ * This selector renders the "nub" of the scrollface. The nub must
+ * be rendered as pseudo-element so that it won't receive any UI events then
+ * we can get the correct `event.offsetX` and `event.offsetY` from the
+ * scrollface element while dragging it.
+ */
+.ScrollbarLayout_face:after {
+  border-radius: 6px;
+  content: '';
+  display: block;
+  position: absolute;
+  -webkit-transition: background-color 250ms ease;
+  transition: background-color 250ms ease;
+}
+.ScrollbarLayout_faceHorizontal {
+  bottom: 0;
+  left: 0;
+  top: 0;
+}
+.ScrollbarLayout_faceHorizontal:after {
+  bottom: 4px;
+  left: 0;
+  top: 4px;
+  width: 100%;
+}
+.ScrollbarLayout_faceVertical {
+  left: 0;
+  right: 0;
+  top: 0;
+}
+.ScrollbarLayout_faceVertical:after {
+  height: 100%;
+  left: 4px;
+  right: 4px;
+  top: 0;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule fixedDataTableCellGroupLayout
+ */
+.fixedDataTableCellGroupLayout_cellGroup {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+}
+.fixedDataTableCellGroupLayout_cellGroup > .public_fixedDataTableCell_main {
+  display: inline-block;
+  vertical-align: top;
+  white-space: normal;
+}
+.fixedDataTableCellGroupLayout_cellGroupWrapper {
+  position: absolute;
+  top: 0;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule fixedDataTableCellLayout
+ */
+.fixedDataTableCellLayout_main {
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-width: 0 1px 0 0;
+  box-sizing: border-box;
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  white-space: normal;
+}
+.fixedDataTableCellLayout_lastChild {
+  border-width: 0 1px 1px 0;
+}
+.fixedDataTableCellLayout_alignRight {
+  text-align: right;
+}
+.fixedDataTableCellLayout_alignCenter {
+  text-align: center;
+}
+.fixedDataTableCellLayout_wrap1 {
+  display: table;
+}
+.fixedDataTableCellLayout_wrap2 {
+  display: table-row;
+}
+.fixedDataTableCellLayout_wrap3 {
+  display: table-cell;
+  vertical-align: middle;
+}
+.fixedDataTableCellLayout_columnResizerContainer {
+  position: absolute;
+  right: 0px;
+  width: 6px;
+  z-index: 1;
+}
+.fixedDataTableCellLayout_columnResizerContainer:hover {
+  cursor: ew-resize;
+}
+.fixedDataTableCellLayout_columnResizerContainer:hover .fixedDataTableCellLayout_columnResizerKnob {
+  visibility: visible;
+}
+.fixedDataTableCellLayout_columnResizerKnob {
+  position: absolute;
+  right: 0px;
+  visibility: hidden;
+  width: 4px;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule fixedDataTableColumnResizerLineLayout
+ */
+.fixedDataTableColumnResizerLineLayout_mouseArea {
+  cursor: ew-resize;
+  position: absolute;
+  right: -5px;
+  width: 12px;
+}
+.fixedDataTableColumnResizerLineLayout_main {
+  border-right-style: solid;
+  border-right-width: 1px;
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 10;
+}
+body[dir="rtl"] .fixedDataTableColumnResizerLineLayout_main {
+  /* the resizer line is in the wrong position in RTL with no easy fix.
+   * Disabling is more useful than displaying it.
+   * #167 (github) should look into this and come up with a permanent fix.
+   */
+  display: none !important;
+}
+.fixedDataTableColumnResizerLineLayout_hiddenElem {
+  display: none !important;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule fixedDataTableLayout
+ */
+.fixedDataTableLayout_main {
+  border-style: solid;
+  border-width: 1px;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+.fixedDataTableLayout_header,
+.fixedDataTableLayout_hasBottomBorder {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+.fixedDataTableLayout_footer .public_fixedDataTableCell_main {
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+.fixedDataTableLayout_topShadow,
+.fixedDataTableLayout_bottomShadow {
+  height: 4px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+.fixedDataTableLayout_bottomShadow {
+  margin-top: -4px;
+}
+.fixedDataTableLayout_rowsContainer {
+  overflow: hidden;
+  position: relative;
+}
+.fixedDataTableLayout_horizontalScrollbar {
+  bottom: 0;
+  position: absolute;
+}
+/**
+ * Copyright (c) 2015, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * @providesModule fixedDataTableRowLayout
+ */
+.fixedDataTableRowLayout_main {
+  box-sizing: border-box;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+}
+.fixedDataTableRowLayout_body {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+.fixedDataTableRowLayout_fixedColumnsDivider {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-left-style: solid;
+  border-left-width: 1px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 0;
+}
+.fixedDataTableRowLayout_columnsShadow {
+  width: 4px;
+}
+.fixedDataTableRowLayout_rowWrapper {
+  position: absolute;
+  top: 0;
+}
+.icon-ion-social-buffer-outline:before {
+  content: '\e800';
+}
+/* '' */
+.icon-spin1:before {
+  content: '\e801';
+}
+/* '' */
+.icon-spin2:before {
+  content: '\e802';
+}
+/* '' */
+.icon-spin4:before {
+  content: '\e803';
+}
+/* '' */
+.icon-spin6:before {
+  content: '\e804';
+}
+/* '' */
+.icon-search:before {
+  content: '\e805';
+}
+/* '' */
+.icon-cancel:before {
+  content: '\e806';
+}
+/* '' */
+.icon-cancel-circled:before {
+  content: '\e807';
+}
+/* '' */
+.icon-cancel-circled-o:before {
+  content: '\e808';
+}
+/* '' */
+.icon-plus:before {
+  content: '\e809';
+}
+/* '' */
+.icon-plus-circled:before {
+  content: '\e80a';
+}
+/* '' */
+.icon-plus-squared:before {
+  content: '\e80b';
+}
+/* '' */
+.icon-plus-squared-alt:before {
+  content: '\e80c';
+}
+/* '' */
+.icon-help-circled:before {
+  content: '\e80d';
+}
+/* '' */
+.icon-pin:before {
+  content: '\e80e';
+}
+/* '' */
+.icon-download:before {
+  content: '\e80f';
+}
+/* '' */
+.icon-code:before {
+  content: '\e810';
+}
+/* '' */
+.icon-share:before {
+  content: '\e811';
+}
+/* '' */
+.icon-edit:before {
+  content: '\e812';
+}
+/* '' */
+.icon-copy:before {
+  content: '\e813';
+}
+/* '' */
+.icon-cog:before {
+  content: '\e814';
+}
+/* '' */
+.icon-cogs:before {
+  content: '\e815';
+}
+/* '' */
+.icon-calendar:before {
+  content: '\e816';
+}
+/* '' */
+.icon-move:before {
+  content: '\e817';
+}
+/* '' */
+.icon-down-dir:before {
+  content: '\e818';
+}
+/* '' */
+.icon-up-dir:before {
+  content: '\e819';
+}
+/* '' */
+.icon-left-dir:before {
+  content: '\e81a';
+}
+/* '' */
+.icon-right-dir:before {
+  content: '\e81b';
+}
+/* '' */
+.icon-right:before {
+  content: '\e81c';
+}
+/* '' */
+.icon-level-up:before {
+  content: '\e81d';
+}
+/* '' */
+.icon-exchange:before {
+  content: '\e81e';
+}
+/* '' */
+.icon-history:before {
+  content: '\e81f';
+}
+/* '' */
+.icon-table:before {
+  content: '\e820';
+}
+/* '' */
+.icon-ellipsis:before {
+  content: '\e821';
+}
+/* '' */
+.icon-chart-pie:before {
+  content: '\e822';
+}
+/* '' */
+.icon-sort:before {
+  content: '\e823';
+}
+/* '' */
+.icon-spinner:before {
+  content: '\e824';
+}
+/* '' */
+.icon-eraser:before {
+  content: '\e825';
+}
+/* '' */
+.icon-jsfiddle:before {
+  content: '\e826';
+}
+/* '' */
+.icon-info:before {
+  content: '\e827';
+}
+/* '' */
+.icon-link:before {
+  content: '\e828';
+}
+/* '' */
+.icon-shareable:before {
+  content: '\e829';
+}
+/* '' */
+.icon-window:before {
+  content: '\e82a';
+}
+/* '' */
+.icon-switch:before {
+  content: '\e82b';
+}
+/* '' */
+.icon-chart-line:before {
+  content: '\e82c';
+}
+/* '' */
+.icon-chart-area:before {
+  content: '\e82d';
+}
+/* '' */
+.icon-database:before {
+  content: '\e82e';
+}
+/* '' */
+.icon-flow-tree:before {
+  content: '\e82f';
+}
+/* '' */
+.icon-pin-out:before {
+  content: '\e830';
+}
+/* '' */
+.icon-sort-numeric:before {
+  content: '\e831';
+}
+/* '' */
+.icon-pin-in:before {
+  content: '\e832';
+}
+/* '' */
+.icon-chart-bar:before {
+  content: '\e833';
+}
+/* '' */
+.icon-layers:before {
+  content: '\e834';
+}
+/* '' */
+.icon-layers-alt:before {
+  content: '\e835';
+}
+/* '' */
+.icon-menu:before {
+  content: '\e836';
+}
+/* '' */
+.icon-attention-alt:before {
+  content: '\e837';
+}
+/* '' */
+.icon-chart-column:before {
+  content: '\e838';
+}
+/* '' */
+.icon-codepen:before {
+  content: '\e839';
+}
+/* '' */
+.icon-ok-circled:before {
+  content: '\e83a';
+}
+/* '' */
+.icon-filter:before {
+  content: '\e83b';
+}
+/* '' */
+.icon-chart-gauge:before {
+  content: '\e83c';
+}
+/* '' */
+.icon-target:before {
+  content: '\e83d';
+}
+/* '' */
+.icon-signal:before {
+  content: '\e83e';
+}
+/* '' */
+.icon-eye:before {
+  content: '\e83f';
+}
+/* '' */
+.icon-resize-vertical:before {
+  content: '\e840';
+}
+/* '' */
+.icon-resize-horizontal:before {
+  content: '\e841';
+}
+/* '' */
+.icon-resize-full-alt:before {
+  content: '\e842';
+}
+/* '' */
+.icon-resize-small:before {
+  content: '\e843';
+}
+/* '' */
+.icon-resize-full:before {
+  content: '\e844';
+}
+/* '' */
+.icon-book:before {
+  content: '\e845';
+}
+/* '' */
+.icon-sort-alt-down:before {
+  content: '\e846';
+}
+/* '' */
+.icon-calc:before {
+  content: '\e847';
+}
+/* '' */
+.icon-bot:before {
+  content: '\e848';
+}
+/* '' */
+.icon-brush:before {
+  content: '\e849';
+}
+/* '' */
+.icon-left-open:before {
+  content: '\e84a';
+}
+/* '' */
+.icon-right-open:before {
+  content: '\e84b';
+}
+/* '' */
+.icon-pencil:before {
+  content: '\e84c';
+}
+/* '' */
+.icon-down-open:before {
+  content: '\e84d';
+}
+/* '' */
+.icon-up-open:before {
+  content: '\e84e';
+}
+/* '' */
+.icon-ellipsis-vert:before {
+  content: '\e850';
+}
+/* '' */
+@font-face {
+  font-family: 'fontello';
+  src: url('../font/fontello.eot?95808562');
+  src: url('../font/fontello.eot?95808562#iefix') format('embedded-opentype'), url('../font/fontello.woff2?95808562') format('woff2'), url('../font/fontello.woff?95808562') format('woff'), url('../font/fontello.ttf?95808562') format('truetype'), url('../font/fontello.svg?95808562#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="icon-"],
+[class*=" icon-"] {
+  display: inline-block;
+  font: normal normal normal 14px/1 fontello;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

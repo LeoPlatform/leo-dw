@@ -1,0 +1,87 @@
+{
+	"name": "leo_dw_sync",
+	"version": "1.0.0",
+	"description": "Sync the Primary Data Warehouse with Redshift",
+	"main": "index.js",
+	"scripts": {
+		"test": "leo-cli test ."
+	},
+	"config": {
+		"leo": {
+			"register": "individual",
+			"type": "cron",
+			"handler": "handler",
+			"role": "ApiRole",
+			"env": {
+				"Resources": {
+					"Region": "${AWS::Region}",
+					"Fields": "${Fields}",
+					"LoaderRole": "${LoaderRole.Arn}",
+					"StackName": "${AWS::StackName}"
+				},
+				"RedshiftEndpoint": {
+					"Fn::If": [
+						"CreateRedshiftResources",
+						{
+							"Fn::Sub": "${Redshift.Endpoint.Address}:${Redshift.Endpoint.Port}/datawarehouse"
+						},
+						""
+					]
+				},
+				"AuroraEndpoint": {
+					"Fn::If": [
+						"CreateAuroraResources",
+						{
+							"Fn::Sub": "${AuroraInstance.Endpoint.Address}:${AuroraInstance.Endpoint.Port}/datawarehouse"
+						},
+						""
+					]
+				},
+				"AuroraType": "${AuroraType}",
+				"DBUsername": "${DBUsername}",
+				"DBPassword": "KMS:${EncryptedPassword.Value}",
+				"CustomDBEndpoint": "${CustomDBEndpoint}",
+				"CustomDBType": "${CustomDBType}"
+			},
+			"cron": {
+				"id": {
+					"Fn::Sub": "${AWS::StackName}-leo_dw_sync"
+				},
+				"type": "cron",
+				"paused": false,
+				"settings": {},
+				"time": "0 */10 * * * ?"
+			},
+			"memory": 1536,
+			"timeout": 300,
+			"VpcConfig": {
+				"SecurityGroupIds": [
+					{
+						"Fn::Sub": "${Security}"
+					}
+				],
+				"SubnetIds": [
+					{
+						"Fn::Sub": "${LambdaSubnetA}"
+					},
+					{
+						"Fn::Sub": "${LambdaSubnetB}"
+					},
+					{
+						"Fn::Sub": "${LambdaSubnetC}"
+					}
+				]
+			},
+			"build": {
+				"include": [
+					"../../node_modules/pg",
+					"../../node_modules/pg-format"
+				]
+			}
+		}
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {}
+}

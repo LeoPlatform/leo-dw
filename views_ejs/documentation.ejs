@@ -1,0 +1,211 @@
+<% var title = 'LeoInsights | Documentation' %>
+<% path = 'documentation' %>
+<% include partials/dochead %>
+<link rel="stylesheet" href="${leo.CustomCSS}" />
+<body>
+	<% include partials/header %>
+	<% //include partials/nav %>
+
+	<div class="side-nav">
+		<ul>
+			<li><a href="#intro">Getting Started with LeoInsights</a></li>
+			<li><a href="#imports">Data Collection API</a></li>
+			<!-- li><a href="#Querying">Querying</a></li-->
+			<li>
+				<a href="#dashboard">Insight APIs</a>
+				<!--ul>
+					<li><a href="#blah">Blah</a></li>
+				</ul-->
+			</li>
+			<!--li><a href="#Misc">Misc</a></li -->
+			<li>&nbsp;</li>
+			<li><a href="#">top &uarr;</a></li>
+		</ul>
+	</div>
+
+
+	<div id="main" class="content-wrapper">
+
+		<h1 id="intro">Getting Started with LeoInsights</h1>
+
+		<p>Leo is a data warehouse as a service for modern developers to power any data project. Use Leo to embed analytics on your site, in your business applications or white label analytics for your customers. Use Leo to create your organizations “One Source of Truth” by consolidating data from disparate data sources. By installing Leo as the backend, your data is ready for action.</p>
+
+		<p>We believe that getting started with Leo APIs should be easy. In under 5 minutes you can be making use of the Leo Data Warehouse as a Service. There are a few key principles of data warehousing to understand to make the most of Leo.</p>
+
+		<ul>
+			<li>Metric (or Fact) - is a value or measurement. Always enter data in the smallest possible increments. They can be summed and consolidated easily later.</li>
+			<li>Dimension - reference information that gives context to the Metrics (or Facts). </li>
+			<li>Attribute - reference information that gives context to Dimensions. </li>
+		</ul>
+
+		<h2 id="imports">Data Collection API</h2>
+
+		<p>Getting data into Leo is simple via the Data Collection API. You may send data as the events occur or in batch via the same API call. Or better yet, do both. Send the events as they occur and then send a batch of the events hourly or daily to ensure all information was captured. Leo is smart enough to recognize duplicated information and will not process them multiple times.</p>
+
+		<p>For your convenience, we have provide a customized API example below. Be sure to update the example code with real metrics and dimensions for your actual data set. For metric data, capitalize the first letter of the metric name. For dimension data, do not capitalize the first letter of the dimension name. </p>
+
+		<ul class="uk-tab code-samples">
+			<li><a class="php-code">PHP</a></li>
+			<li><a class="nodejs-code">NodeJs</a></li>
+			<li><a class="c-sharp-code">C#</a></li>
+			<li><a class="java-code">Java</a></li>
+			<li><a class="python-code">Python</a></li>
+		</ul>
+
+		<div class="code-samples uk-switcher">
+	<pre class="php-code">
+
+	&lt;?php
+
+		namespace LEO;
+		date_default_timezone_set('America/Denver'); //SET THIS TO MATCH THE DATABASE TIMEZONE
+		require_once(__DIR__ . "/sdk.php");
+		$sdk = new SDK('', '', true, ''); //
+		$sdk->doFile = true;
+		$counter = 0;
+		$handle = fopen("BBStats/Batting.csv", "r");
+		$headers = fgetcsv($handle);
+		while (($line = fgetcsv($handle)) !== false) {
+			$row = array_combine($headers, $line);
+			$data = array(
+				"id"=>$row['playerID']."-".$row['yearID'],
+				"Player"=>$row['playerID'],
+				"Date"=>$row['yearID'] . date('-m-d',strtotime('yesterday')),
+				"Team"=>$row['teamID']."-".$row['yearID'],
+				"games"=>$row['G'],
+				"games_batting"=>$row['G_batting'],
+				"at_bats"=>$row['AB'],
+				"hits"=>$row['H'],
+				"batting_average"=>(int)((int)@$row['H']/$row['AB'] * 1000),
+				"doubles"=>$row['2B'],
+				"triples"=>$row['3B'],
+				"home_runs"=>$row['HR'],
+				"runs_batted_in"=>$row['RBI'],
+				"stolen_bases"=>$row['SB'],
+				"strike_outs"=>$row['SO'],
+			);
+			$sdk->sendEvent('fact', 'Batting', $data,null,null);//$mykeys[($counter++ % 2)]);
+		}
+
+		fclose($handle);
+		$sdk->finalize();
+
+	?&gt;
+
+	</pre>
+	<pre class="nodejs-code">
+
+	NodeJs code
+
+	</pre>
+	<pre class="c-sharp-code">
+
+	C# code
+
+	</pre>
+	<pre class="java-code">
+
+	Java code
+
+	</pre>
+	<pre class="python-code">
+
+	Python code
+
+	</pre>
+		</div>
+
+
+		<h2 id="dashboard">Insight APIs</h2>
+
+		<p>Now that data is in the system, you may discover insights via the Report Builder. Slice and dice the data as you please until you find the right dataset. At that point, we provide you the code needed to request that data set from our system. Use the Insight API to power reports outside of the system or to connect the dataset to any 3rd party application. </p>
+
+		<p>Leo also provides the ability for you to request that same dataset in graph form via the Chart Builder. </p>
+
+		<p>For your convenience, we have provided an example API call for a simple dashboard.</p>
+
+		<ul class="uk-tab html-samples">
+			<li class="uk-active"><a class="html-code">HTML</a></li>
+		</ul>
+
+		<div class="html-samples uk-switcher">
+	<pre class="html-code uk-active">
+
+	&lt;!DOCTYPE html&gt;
+	&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset="UTF-8"&gt;
+
+		&lt;link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/cdnleo/leo-style.css" /&gt;
+		&lt;link rel="stylesheet" href="../leo-style.css" /&gt;
+
+		&lt;script src="https://s3-us-west-2.amazonaws.com/cdnleo/dashboard.0.4.js"&gt;&lt;/script&gt;
+		&lt;script&gt;
+			LeoDash.init({
+				endpoint:  '',
+				key: ''
+			});
+
+		&lt;/script&gt;
+		&lt;title&gt;LeoInsights&lt;/title&gt;
+	&lt;/head&gt;
+	&lt;body class="leo-insights"&gt;
+
+		&lt;header&gt;
+			&lt;select class="leo-pull-right" data-period="true" data-group="default" data-default="year_over_year" name="periodFilter"&gt;&lt;/select&gt;
+		&lt;/header&gt;
+
+		&lt;div class="leo-align-center"&gt;
+
+			&lt;!-- INSERT CHARTS FROM THE CHART BUILDER BELOW --&gt;
+
+			&lt;section
+				data-canned-report="pieChart"
+				data-dimension="d_team.name"
+				data-metric="f_batting.at_bats|sum"
+				data-title="Batting - Total At Bats"
+			&gt;&lt;/section&gt;
+
+	&lt;/body&gt;
+	&lt;/html&gt;
+
+	</pre>
+		</div>
+
+		<!-- h2 id="Misc">Misc</h2>
+
+		<p>Play riveting piece on synthesizer keyboard hunt by meowing loudly at 5am next to human slave food dispenser attack feet, yet the dog smells bad. That dog stretch fall over dead (not really but gets sypathy) but meowing non stop for food and jump off balcony, onto stranger's head. Roll on the floor purring your whiskers off. Peer out window, chatter at birds, lure them to mouth hide at bottom of staircase to trip human. Eat a plant, kill a hand. Poop on grasses mark territory. Chew foot chew on cable that dog so roll on the floor purring your whiskers off. Chase red laser dot leave fur on owners clothes cough furball ignore the squirrels, you'll never catch them anyway. Hide at bottom of staircase to trip human hide head under blanket so no one can see for meow all night having their mate disturbing sleeping humans chase dog then run away yet stretch, so then cats take over the world. </p>
+
+
+
+		<ul class="uk-tab">
+			<li class="uk-active"><a class="javascript-code">Javascript</a></li>
+		</ul>
+
+		<div class="uk-switcher">
+	<pre class="javascript-code uk-active">
+
+	javascript code
+
+	</pre>
+		</div-->
+
+		<script>
+
+			$('ul.code-samples a').filter('.nodejs-code, .c-sharp-code, .java-code, .python-code').parent().addClass('uk-disabled');
+
+			$('ul.code-samples li:not(.uk-disabled) a').click(function(event) {
+				event.preventDefault();
+				$('ul.code-samples li').removeClass('uk-active');
+				$('ul.code-samples li a.'+$(this).attr('class')).parent().addClass('uk-active');
+				$('div.code-samples pre').hide();
+				$('div.code-samples pre.'+$(this).attr('class')).show();
+			}).first().trigger('click');
+
+		</script>
+
+
+	</div>
+	<% //include partials/footer %>
+</body>
+</html>

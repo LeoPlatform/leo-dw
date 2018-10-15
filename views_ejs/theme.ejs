@@ -1,0 +1,159 @@
+<% var title = 'LeoInsights | Dashboard' %>
+<% path = 'theme' %>
+<% include partials/dochead %>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.7.0/spectrum.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.7.0/spectrum.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.1.2/tinycolor.min.js"></script>
+
+<link rel="stylesheet" href="${leo.CustomCSS}" />
+<body>
+	<% include partials/header %>
+	<% //include partials/nav %>
+	<div id="main" class="content-wrapper">
+
+		<h1>Theme</h1>
+
+		<form class="uk-form" method="post">
+
+			<div class="form-row">
+				<label>Heading Background Color:</label>
+				<input type="color" id="heading-color" />
+				&nbsp; <button type="button" class="uk-button uk-button-mini" id="reset-heading"> Reset </button>
+			</div>
+
+			<div class="form-row">
+				<label>Navigation Background Color:</label>
+				<input type="color" id="nav-color" />
+			</div>
+
+			<!-- div class="form-row">
+				<label>Home Page:</label>
+				<select id="set-home-page">
+					<option value="dashboard">Dashboard</option>
+					<option value="builder">Builder</option>
+				</select>
+			</div-->
+
+			<div class="form-row">
+				<label>Default Data Warehouse:</label>
+				<select>
+					<option></option>
+				</select>
+			</div>
+
+		</form>
+
+	</div>
+	<% //include partials/footer %>
+
+	<script>
+
+		var defaultColors = {
+			header: '#87C442',
+			nav: '#384783'
+		};
+
+		$("#heading-color").spectrum({
+			hideAfterPaletteSelect:true,
+			showPalette: true,
+			showPaletteOnly: true,
+			togglePaletteOnly: true,
+			togglePaletteMoreText: 'more >',
+			togglePaletteLessText: '< less',
+			showInput: true,
+			color: decodeURIComponent(cookies.read('headerColor', defaultColors.header)),
+			chooseText: 'Done',
+			change: function(color) {
+				var hexColor = color.toHexString();
+				if (hexColor != '') {
+					cookies.write({ headerColor: hexColor, navColor: hexColor, invertHeader: (tinycolor(hexColor).getBrightness() > 164 ? 100 : 0) });
+				}
+				findRelatedColors(hexColor, hexColor);
+			},
+			palette: [
+				["#000","#444","#666","#999","#ccc","#eee","#f3f3f3","#fff"],
+				["#f00","#f90","#ff0","#0f0","#0ff","#00f","#90f","#f0f"],
+				["#f4cccc","#fce5cd","#fff2cc","#d9ead3","#d0e0e3","#cfe2f3","#d9d2e9","#ead1dc"],
+				["#ea9999","#f9cb9c","#ffe599","#b6d7a8","#a2c4c9","#9fc5e8","#b4a7d6","#d5a6bd"],
+				["#e06666","#f6b26b","#ffd966","#93c47d","#76a5af","#6fa8dc","#8e7cc3","#c27ba0"],
+				["#c00","#e69138","#f1c232","#6aa84f","#45818e","#3d85c6","#674ea7","#a64d79"],
+				["#900","#b45f06","#bf9000","#38761d","#134f5c","#0b5394","#351c75","#741b47"],
+				["#600","#783f04","#7f6000","#274e13","#0c343d","#073763","#20124d","#4c1130"]
+			]
+		});
+
+
+		function findRelatedColors(hexColor, navColor) {
+
+			$('header, footer').css({backgroundColor:decodeURIComponent(cookies.read('headerColor',defaultColors.header))});
+			$('nav').css({backgroundColor:decodeURIComponent(cookies.read('navColor',defaultColors.nav))});
+			$('header, footer').toggleClass('invert-colors', cookies.read('invertHeader', 0) == 100);
+
+			var baseColor = tinycolor(hexColor);
+
+			var colors = [].concat(
+				baseColor.analogous(),
+				baseColor.monochromatic(),
+				baseColor.splitcomplement(),
+				baseColor.triad(),
+				baseColor.tetrad(),
+				baseColor.complement()
+			);
+
+			var palette = [
+				['black','gray','silver','gainsboro','white']
+			];
+			var paletteRow = [];
+
+			colors.map(function(t) {
+				if (t.toHexString() != hexColor) {
+					paletteRow.push(t.toHexString());
+					if (paletteRow.length > 4) {
+						palette.push(paletteRow);
+						paletteRow = [];
+					}
+				}
+			});
+			paletteRow.push(hexColor);
+			palette.push(paletteRow);
+
+			$("#nav-color").spectrum('destroy');
+			$("#nav-color").spectrum({
+				hideAfterPaletteSelect:true,
+				showPalette: true,
+				showPaletteOnly: true,
+				color: navColor,
+				change: function(color) {
+					var hexColor = color.toHexString();
+					$('nav').css({backgroundColor:hexColor});
+					cookies.write('navColor', hexColor);
+				},
+				palette: palette
+			});
+		}
+
+		findRelatedColors(decodeURIComponent(cookies.read('headerColor',defaultColors.header)), decodeURIComponent(cookies.read('navColor',defaultColors.nav)));
+
+
+		$('#reset-heading').click(function() {
+			$('#heading-color').spectrum('set', defaultColors.header);
+			$('#nav-color').spectrum('set', defaultColors.nav);
+
+			$('header, footer').css({backgroundColor:defaultColors.header});
+			$('nav').css({backgroundColor:defaultColors.nav});
+			$('header, footer').removeClass('invert-colors');
+
+			cookies.erase(['headerColor', 'navColor', 'invertHeader']);
+		});
+
+
+		$('#set-home-page').change(function() {
+			cookies.write('homePage', $(this).val());
+		}).val(cookies.read('homePage', 'dashboard'));
+
+	</script>
+
+</body>
+</html>

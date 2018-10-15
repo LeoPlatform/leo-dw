@@ -1,0 +1,351 @@
+//@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
+
+@dimMaxWidth: 50%;
+
+/********************************
+* @Report table area
+********************************/
+#reporttable {
+	@dimensionLabel: #dbedf8;
+
+	font-size: 0.6875rem; /* 11px; */
+	color: #444;
+	position: relative;
+	overflow: hidden;
+
+	.row {
+		height: 100px;
+	}
+
+	> div > header {
+		position: relative;
+		overflow: hidden;
+	}
+
+	> div > header:first-child,
+
+	> div > header.dimensionRow {
+		float: left;
+		max-width: @dimMaxWidth;
+
+		.row span {
+			background-color: @dimensionLabel;
+			display: inline-block;
+			border-top: 2px solid #3b86c7;
+			border-right: 2px solid #d6e6f3;
+			border-bottom: 1px solid #97c1e7;
+			box-sizing: border-box;
+			text-align: center;
+			color: #172945;
+			height: 100%;
+			vertical-align: middle;
+			font-size: .75rem; /* 12px; */
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+
+			&:before {
+				content: ' ';
+				display: inline-block;
+				height: 100%;
+				vertical-align: middle;
+			}
+
+			&:first-child {
+				border-left: 2px solid  #3b86c7;
+			}
+		}
+
+
+		.inline-filters {
+			height: 2em;
+
+			span {
+				background-color: #eee;
+				position: relative;
+				cursor: pointer;
+			}
+
+			input {
+				border: none;
+				padding: 2px 8px;
+				width: 100%;
+				cursor: auto;
+			}
+
+			.icon-cancel {
+				position: absolute;
+				right: 2px;
+				top: 2px;
+				color: firebrick;
+				cursor: pointer;
+			}
+
+		}
+
+	}
+
+	> div > header:nth-child(2),
+	> div > header.metrics {
+		.row {
+			box-sizing: border-box;
+			border-botom: 1px solid #d6e6f3;
+
+			&.level0 {
+				border-top: 1px solid #a8b8df;
+				border-bottom: 1px solid #c8de85;
+			}
+
+			&.level1 {
+				border-bottom: 1px solid #b0b0bc;
+			}
+
+			span {
+				display: inline-block;
+				height: 100%;
+				box-sizing: border-box;
+				text-align: center;
+				font-size: .75rem; /* 12px; */
+				border-right: 2px solid #bfc0c3;
+				overflow:hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+
+				&:before {
+					content: ' ';
+					display: inline-block;
+					height: 100%;
+					vertical-align: middle;
+				}
+
+				&:first-child {
+					border-left: 2px solid #b0b0bc;
+				}
+				&:last-child  {
+					border-right: 2px solid #97c1e7;
+				}
+			}
+
+			&:first-child span {
+				border-top: 2px solid #a8b8df;
+				background-color: #eeeeef;
+			}
+			&:nth-child(2) span {
+				background-color: #f5f5f6;
+			}
+		}
+
+		.row span.metric {
+			background-color: #eef5da;
+			border-top: 1px solid #a2c539;
+			color: #567e39;
+			border-left: 1px solid #edf1e2;
+
+			&.last {
+				border-right: 2px solid #a2c539;
+			}
+			&:first-child {
+				border-left: 2px solid #b0b0bc;
+			}
+			&:last-child {
+				border-right: 2px solid #7d9c5b;
+			}
+		}
+	}
+
+	> div > aside {
+		float: left;
+		xpadding-bottom: 60px;
+		box-sizing: border-box;
+
+		max-width: @dimMaxWidth;
+		overflow-x: auto;
+		overflow-y: hidden;
+
+		box-sizing: border-box;
+		overflow: hidden;
+		flex-direction: column;
+
+		> div {
+			overflow-x: auto;
+			overflow-y: hidden;
+		}
+
+		table {
+			background: white;
+			text-align: left;
+			table-layout: fixed;
+			border-collapse: separate;
+			box-sizing: border-box;
+
+			tr {
+				td,
+				th {
+					padding: 0px 8px;
+					box-sizing: border-box;
+					line-height: 28px;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					border-left: 1px solid #d6e6f3;
+					border-bottom: 1px solid #d6e6f3;
+
+					&:first-child {
+						border-left: 2px solid #a8b8df;
+					}
+				}
+				&:nth-child(even) {
+					background-color: #f9f9f9;
+				}
+				&:nth-last-child(-n+2) td,
+				&:nth-last-child(-n+2) th {
+					border-bottom: 2px solid #a8b8df;
+				}
+			}
+
+			tr.bottom-filler td,
+			tr.top-filler td {
+				border: none;
+			}
+
+		}
+	}
+
+	#maintable {
+		table-layout: fixed;
+		border-collapse: separate;
+		box-sizing: border-box;
+		overflow: hidden;
+		flex-direction: column;
+
+		tr {
+			td,
+			th {
+				text-align: right;
+				padding: 0px 8px;
+				box-sizing: border-box;
+				line-height: 28px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				border-right: 1px solid #d6e6f3;
+				border-bottom: 1px solid #d6e6f3;
+
+				&:first-child {
+					border-left: 2px solid #a8b8df;
+				}
+				&:last-child {
+					border-right: 2px solid #7d9c5b;
+				}
+			}
+			&:nth-child(even) {
+				background-color: #f9f9f9;
+			}
+			&:nth-last-child(-n+2) td,
+			&:nth-last-child(-n+2) th {
+				border-bottom: 2px solid #7d9c5b;
+			}
+		}
+
+		tr.bottom-filler td,
+		tr.top-filler td {
+			border: none;
+		}
+
+	}
+
+
+
+	width:90%;
+	width: calc(~"100% - 200px");
+	float:left;
+	height:100%;
+	overflow:hidden;
+	margin-top: -8px;
+
+	.report-table-content {
+		height: 100%;
+		height: calc(~"100% - 62px");
+		overflow:hidden;
+	}
+
+
+	.table-totals {
+
+		border-collapse: separate;
+		position: relative;
+		z-index: 10;
+
+		&.metrics {
+			background-color: #eef5da;
+			xposition: relative;
+			xz-index: 10;
+		}
+
+		&.dimensions {
+			background-color: #dbedf8;
+			xposition: absolute;
+			xbottom: 0;
+		}
+
+	}
+
+
+}
+
+
+
+	.flexbox-parent {
+		width: 100%;
+		height: 100%;
+
+		display: flex;
+		flex-direction: column;
+
+		justify-content: flex-start; /* align items in Main Axis */
+		align-items: stretch; /* align items in Cross Axis */
+		align-content: stretch; /* Extra space in Cross Axis */
+	}
+
+	.flexbox-item-grow {
+		flex: 1; /* same as flex: 1 1 auto; */
+	}
+
+	.fill-area {
+		display: flex;
+		flex-direction: row;
+
+		justify-content: flex-start; /* align items in Main Axis */
+		align-items: stretch; /* align items in Cross Axis */
+		align-content: stretch; /* Extra space in Cross Axis */
+	}
+	.fill-area-content {
+		/* Needed for when the area gets squished too far and there is content that can't be displayed */
+		overflow: auto;
+	}
+
+
+	.sorted_asc,
+	.sorted_desc {
+		position: relative;
+		padding-right: 20px;
+	}
+
+	.sorted_asc:after,
+	.sorted_desc:after {
+		right: 4px;
+		border: solid transparent;
+		content: " ";
+		width: 0; height: 0;
+		position: absolute;
+		border-width: 6px;
+	}
+
+	.sorted_desc:after {
+		top: 10px;
+		border-top-color: #000;
+	}
+
+	.sorted_asc:after {
+		top: 4px;
+		border-bottom-color: #000;
+	}

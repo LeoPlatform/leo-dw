@@ -1,0 +1,63 @@
+@alternate_row_background_color: #f9f9f9;
+.fixed_headers {
+	table-layout: fixed;
+	flex-direction: column;
+	display: flex;
+
+	tbody {
+		overflow: auto;
+		width: fit-content;
+		tr:nth-child(even) {
+			background-color: @alternate_row_background_color;
+		}
+	}
+}
+
+.sidebar {
+	&:hover {
+		background: white;
+		border-radius: 5px;
+		box-shadow: 0 0 1px black;
+		z-index: 30;
+		cursor: pointer;
+	}
+}
+
+.cancelQuery {
+	position: fixed;
+	left: 48%;
+	right: 52%;
+	width: 100px;
+	height: 30px;
+	z-index: 10000;
+}
+	@import '_normalize.less';
+
+	@import '_popups.less';
+
+		@import '_page-header.less';
+
+		/* @import '_common.less'; */
+		/* @import '_builder.less'; */
+
+			@import '_filters.less';
+
+		@import '_data-dictionary.less';
+		@import '_tree-structure.less';
+		@import 'table.less';
+		/* @import '_other-pages.less'; */
+		@import '_blocks.less';
+		@import '_basics.less';
+		@import 'fontello-load.less';
+		@import 'fontello-codes.less';
+		@import 'themes/default.less';
+
+	@import '_data-warehouse.less';
+
+	@import '_data-explorer.less';
+
+	@import '_leo.less';
+
+		/* @import 'table.less'; */
+
+	@import '_jqueryui.less';

@@ -1,0 +1,59 @@
+
+/* styles that are common to the power pivot  */
+
+
+.leo-style {
+
+	/* forms */
+
+	.form-row {
+		display: table-row;
+	}
+
+	.form-row > label {
+		display: table-cell;
+		text-align: right;
+		padding: .75em 5px 0;
+		vertical-align: top;
+		text-transform: capitalize;
+	}
+
+
+	.form-row > label + * {
+		display: table-cell;
+		margin: 4px 0;
+		vertical-align: middle;
+		padding-top: 4px;
+		padding-bottom: 4px;
+	}
+
+	.form-row > label + span {
+		margin: 5px;
+		padding: 2px 10px;
+		display: inline-block;
+		min-height: 1.9em;
+		line-height: 1.9em;
+	}
+
+	.form-row > label + input[type=checkbox],
+	.form-row > label + input[type=radio] {
+		margin: .8em;
+		height: 20px;
+	}
+
+	.form-row > select:first-child {
+		float: right;
+	}
+
+	.form-row label input[type=radio] ~ span {
+		padding: .6em 20px .6em .5em;
+		display: inline-block;
+	}
+
+	.form-row input[type=text].gray-out {
+		border-color: transparent;
+	}
+
+
+
+}

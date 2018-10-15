@@ -1,0 +1,27 @@
+<% var title = 'LeoInsights | Development' %>
+<% path = 'development' %>
+<% include partials/dochead %>
+<link rel="stylesheet" href="${leo.CustomCSS}" />
+
+<link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/cdnleo/leo-style.css" />
+<body>
+	<% include partials/header %>
+	<% //include partials/nav %>
+	<div id="main" class="content-wrapper">
+
+		<h1>Development Tools</h1>
+
+		<p></p>
+
+		<h2>API Keys</h2>
+
+		<div id="keys"></div>
+
+	</div>
+	<% //include partials/footer %>
+
+	<script src="${leo.static.uri}js/common.js"></script>
+	<script src="${leo.static.uri}js/apikeys.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "name": "dashboard",
+  "version": "1.0.0",
+  "description": "Allows for creation of Dashboards",
+  "main": "app.js",
+  "dependencies": {
+    "aws-sdk": "^2.4.9",
+    "event-emitter": "^0.3.3",
+    "handlebars": "^4.0.5",
+    "highcharts": "^4.2.1",
+    "lodash": "^3.10.1",
+    "lodash.assign": "^3.2.0",
+    "lodash.debounce": "^3.1.1",
+    "moment": "^2.17.1",
+    "numeral": "^1.5.3"
+  },
+  "scripts": {
+    "test": "mocha -w --compilers js:babel/register --recursive",
+    "watch": "gulp watch",
+    "build": "gulp",
+    "common": "gulp common",
+    "deploy": "gulp deploy",
+    "deploylive": "gulp deploylive"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}

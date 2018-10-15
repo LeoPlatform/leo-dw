@@ -1,0 +1,88 @@
+{
+  "name": "report_api",
+  "version": "1.0.0",
+  "description": "This is a sample ApiGateway Description",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "leo-cli test .",
+    "debug": "leo-cli test . -e prod -r us-east-1"
+  },
+  "config": {
+    "leo": {
+      "type": "resource",
+      "uri": "POST:/api/report",
+      "name": "Leo_DW_api_report_v2",
+      "handler": "handler",
+      "group": "api",
+      "secure": true,
+      "memory": 1536,
+      "cors": "*",
+      "timeout": 300,
+      "env": {
+        "Resources": {
+          "Fields": "${Fields}",
+          "Portals": "${Portals}",
+          "Dashboards": "${Dashboards}",
+          "Library": "${Library}",
+          "Shorturls": "${Shorturls}"
+        },
+        "RedshiftEndpoint": {
+          "Fn::If": [
+            "CreateRedshiftResources",
+            {
+              "Fn::Sub": "${Redshift.Endpoint.Address}:${Redshift.Endpoint.Port}/datawarehouse"
+            },
+            ""
+          ]
+        },
+        "AuroraEndpoint": {
+          "Fn::If": [
+            "CreateAuroraResources",
+            {
+              "Fn::Sub": "${AuroraInstance.Endpoint.Address}:${AuroraInstance.Endpoint.Port}/datawarehouse"
+            },
+            ""
+          ]
+        },
+        "AuroraType": "${AuroraType}",
+        "DBUsername": "${DBUsername}",
+        "DBPassword": "KMS:${EncryptedPassword.Value}",
+        "CustomDBEndpoint": "${CustomDBEndpoint}",
+        "CustomDBType": "${CustomDBType}"
+      },
+      "VpcConfig": {
+        "SecurityGroupIds": [
+          {
+            "Fn::Sub": "${Security}"
+          }
+        ],
+        "SubnetIds": [
+          {
+            "Fn::Sub": "${LambdaSubnetA}"
+          },
+          {
+            "Fn::Sub": "${LambdaSubnetB}"
+          },
+          {
+            "Fn::Sub": "${LambdaSubnetC}"
+          }
+        ]
+      },
+      "build": {
+        "include": [
+          "../../node_modules/pg",
+          "../../node_modules/pg-format"
+        ]
+      }
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "archiver": "^2.1.1"
+  }
+}

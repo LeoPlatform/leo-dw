@@ -1,0 +1,301 @@
+
+	/* @import 'table.less'; */
+
+
+	.leo-insights body,
+	body.leo-insights {
+		width: 100%; height: 100%; padding: 0; margin: 0;
+	}
+
+
+	@media (min-width: 1900px) {
+		.leo-insights > :first-child {
+			padding: 50px 75px 0;
+		}
+
+		.leo-insights > :not(:first-child):not(:last-child) {
+			padding: 0 75px;
+		}
+
+		.leo-insights > :last-child {
+			padding: 0 75px 50px;
+		}
+	}
+
+
+	@media (max-width: 1900px) {
+		.leo-insights > :first-child {
+			padding: 20px 30px 0;
+		}
+
+		.leo-insights > :not(:first-child):not(:last-child) {
+			padding: 0 30px;
+		}
+
+		.leo-insights > :last-child {
+			padding: 0 30px 10px;
+		}
+	}
+
+	.leo-insights {
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 14px;
+	}
+
+	.leo-insights .leo-logo {
+		clear: both;
+		text-align: center;
+	}
+	.leo-insights .leo-logo a {
+		display: inline-block;
+		margin: 0px auto;
+		vertical-align: middle;
+		color: black;
+		padding: 12px;
+		text-decoration: none;
+	}
+	.leo-insights .leo-logo a:hover {
+		text-decoration: underline;
+	}
+	.leo-insights .leo-logo img {
+		height: 30px;
+		vertical-align: middle;
+		display: inline-block;
+		margin: 5px;
+	}
+
+	/* generic */
+
+	.pull-left { float: left; }
+	.pull-center { margin-left: auto; margin-right: auto; }
+	.pull-right { float: right; }
+
+	.align-left { text-align: left; }
+	.align-center { text-align: center; }
+	.align-right { text-align: right; }
+
+	.clear-fix:after,
+	.clearfix:after {
+		content:'';
+		display:table;
+		clear:both;
+	}
+
+	.leo-clearboth,
+	.clear-both,
+	.clearboth {
+		clear: both;
+	}
+
+	[class^="leo-chart-"],
+	[class*=" leo-chart-"] {
+		display: inline-block;
+		box-sizing: border-box;
+		max-width: 100%;
+		box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
+		min-height: 100px;
+	}
+
+	@media (min-width: 550px) {
+		[class^="leo-chart-"],
+		[class*=" leo-chart-"] {
+			min-width: 250px;
+		}
+	}
+
+	@media (max-width: 550px) {
+		[class^="leo-chart-"],
+		[class*=" leo-chart-"] {
+			min-width: 100%;
+			width: 100%;
+		}
+	}
+
+
+	.leo-chart-1-1, .leo-chart-2-2, .leo-chart-3-3, .leo-chart-4-4, .leo-chart-5-5, .leo-chart-6-6 { width: 96%; }
+																					.leo-chart-6-7 { width: 82%; }
+																	.leo-chart-5-6 { width: 80%; }
+													.leo-chart-4-5 { width: 76.8%; }
+									.leo-chart-3-4, 								.leo-chart-6-8 { width: 72%; }
+																	.leo-chart-5-7 { width: 68.6%; }
+					.leo-chart-2-3, 				.leo-chart-4-6, 				.leo-chart-6-9 { width: 64%; }
+																	.leo-chart-5-8 { width: 60%; }
+									.leo-chart-3-5, 								.leo-chart-6-10 { width: 57.6%; }
+													.leo-chart-4-7 { width: 54.9%; }
+																	.leo-chart-5-9 { width: 53.3%; }
+	.leo-chart-1-2, .leo-chart-2-4, .leo-chart-3-6, .leo-chart-4-8, .leo-chart-5-10 { width: 48%; }
+													.leo-chart-4-9	{ width: 42.7%; }
+									.leo-chart-3-7	{ width: 41%; }
+									.leo-chart-3-8	{ width: 36%; }
+					.leo-chart-2-5,					.leo-chart-4-10 { width: 38.4%; }
+	.leo-chart-1-3, .leo-chart-2-6, .leo-chart-3-9 { width: 32%; }
+									.leo-chart-3-10	{ width: 28.8%; }
+					.leo-chart-2-7	{ width: 27%; }
+	.leo-chart-1-4, .leo-chart-2-8 { width: 24%; }
+					.leo-chart-2-9	{ width: 21%; }
+	.leo-chart-1-5, .leo-chart-2-10 { width: 19.2%; }
+	.leo-chart-1-6 { width: 16%; }
+	.leo-chart-1-7 { width: 13.7%; }
+	.leo-chart-1-8 { width: 12%; }
+	.leo-chart-1-9 { width: 10.7%; }
+	.leo-chart-1-10 { width: 9.6%; }
+
+
+	.leo-height-900 { min-height: 900px; }
+	.leo-height-850 { min-height: 850px; }
+	.leo-height-800 { min-height: 800px; }
+	.leo-height-750 { min-height: 750px; }
+	.leo-height-700 { min-height: 700px; }
+	.leo-height-650 { min-height: 650px; }
+	.leo-height-600 { min-height: 600px; }
+	.leo-height-550 { min-height: 550px; }
+	.leo-height-500 { min-height: 500px; }
+	.leo-height-450 { min-height: 450px; }
+
+	.leo-height-400 { max-height: 400px; }
+	.leo-height-350 { max-height: 350px; }
+	.leo-height-300 { max-height: 300px; }
+	.leo-height-250 { max-height: 250px; }
+	.leo-height-200 { max-height: 200px; }
+	.leo-height-150 { max-height: 150px; }
+	.leo-height-100 { max-height: 100px; }
+
+
+	.leo-padding-1 { padding: 1px; }
+	.leo-padding-2 { padding: 2px; }
+	.leo-padding-3 { padding: 3px; }
+	.leo-padding-4 { padding: 4px; }
+	.leo-padding-5 { padding: 5px; }
+	.leo-padding-6 { padding: 6px; }
+	.leo-padding-7 { padding: 7px; }
+	.leo-padding-8 { padding: 8px; }
+	.leo-padding-9 { padding: 9px; }
+	.leo-padding-10 { padding: 10px; }
+
+	.leo-shadow {
+		box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
+		margin-bottom: 10px;
+	}
+
+
+	.leo-insights input,
+	.leo-insights select,
+	.leo-insights .ui-autocomplete {
+		color: #555;
+		background-color: #fff;
+		background-image: none;
+		box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+
+		padding: 5px 8px;
+		border-radius: 5px;
+		border: 1px solid silver;
+		margin: 2px;
+	}
+
+	/* autocomplete */
+	.leo-insights .ui-autocomplete {
+		position: absolute;
+		top: 0;	left: 0;
+
+		list-style: none;
+		padding: 0;	margin: 0;
+		display: block;
+		outline: none;
+
+		position: absolute;
+		top: 0;	left: 0;
+		cursor: default;
+		max-height: 400px;
+		overflow: auto;
+
+		z-index: 100;
+	}
+
+	.ui-helper-hidden-accessible {
+		display: none;
+	}
+
+	.leo-insights .ui-autocomplete-category {
+		font-weight: bold;
+	}
+
+	.leo-insights .ui-menu-item {
+		padding: 3px 1em 3px .4em;
+		cursor: pointer;
+		font-weight: normal;
+	}
+
+	.leo-insights .ui-state-active,
+	.leo-insights .ui-state-hover,
+	.leo-insights .ui-state-focus {
+		background: rgba(248,248,248,.9);
+		color: black;
+	}
+
+	/* loading message */
+	.leo-insights .highcharts-loading,
+	.leo-insights [data-canned-report]:empty,
+	.leo-insights [data-table] tbody:empty {
+		font-weight: bold;
+		font-size: 24px;
+		font-family: sans-serif;
+		color: black;
+		text-shadow: 0 0 .5em white;
+	}
+
+	.leo-insights .highcharts-loading {
+		opacity: 1 !important; /* override highcharts css */
+		background-color: rgba(255,255,255,.6) !important; /* override highcharts css */
+	}
+	.leo-insights .highcharts-loading span { display: none;	}
+
+	.leo-insights [data-canned-report]:empty,
+	.leo-insights [data-table] tbody:empty {
+		position: relative;
+		height: 400px;
+	}
+
+	.leo-insights [data-table] tbody:empty {
+		display: table-cell;
+	}
+
+	.leo-insights .highcharts-loading:before,
+	.leo-insights [data-canned-report]:empty:before,
+	.leo-insights [data-table] tbody:empty:before {
+		content: '';
+		display: inline-block;
+		border-top: 12px solid rgba(64, 64, 64, 1);
+		border-right: 12px solid rgba(196, 196, 196, 1);
+		border-bottom: 12px solid rgba(196, 196, 196, 1);
+		border-left: 12px solid rgba(196, 196, 196, 1);
+		animation: rotate .8s infinite linear;
+		position: absolute;
+		left: 50%; top: 50%;
+		border-radius: 50%;
+		width: 50px;
+		height: 50px;
+		margin: -60px -37px;
+		z-index: 1;
+		box-shadow: 0 0 1px #888, inset 0 0 1px #888;
+	}
+	.leo-insights .highcharts-loading:after,
+	.leo-insights [data-canned-report]:empty:after,
+	.leo-insights [data-table] tbody:empty:after {
+		position: absolute;
+		text-align: center;
+		top: 50%; left: 0;
+		content: 'Please Wait... Loading';
+		display: block;
+		width: 100%;
+		margin: 1em 0;
+	}
+
+	@keyframes rotate {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(360deg); }
+	}
+
+	@-webkit-keyframes hue_shift {
+		0%, 100% { -webkit-filter: hue-rotate(0deg); }
+		50% { -webkit-filter: hue-rotate(180deg); }
+	}
