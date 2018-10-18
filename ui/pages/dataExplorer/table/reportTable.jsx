@@ -16,9 +16,9 @@ export default class ReportTable extends React.Component {
 	}
 
 	componentDidMount() {
-        $("#showRendering").hide();
-        $("#cancelQuery").hide()
-    }
+		$("#showRendering").hide();
+		$("#cancelQuery").hide()
+	}
 
 	render() {
 		let totals = [];
@@ -82,6 +82,11 @@ export default class ReportTable extends React.Component {
 		this.dataStore.report && this.dataStore.report.mapping && this.dataStore.report.mapping.map((row, i) => {
 			if (row.type === 'attribute') {
 				dimensions.push(row);
+			}
+			if (row.sort == undefined) {
+				row.sort = {
+					type: row.format
+				}
 			}
 		});
 
