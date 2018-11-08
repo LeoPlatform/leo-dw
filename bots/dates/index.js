@@ -10,7 +10,14 @@ exports.handler = require("leo-sdk/wrappers/cron")(async (event, context, callba
 	const moment = require("moment");
 
 	const connections = require("../../lib/connections");
-	let client = require("leo-connector-postgres/lib/dwconnect.js")(connections.getPostgres());
+	let primaryClientConfig = connections.getDefault();
+
+	let client;
+	if (primaryClientConfig.type === 'MySql') {
+		client = require("leo-connector-mysql/lib/dwconnect.js")(primaryClientConfig);
+	} else {
+		client = require("leo-connector-postgres/lib/dwconnect.js")(primaryClientConfig);
+	}
 
 	const FIELDS_TABLE = require("leo-config").Resources.Fields;
 
@@ -106,7 +113,7 @@ exports.handler = require("leo-sdk/wrappers/cron")(async (event, context, callba
 							if (!pass) {
 								s.once('drain', done);
 							} else {
-								done();
+								process.nextTick(() => done());
 							}
 						}, () => {
 							return start < end;
