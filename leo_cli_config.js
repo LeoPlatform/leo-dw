@@ -23,6 +23,7 @@ module.exports = merge({
             parameters: {
                 AddRedshift: 'yes',
                 AuroraType: 'None',
+                AuroraNodeType: 'db.r4.large',
                 CognitoId: 'YOUR_COGNITO_POOL_ID',
                 CustomDBEndpoint: '',
                 CustomDBType: 'None',

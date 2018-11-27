@@ -49,6 +49,20 @@ module.exports = {
             ],
             "ConstraintDescription": "must specify Postgres, MySql, or None."
         },
+        "AuroraNodeType": {
+            "Type": "String",
+            "Description": "Node type for Aurora (e.g., db.r4.large)",
+            "Default": "db.r4.large",
+            "AllowedValues": [
+                "db.r4.large",
+                "db.r4.xlarge",
+                "db.r4.2xlarge",
+                "db.r4.4xlarge",
+                "db.r4.8xlarge",
+                "db.r4.16xlarge"
+            ],
+            "ConstraintDescription": "must select valid Aurora node type (db.r4.large, db.r4.xlarge, db.r4.2xlarge, db.r4.4xlarge, db.r4.8xlarge, db.r4.16xlarge)"
+        },
         "AddRedshift": {
             "Description": "Include Redshift Cluster",
             "Default": "yes",

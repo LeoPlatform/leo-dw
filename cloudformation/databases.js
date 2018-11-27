@@ -123,7 +123,9 @@ module.exports = {
                 "DBClusterIdentifier": {
                     "Ref": "AuroraCluster"
                 },
-                "DBInstanceClass": "db.r4.large",
+                "DBInstanceClass": {
+                    "Ref": "AuroraNodeType"
+                },
                 "DBSubnetGroupName": {
                     "Ref": "AuroraSubnetGroup"
                 }
