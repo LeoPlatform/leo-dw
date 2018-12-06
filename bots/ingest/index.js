@@ -9,11 +9,18 @@ exports.handler = require("leo-sdk/wrappers/cron")(async (event, context, callba
 	const ls = leo.streams;
 	const load = require("leo-connector-common/datawarehouse/load.js");
 	const connections = require("../../lib/connections");
-	let client = require("leo-connector-postgres/lib/dwconnect.js")(connections.getPostgres());
 	var dynamodb = leo.aws.dynamodb;
 
 	let primaryClientConfig = connections.getDefault();
 	let redshiftClientConfig = connections.getRedshift();
+
+	let client;
+	if (primaryClientConfig.type === 'MySql') {
+		client = require("leo-connector-mysql/lib/dwconnect.js")(primaryClientConfig);
+	} else {
+		client = require("leo-connector-postgres/lib/dwconnect.js")(primaryClientConfig);
+	}
+
 	let redshiftVersion = redshiftClientConfig.version;
 	let primaryVersion = primaryClientConfig.version;
 	if (redshiftVersion == primaryVersion) {
@@ -37,7 +44,7 @@ exports.handler = require("leo-sdk/wrappers/cron")(async (event, context, callba
 		}
 	}
 
-	client.auditdate = client.escapeValueNoToLower(new Date().toISOString().replace(/\.\d*Z/, "Z"));
+	client.setAuditdate();
 	client.setSchemaCache(cache);
 	deleteTmpFiles();
 	context.callbackWaitsForEmptyEventLoop = false;
@@ -72,6 +79,7 @@ exports.handler = require("leo-sdk/wrappers/cron")(async (event, context, callba
 
 					let pipe = [
 						leo.read(ID, event.source, {
+							start: event.start,
 							limit: event.limit || 1000000,
 							stopTime: Date.now() + (1000 * (event.seconds || 60))
 						}),
