@@ -6,7 +6,9 @@ module.exports = {
             "Properties": {
                 "AllowVersionUpgrade": true,
                 "AutomatedSnapshotRetentionPeriod": 7,
-                "ClusterType": "single-node",
+                "ClusterType": {
+                    "Fn::If": ["RedshiftIsMultiNode", "multi-node", "single-node"]
+                },
                 "ClusterSubnetGroupName": {
                     "Ref": "RedshiftClusterSubnetGroup"
                 },
@@ -22,7 +24,20 @@ module.exports = {
                         "Fn::Sub": "${LoaderRole.Arn}"
                     }
                 ],
-                "NodeType": "dc2.large",
+                "NodeType": {
+                    "Ref": "RedshiftNodeType"
+                },
+                "NumberOfNodes": {
+                    "Fn::If": [
+                        "RedshiftIsMultiNode",
+                        {
+                            "Ref": "RedshiftNumberOfNodes"
+                        },
+                        {
+                            "Ref": "AWS::NoValue"
+                        }
+                    ]
+                },
                 "PubliclyAccessible": false,
                 "VpcSecurityGroupIds": [
                     {
@@ -108,7 +123,9 @@ module.exports = {
                 "DBClusterIdentifier": {
                     "Ref": "AuroraCluster"
                 },
-                "DBInstanceClass": "db.r4.large",
+                "DBInstanceClass": {
+                    "Ref": "AuroraNodeType"
+                },
                 "DBSubnetGroupName": {
                     "Ref": "AuroraSubnetGroup"
                 }
