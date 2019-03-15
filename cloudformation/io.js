@@ -127,6 +127,11 @@ module.exports = {
             ],
             "ConstraintDescription": "must select valid number of Redshift nodes (1-32)"
         },
+        "CidrBlockPrefix": {
+            "Description": "The prefix (first two octets) for the CIDR block for the VPC, subnets, and security groups (e.g., 10.172, 172.90, etc.)",
+            "Default": "10.172",
+            "Type": "String"
+        },
         "CustomDBEndpoint": {
             "Description": "Custom database endpoint",
             "Type": "String"

@@ -14,7 +14,9 @@ module.exports = {
         "VPC": {
             "Type": "AWS::EC2::VPC",
             "Properties": {
-                "CidrBlock": "10.172.0.0/16",
+                "CidrBlock": {
+                    "Fn::Sub": "${CidrBlockPrefix}.0.0/16"
+                },
                 "EnableDnsHostnames": true,
                 "Tags": [
                     {
@@ -81,7 +83,9 @@ module.exports = {
         "Subnet": {
             "Type": "AWS::EC2::Subnet",
             "Properties": {
-                "CidrBlock": "10.172.1.0/24",
+                "CidrBlock": {
+                    "Fn::Sub": "${CidrBlockPrefix}.1.0/24"
+                },
                 "AvailabilityZone": {
                     "Fn::Select": [
                         "0",
@@ -104,7 +108,9 @@ module.exports = {
         "Subnet2": {
             "Type": "AWS::EC2::Subnet",
             "Properties": {
-                "CidrBlock": "10.172.2.0/24",
+                "CidrBlock": {
+                    "Fn::Sub": "${CidrBlockPrefix}.2.0/24"
+                },
                 "AvailabilityZone": {
                     "Fn::Select": [
                         "1",
@@ -167,31 +173,41 @@ module.exports = {
                 "GroupDescription": "Leo DW security Group",
                 "SecurityGroupIngress": [
                     {
-                        "CidrIp": "10.172.0.0/16",
+                        "CidrIp": {
+                            "Fn::Sub": "${CidrBlockPrefix}.0.0/16"
+                        },
                         "FromPort": 5439,
                         "IpProtocol": "tcp",
                         "ToPort": 5439
                     },
                     {
-                        "CidrIp": "10.172.0.0/16",
+                        "CidrIp": {
+                            "Fn::Sub": "${CidrBlockPrefix}.0.0/16"
+                        },
                         "FromPort": 3306,
                         "IpProtocol": "tcp",
                         "ToPort": 3306
                     },
                     {
-                        "CidrIp": "10.172.0.0/16",
+                        "CidrIp": {
+                            "Fn::Sub": "${CidrBlockPrefix}.0.0/16"
+                        },
                         "FromPort": 5432,
                         "IpProtocol": "tcp",
                         "ToPort": 5432
                     },
                     {
-                        "CidrIp": "10.172.0.0/16",
+                        "CidrIp": {
+                            "Fn::Sub": "${CidrBlockPrefix}.0.0/16"
+                        },
                         "FromPort": 443,
                         "IpProtocol": "tcp",
                         "ToPort": 443
                     },
                     {
-                        "CidrIp": "10.172.0.0/16",
+                        "CidrIp": {
+                            "Fn::Sub": "${CidrBlockPrefix}.0.0/16"
+                        },
                         "FromPort": 80,
                         "IpProtocol": "tcp",
                         "ToPort": 80
@@ -211,7 +227,9 @@ module.exports = {
         "LambdaSubnetA": {
             "Type": "AWS::EC2::Subnet",
             "Properties": {
-                "CidrBlock": "10.172.101.0/24",
+                "CidrBlock": {
+                    "Fn::Sub": "${CidrBlockPrefix}.101.0/24"
+                },
                 "AvailabilityZone": {
                     "Fn::Select": [
                         "2",
@@ -245,7 +263,9 @@ module.exports = {
         "LambdaSubnetB": {
             "Type": "AWS::EC2::Subnet",
             "Properties": {
-                "CidrBlock": "10.172.102.0/24",
+                "CidrBlock": {
+                    "Fn::Sub": "${CidrBlockPrefix}.102.0/24"
+                },
                 "AvailabilityZone": {
                     "Fn::Select": [
                         "1",
@@ -279,7 +299,9 @@ module.exports = {
         "LambdaSubnetC": {
             "Type": "AWS::EC2::Subnet",
             "Properties": {
-                "CidrBlock": "10.172.103.0/24",
+                "CidrBlock": {
+                    "Fn::Sub": "${CidrBlockPrefix}.103.0/24"
+                },
                 "AvailabilityZone": {
                     "Fn::Select": [
                         "0",
