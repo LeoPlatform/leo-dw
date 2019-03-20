@@ -322,14 +322,14 @@ module.exports = {
                 }
             }
         },
-        "DBEncryptedPassword": {
+        "DBPassword": {
             "Description": "Database Encrypted Password",
             "Value": {
                 "Fn::Sub": "${EncryptedPassword.Value}"
             },
             "Export": {
                 "Name": {
-                    "Fn::Sub": "${AWS::StackName}-DBEncryptedPassword"
+                    "Fn::Sub": "${AWS::StackName}-DBPassword"
                 }
             }
         }
