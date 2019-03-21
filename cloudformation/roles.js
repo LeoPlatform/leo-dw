@@ -102,7 +102,8 @@ module.exports = {
                                     "Effect": "Allow",
                                     "Action": [
                                         "s3:GetObject",
-                                        "s3:ListBucket"
+                                        "s3:ListBucket",
+                                        "s3:PutObject"
                                     ],
                                     "Resource": {
                                         "Fn::Sub": [
