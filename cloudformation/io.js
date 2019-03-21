@@ -332,6 +332,17 @@ module.exports = {
                     "Fn::Sub": "${AWS::StackName}-DBPassword"
                 }
             }
+        },
+        "DwKmsKey": {
+            "Description": "DW KMS Key",
+            "Value": {
+                "Fn::Sub": "${DwKmsKey}"
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-DwKmsKey"
+                }
+            } 
         }
     }
 }
