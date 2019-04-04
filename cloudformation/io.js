@@ -127,6 +127,11 @@ module.exports = {
             ],
             "ConstraintDescription": "must select valid number of Redshift nodes (1-32)"
         },
+        "CidrBlockPrefix": {
+            "Description": "The prefix (first two octets) for the CIDR block for the VPC, subnets, and security groups (e.g., 10.172, 172.90, etc.)",
+            "Default": "10.172",
+            "Type": "String"
+        },
         "CustomDBEndpoint": {
             "Description": "Custom database endpoint",
             "Type": "String"
@@ -202,6 +207,142 @@ module.exports = {
                     "Fn::Sub": "${AWS::StackName}-Fields"
                 }
             }
+        },
+        "RedshiftAddress": {
+            "Description": "Redshift Endpoint Address",
+            "Value": {
+                "Fn::GetAtt": [
+                    "Redshift",
+                    "Endpoint.Address"
+                ]
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-RedshiftAddress"
+                }
+            }
+        },
+        "RedshiftPort": {
+            "Description": "Redshift Endpoint Port",
+            "Value": {
+                "Fn::GetAtt": [
+                    "Redshift",
+                    "Endpoint.Port"
+                ]
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-RedshiftPort"
+                }
+            }
+        },
+        "AuroraClusterAddress": {
+            "Description": "Aurora Cluster Endpoint Address",
+            "Value": {
+                "Fn::GetAtt": [
+                    "AuroraCluster",
+                    "Endpoint.Address"
+                ]
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-AuroraClusterAddress"
+                }
+            }
+        },
+        "AuroraClusterPort": {
+            "Description": "Aurora Cluster Endpoint Port",
+            "Value": {
+                "Fn::GetAtt": [
+                    "AuroraCluster",
+                    "Endpoint.Port"
+                ]
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-AuroraClusterPort"
+                }
+            }
+        },
+        "SecurityGroupId": {
+            "Description": "Security Group Id",
+            "Value": {
+                "Fn::GetAtt": [
+                    "Security",
+                    "GroupId"
+                ]
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-SecurityGroupId"
+                }
+            }
+        },
+        "LambdaSubnetA": {
+            "Description": "Lambda Subnet A",
+            "Value": {
+                "Fn::Sub": "${LambdaSubnetA}"
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-LambdaSubnetA"
+                }
+            }
+        },
+        "LambdaSubnetB": {
+            "Description": "Lambda Subnet B",
+            "Value": {
+                "Fn::Sub": "${LambdaSubnetB}"
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-LambdaSubnetB"
+                }
+            }
+        },
+        "LambdaSubnetC": {
+            "Description": "Lambda Subnet C",
+            "Value": {
+                "Fn::Sub": "${LambdaSubnetC}"
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-LambdaSubnetC"
+                }
+            }
+        },
+        "DBUsername": {
+            "Description": "Database Username",
+            "Value": {
+                "Fn::Sub": "${DBUsername}"
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-DBUsername"
+                }
+            }
+        },
+        "DBPassword": {
+            "Description": "Database Encrypted Password",
+            "Value": {
+                "Fn::Sub": "${EncryptedPassword.Value}"
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-DBPassword"
+                }
+            }
+        },
+        "DwKmsKey": {
+            "Description": "DW KMS Key",
+            "Value": {
+                "Fn::Sub": "${DwKmsKey}"
+            },
+            "Export": {
+                "Name": {
+                    "Fn::Sub": "${AWS::StackName}-DwKmsKey"
+                }
+            } 
         }
     }
 }
