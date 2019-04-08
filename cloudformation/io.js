@@ -325,7 +325,7 @@ module.exports = {
         "DBPassword": {
             "Description": "Database Encrypted Password",
             "Value": {
-                "Fn::Sub": "${EncryptedPassword.Value}"
+                "Fn::Sub": "KMS:${EncryptedPassword.Value}"
             },
             "Export": {
                 "Name": {
