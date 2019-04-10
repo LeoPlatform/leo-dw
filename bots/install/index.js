@@ -296,6 +296,7 @@ let util = {
 		}
 
 		kms.decrypt(value, function (err, data) {
+			console.log("kms.decrypt Plaintext?", data);
 			if (err) {
 				return done(err);
 			} else {
@@ -307,6 +308,7 @@ let util = {
 		let kms = new AWS.KMS({
 			region: config.Resources.Region,
 		});
+		console.log("encryptString value?", value);
 		if (typeof value == "string") {
 			value = {
 				KeyId: config.Resources.DwKmsKey,
