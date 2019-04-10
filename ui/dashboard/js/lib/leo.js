@@ -19,8 +19,8 @@ numeral.language('en-gb', {
 		var b = number % 10;
 		return (~~ (number % 100 / 10) === 1) ? 'th' :
 			(b === 1) ? 'st' :
-			(b === 2) ? 'nd' :
-			(b === 3) ? 'rd' : 'th';
+				(b === 2) ? 'nd' :
+					(b === 3) ? 'rd' : 'th';
 	},
 	currency: {
 		symbol: '£'
@@ -30,7 +30,7 @@ numeral.language('en-gb', {
 
 module.exports = {
 	moment: require("moment"),
-    parse_date: require("../../../../lib/utils/parse_date.js"),
+	parse_date: require("../../../../lib/utils/parse_date.js"),
 	numeral: require("numeral"),
 
 	setLocale: function(locale) {

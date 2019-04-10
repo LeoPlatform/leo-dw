@@ -22,17 +22,17 @@ module.exports = function (element, chart, options, my) {
 	my = my || {};
 
 	if (chart.dimensions && chart.dimensions.length > 1) {
-		chart.dimensions = [chart.dimensions[0]]
+		chart.dimensions = [chart.dimensions[0]];
 	}
 
 	if (window.parent.dashboardFilters) {
 		chart.filters = chart.filters.concat(
 			window.parent.dashboardFilters.filter((dashboardFilter) => {
 				return !chart.filters.some((filter) => {
-					return dashboardFilter.id == filter.id
-				})
+					return dashboardFilter.id == filter.id;
+				});
 			})
-		)
+		);
 	}
 
 	var that = base(element, chart, options, my),
@@ -42,8 +42,8 @@ module.exports = function (element, chart, options, my) {
 	that.init = function() {
 
 		chart.startDownload = function() {
-			DataAction.downloadData("export", null, my.dataSources[0])
-		}
+			DataAction.downloadData("export", null, my.dataSources[0]);
+		};
 
 		highcharts = $.extend(true, {}, {
 			chart: {
@@ -88,8 +88,8 @@ module.exports = function (element, chart, options, my) {
 									element.trigger("leo-chart-click", [e.chartX, e.chartY, this.series.chart.plotBox, this.series.chart.spacing, this.series.chart.margin]);
 								} else {
 
-									var details = options.details || {}
-									var headingHTML = details.title || ''
+									var details = options.details || {};
+									var headingHTML = details.title || '';
 
 									if (details.tableView) {
 
@@ -115,7 +115,7 @@ module.exports = function (element, chart, options, my) {
 											checkboxes[value] = (value == dataValue);
 										}
 
-										headingHTML += '<a class="leo-addFilter icon-filter" title="filter by" data-id="'+details.addFilter.data.id+'" data-value="'+details.addFilter.data.value+'" data-checkboxes="'+encodeURIComponent(JSON.stringify(checkboxes))+'" data-comparison="'+details.addFilter.data.comparison+'" data-label="'+details.addFilter.data.label+'"></a>'
+										headingHTML += '<a class="leo-addFilter icon-filter" title="filter by" data-id="'+details.addFilter.data.id+'" data-value="'+details.addFilter.data.value+'" data-checkboxes="'+encodeURIComponent(JSON.stringify(checkboxes))+'" data-comparison="'+details.addFilter.data.comparison+'" data-label="'+details.addFilter.data.label+'"></a>';
 									}
 
 									chartDetails.htmlExpand(null, {
@@ -157,7 +157,7 @@ module.exports = function (element, chart, options, my) {
 			}
 		}, that.highcharts);
 
-	}
+	};
 
 	that.init();
 
@@ -165,7 +165,7 @@ module.exports = function (element, chart, options, my) {
 		element.highcharts(highcharts);
 		my.chart = element.highcharts();
 		my.chart.showLoading();
-	}
+	};
 
 	that.build();
 
@@ -198,7 +198,7 @@ module.exports = function (element, chart, options, my) {
 						} else {
 							data.visible = false;
 						}
-//            			series.update({data: data});
+						//            			series.update({data: data});
 						break;
 					}
 				}
@@ -217,34 +217,34 @@ module.exports = function (element, chart, options, my) {
 
 	that.reflow = function() {
 		my.chart.reflow();
-	}
+	};
 
 
 	my.redraw = function() {
 
 		if (my.dataSources.length > 0) {
 			if (!('leo' in window)) {
-				window.leo = {}
+				window.leo = {};
 			}
 			window.leo = $.extend(true, window.leo, {
 				charts: {
 					colors: {}
 				}
-			})
+			});
 
 			Object.keys(my.dataSources[0].columns || {}).forEach((columnId) => {
-				var column = my.dataSources[0].columns[columnId]
+				var column = my.dataSources[0].columns[columnId];
 				if (column.color && typeof column.color == 'object') {
-					window.leo.charts.colors = $.extend(window.leo.charts.colors, column.color)
+					window.leo.charts.colors = $.extend(window.leo.charts.colors, column.color);
 				}
-			})
+			});
 
 			if (window.leo.defaultColors) {
-				OptionActions.setDefaultColors('default', window.leo.defaultColors)
+				OptionActions.setDefaultColors('default', window.leo.defaultColors);
 			}
 
 			for(var color in window.leo.charts.colors) {
-				OptionActions.setColor('default', color, window.leo.charts.colors[color])
+				OptionActions.setColor('default', color, window.leo.charts.colors[color]);
 			}
 		}
 
@@ -295,7 +295,7 @@ module.exports = function (element, chart, options, my) {
 
 		//update tooltip
 		if (that.advanced && that.advanced.tooltip) {
-			$.extend(chart.tooltip, that.advanced.tooltip)
+			$.extend(chart.tooltip, that.advanced.tooltip);
 		}
 
 		//draw each metric as it's own series
@@ -312,59 +312,59 @@ module.exports = function (element, chart, options, my) {
 		that.metrics.forEach((metric, i) => {
 
 			if (metric.highcharts && metric.highcharts.yAxis && !(metric.highcharts.yAxis in chart.yAxis)) {
-				chart.addAxis({ opposite:true }, false, false)
+				chart.addAxis({ opposite:true }, false, false);
 			}
 
-			var metricData = my.getMetric(i)
+			var metricData = my.getMetric(i);
 
 			if (metricData.rows && metricData.rows.length) {
-				var yAxisIndex = (metric.highcharts && metric.highcharts.yAxis ? metric.highcharts.yAxis : 0)
+				var yAxisIndex = (metric.highcharts && metric.highcharts.yAxis ? metric.highcharts.yAxis : 0);
 				if (chart.yAxis && chart.yAxis[yAxisIndex]) {
-					chart.yAxis[yAxisIndex].setTitle({text: metricData.columns[metric.id].label})
+					chart.yAxis[yAxisIndex].setTitle({text: metricData.columns[metric.id].label});
 					if (metric.id.indexOf('|percent') != -1) {
-						chart.yAxis[yAxisIndex].update({ labels: { format: '{value} %' }}, false)
+						chart.yAxis[yAxisIndex].update({ labels: { format: '{value} %' }}, false);
 					} else {
-						chart.yAxis[yAxisIndex].update({ labels: { format: null }}, false)
+						chart.yAxis[yAxisIndex].update({ labels: { format: null }}, false);
 					}
 				}
 
-				var partitionSort = (metric.highcharts && metric.highcharts.sort ? metric.highcharts.sort : { column: 0, direction: 'asc' })
+				var partitionSort = (metric.highcharts && metric.highcharts.sort ? metric.highcharts.sort : { column: 0, direction: 'asc' });
 
 				if (metric.highcharts) {
-					delete metric.highcharts.sort
+					delete metric.highcharts.sort;
 				}
 
-				var xAxisColumn = metricData.columns[metricData.mapping[0].id]
-				var totals = {}
+				var xAxisColumn = metricData.columns[metricData.mapping[0].id];
+				var totals = {};
 				if ((chart.xAxis[0].options.type != 'category') && !(metric.highcharts && metric.highcharts.type === "pie") && dateSerie.isDate(xAxisColumn)) {
-					var series = dateSerie.create(metric, metricData, chart, my.dashboardOptions, that.metrics[i].highcharts, totals)
+					var series = dateSerie.create(metric, metricData, chart, my.dashboardOptions, that.metrics[i].highcharts, totals);
 				} else {
 					if (i === 0) {
 						chart.xAxis[0].setCategories(metricData.rows.map(function(e) {
-							return e[0]
+							return e[0];
 						}));
 					}
-					var series = categorySerie.create(metric, metricData, chart, my.dashboardOptions, that.metrics[i].highcharts, totals)
+					var series = categorySerie.create(metric, metricData, chart, my.dashboardOptions, that.metrics[i].highcharts, totals);
 				}
 
 				//sort partitions
 				if (partitionSort.column == 1) {
 					series.sort(function(a, b) {
-						return totals[a.name] - totals[b.name]
-					})
+						return totals[a.name] - totals[b.name];
+					});
 				} else {
 					//assuming already sorted by label
 				}
 
 				if (partitionSort.direction == 'desc') {
-					series.reverse()
+					series.reverse();
 				}
 
 				series.forEach(function(serie) {
-					chart.addSeries(serie, false)
-				})
+					chart.addSeries(serie, false);
+				});
 			}
-		})
+		});
 
 		//Get rid of any serie that should no longer be there
 		var removeSeries =[];

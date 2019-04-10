@@ -76,64 +76,64 @@ module.exports = require("../react/flux/store.js")(function (my,dispatcher) {
 
 	this.watchGraph = (graph, onUpdate) => {
 		if (graph.requireControl) {
-			var hasControl = false
+			var hasControl = false;
 			for(var i=0;i<graph.filters.length;i++) {
 				if (graph.filters[i].fromController) {
-					hasControl = true
-					break
+					hasControl = true;
+					break;
 				}
 			}
 			if (!hasControl) {
-				graph.showNeedsFilter()
+				graph.showNeedsFilter();
 				return {
 					id: graph.id,
 					refresh: () => {},
 					stop: () => {}
-				}
+				};
 			} else {
-				graph.hideNeedsFilter()
+				graph.hideNeedsFilter();
 			}
 		}
 
-		graph.id = sourceId++
-		graphs.push(graph)
+		graph.id = sourceId++;
+		graphs.push(graph);
 		if (!graph.refreshInterval) {
-			graph.refreshInterval = {minutes: 5}
+			graph.refreshInterval = {minutes: 5};
 		}
 
-		var watchIds = parseGraph(graph)
+		var watchIds = parseGraph(graph);
 
-		var newSources = {}
+		var newSources = {};
 
 		for(var d in graphSources) {
 			if(graphSources[d] !== graph.id) {
-				newSources[d] = graphSources[d]
+				newSources[d] = graphSources[d];
 			}
 		}
 
 		watchIds.forEach(function(id) {
-			newSources[id] = graph.id
-		})
+			newSources[id] = graph.id;
+		});
 
-		graphSources = newSources
+		graphSources = newSources;
 
 		var hasData = function() {
-			var hasAllData = true
+			var hasAllData = true;
 			watchIds.forEach(function(watching, i) {
 				if (!(watching in datas) || datas[watching].timestamp < dataSources[watching].lastLoadRequest) {
-					hasAllData = false
+					hasAllData = false;
 				}
-			})
+			});
 
 			if (hasAllData) {
-				var data = []
+				var data = [];
 				watchIds.forEach(function(watching, i) {
-					data.push(datas[watching].data)
-				})
-				my.emit("loaded", graph.id)
-				onUpdate(data)
+					data.push(datas[watching].data);
+				});
+				my.emit("loaded", graph.id);
+				onUpdate(data);
 			}
-		}
+		};
 
 		watchIds.forEach(function(watching, i) {
 			my.on(graph.id, watching, function(data, other) {
@@ -141,34 +141,34 @@ module.exports = require("../react/flux/store.js")(function (my,dispatcher) {
 					timestamp: new Date(),
 					data: data
 				};
-				hasData()
-			})
-		})
+				hasData();
+			});
+		});
 
-		hasData()
+		hasData();
 
 		return {
 			id: graph.id,
 			refresh: function() {
 				watchIds.forEach(function(watching, i) {
-					repeaters[watching].start()
-				})
+					repeaters[watching].start();
+				});
 			},
 			stop: () => {
 				for(var i = graphs.length-1; i >= 0; i--) {
-					var g = graphs[i]
+					var g = graphs[i];
 					if (g.id === graph.id) {
-						graphs.splice(i, 1)
+						graphs.splice(i, 1);
 					}
 				}
-				pruneDataSources()
-				my.off(graph.id)
+				pruneDataSources();
+				my.off(graph.id);
 			}
-		}
+		};
 
-	}
+	};
 
-})
+});
 
 
 function parseField(field) {
@@ -208,7 +208,7 @@ function parseGraph(graph) {
 
 	var groups = [];
 	if (!graph.columns || graph.columns.length === 0) {
-		graph.columns = graph.dimensions || []
+		graph.columns = graph.dimensions || [];
 	}
 	for(i = 0; i < graph.columns.length; i++) {
 		groups.push(graph.columns[i]);
@@ -230,25 +230,25 @@ function parseGraph(graph) {
 	}
 
 	if ((!graph.metrics || graph.metrics.length === 0) && graph.series) {
-		var metrics = []
+		var metrics = [];
 		graph.series.forEach(function(serie) {
 			serie.metrics.forEach(function(metric) {
 				metrics.push({
 					id: metric.id,
 					highcharts: serie.highcharts || { type: serie.type }
-				})
-			})
-		})
-		graph.metrics = metrics
+				});
+			});
+		});
+		graph.metrics = metrics;
 	}
 
 	for(i =0; i < graph.metrics.length; i++) {
 		let metric = graph.metrics[i];
 		if (typeof metric == 'string') {
-			metric = { id: metric }
+			metric = { id: metric };
 		} else if (metric.field) {
-			metric.id = metric.field
-			delete metric.field
+			metric.id = metric.field;
+			delete metric.field;
 		}
 
 		//Determine which Groups are needed
@@ -288,7 +288,7 @@ function parseGraph(graph) {
 
 		//Determine which metrics are needed
 		let metrics = [];
-		metrics.push(metric.id || metric.field)
+		metrics.push(metric.id || metric.field);
 
 		//Parse the tooltip
 		if (metric.tooltip) {

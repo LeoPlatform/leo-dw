@@ -48,11 +48,11 @@ module.exports = {
 						"Ref": "Security"
 					}],
 					"SubnetIds": [{
-							"Ref": "Subnet"
-						},
-						{
-							"Ref": "Subnet2"
-						}
+						"Ref": "Subnet"
+					},
+					{
+						"Ref": "Subnet2"
+					}
 					]
 				},
 				"Version": "1.0"
@@ -76,11 +76,11 @@ module.exports = {
 						"Ref": "Security"
 					}],
 					"SubnetIds": [{
-							"Ref": "Subnet"
-						},
-						{
-							"Ref": "Subnet2"
-						}
+						"Ref": "Subnet"
+					},
+					{
+						"Ref": "Subnet2"
+					}
 					]
 				},
 				"Version": "1.1"
@@ -98,74 +98,74 @@ module.exports = {
 				"KeyPolicy": {
 					"Version": "2012-10-17",
 					"Statement": [{
-							"Sid": "Enable IAM User Permissions",
-							"Effect": "Allow",
-							"Principal": {
-								"AWS": {
-									"Fn::Sub": "arn:aws:iam::${AWS::AccountId}:root"
-								}
-							},
-							"Action": "kms:*",
-							"Resource": "*"
+						"Sid": "Enable IAM User Permissions",
+						"Effect": "Allow",
+						"Principal": {
+							"AWS": {
+								"Fn::Sub": "arn:aws:iam::${AWS::AccountId}:root"
+							}
 						},
-						{
-							"Sid": "Allow access for Key Administrators",
-							"Effect": "Allow",
-							"Principal": {
-								"AWS": {
-									"Fn::Sub": "arn:aws:iam::${AWS::AccountId}:root"
-								}
-							},
-							"Action": [
-								"kms:*"
-							],
-							"Resource": "*"
+						"Action": "kms:*",
+						"Resource": "*"
+					},
+					{
+						"Sid": "Allow access for Key Administrators",
+						"Effect": "Allow",
+						"Principal": {
+							"AWS": {
+								"Fn::Sub": "arn:aws:iam::${AWS::AccountId}:root"
+							}
 						},
-						{
-							"Sid": "Allow use of the key",
-							"Effect": "Allow",
-							"Principal": {
-								"AWS": [{
-										"Fn::Sub": "${ApiRole.Arn}"
-									},
-									{
-										"Fn::Sub": "${LoaderRole.Arn}"
-									}
-								]
+						"Action": [
+							"kms:*"
+						],
+						"Resource": "*"
+					},
+					{
+						"Sid": "Allow use of the key",
+						"Effect": "Allow",
+						"Principal": {
+							"AWS": [{
+								"Fn::Sub": "${ApiRole.Arn}"
 							},
-							"Action": [
-								"kms:Encrypt",
-								"kms:Decrypt",
-								"kms:ReEncrypt*",
-								"kms:GenerateDataKey*",
-								"kms:DescribeKey"
-							],
-							"Resource": "*"
+							{
+								"Fn::Sub": "${LoaderRole.Arn}"
+							}
+							]
 						},
-						{
-							"Sid": "Allow attachment of persistent resources",
-							"Effect": "Allow",
-							"Principal": {
-								"AWS": [{
-										"Fn::Sub": "${ApiRole.Arn}"
-									},
-									{
-										"Fn::Sub": "${LoaderRole.Arn}"
-									}
-								]
+						"Action": [
+							"kms:Encrypt",
+							"kms:Decrypt",
+							"kms:ReEncrypt*",
+							"kms:GenerateDataKey*",
+							"kms:DescribeKey"
+						],
+						"Resource": "*"
+					},
+					{
+						"Sid": "Allow attachment of persistent resources",
+						"Effect": "Allow",
+						"Principal": {
+							"AWS": [{
+								"Fn::Sub": "${ApiRole.Arn}"
 							},
-							"Action": [
-								"kms:CreateGrant",
-								"kms:ListGrants",
-								"kms:RevokeGrant"
-							],
-							"Resource": "*",
-							"Condition": {
-								"Bool": {
-									"kms:GrantIsForAWSResource": "true"
-								}
+							{
+								"Fn::Sub": "${LoaderRole.Arn}"
+							}
+							]
+						},
+						"Action": [
+							"kms:CreateGrant",
+							"kms:ListGrants",
+							"kms:RevokeGrant"
+						],
+						"Resource": "*",
+						"Condition": {
+							"Bool": {
+								"kms:GrantIsForAWSResource": "true"
 							}
 						}
+					}
 					]
 				}
 			}
@@ -182,4 +182,4 @@ module.exports = {
 			}
 		}
 	}
-}
+};
