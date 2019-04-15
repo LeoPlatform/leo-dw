@@ -155,13 +155,13 @@ var FieldsStore = assign({}, EventEmitter.prototype, {
 					var attribute = attributes[j];
 					var passed = contains.every(function(value) {
 						return (((attribute.parent.id || dimension.id) + '.' + attribute.id + ' ' + (attribute.parent.label || dimension.label) + ' ' + attribute.label + (attribute.description ? ' ' + attribute.description : '')).toLowerCase().indexOf(value.toLowerCase()) != -1);
-					})
+					});
 					if (passed) {
 						if (!attribute.parent) {
 							attribute.parent = {
 								id: dimension.id,
 								label: dimension.label
-							}
+							};
 						}
 
 						if (
@@ -183,7 +183,7 @@ var FieldsStore = assign({}, EventEmitter.prototype, {
 									((attribute.parent.label || dimension.label).toLowerCase().indexOf(value.toLowerCase()) != -1)
 									&& (attribute.label.toLowerCase().indexOf(value.toLowerCase()) != -1)
 								);
-							})
+							});
 
 							if (preferred) {
 								preferredColumns.push(attribute);
@@ -203,7 +203,7 @@ var FieldsStore = assign({}, EventEmitter.prototype, {
 				if (dimension.id && (dimension.id.indexOf('d_date') !== -1)) {
 					var passed = contains.every(function(value) {
 						return (dimension.label.toLowerCase().indexOf(value.toLowerCase()) != -1);
-					})
+					});
 					if (passed) {
 						foundColumns.push({ id:dimension.id, label:dimension.label, type: 'dimension' });
 					}
@@ -214,7 +214,7 @@ var FieldsStore = assign({}, EventEmitter.prototype, {
 						if (outrigger.id && (outrigger.id.indexOf('d_date') !== -1)) {
 							var passed = contains.every(function(value) {
 								return (outrigger.label.toLowerCase().indexOf(value.toLowerCase()) != -1);
-							})
+							});
 							if (passed) {
 								foundColumns.push({ id:outrigger.id, label:outrigger.label, type: 'dimension' });
 							}
@@ -248,13 +248,13 @@ var FieldsStore = assign({}, EventEmitter.prototype, {
 					var metric = metrics[j];
 					var passed = contains.every(function(value) {
 						return ((fact.id + '.' + metric.id + ' ' + fact.label + ' ' + metric.label + (metric.description ? ' ' + metric.description : '')).toLowerCase().indexOf(value.toLowerCase()) != -1);
-					})
+					});
 					if (passed && metric.type == 'metric') {
 						if (!metric.parent) {
 							metric.parent = {
 								id: fact.id,
 								label: fact.label
-							}
+							};
 						}
 						if (table == metric.parent.id) {
 							preferredColumns.push(metric); //will never happen, but oh well
@@ -264,7 +264,7 @@ var FieldsStore = assign({}, EventEmitter.prototype, {
 									(fact.label.toLowerCase().indexOf(value.toLowerCase()) != -1)
 									&& (metric.label.toLowerCase().indexOf(value.toLowerCase()) != -1)
 								);
-							})
+							});
 							if (preferred) {
 								preferredColumns.push(metric);
 							} else {
@@ -282,7 +282,7 @@ var FieldsStore = assign({}, EventEmitter.prototype, {
 
 				var passed = contains.every(function(value) {
 					return (fact.label.toLowerCase().indexOf(value.toLowerCase()) != -1);
-				})
+				});
 				if (passed) {
 					foundColumns.push({ id:fact.id, label:fact.label, type: 'fact' });
 				}
@@ -299,182 +299,182 @@ FieldsStore.dispatchToken = LeoDispatcher.register(function(payload) {
 	var isVirtual = false;
 	var action = payload.action;
 	switch(action.type) {
-		case ActionTypes.INIT_FIELDS:
-			initFields(action.result);
+	case ActionTypes.INIT_FIELDS:
+		initFields(action.result);
+		FieldsStore.emitChange();
+		break;
+
+	case ActionTypes.FIND_QUICK_MATCHES:
+		findQuickMatches(action.term);
+		FieldsStore.emitChange();
+		break;
+
+	case ActionTypes.FIND_COMMON_DIMENSIONS:
+		var old = JSON.stringify(_commonDimensions);
+		findCommonDimensions(action.metrics);
+		if (old != JSON.stringify(_commonDimensions)) {
 			FieldsStore.emitChange();
+		}
 		break;
 
-		case ActionTypes.FIND_QUICK_MATCHES:
-			findQuickMatches(action.term);
+	case ActionTypes.FIND_COMMON_FACTS:
+		var old = JSON.stringify(_commonFacts);
+		findCommonFacts(action.dims);
+		if (old != JSON.stringify(_commonFacts)) {
 			FieldsStore.emitChange();
+		}
 		break;
 
-		case ActionTypes.FIND_COMMON_DIMENSIONS:
-			var old = JSON.stringify(_commonDimensions);
-			findCommonDimensions(action.metrics);
-			if (old != JSON.stringify(_commonDimensions)) {
-				FieldsStore.emitChange();
-			}
-		break;
+	case ActionTypes.MODIFY_FIELD:
 
-		case ActionTypes.FIND_COMMON_FACTS:
-			var old = JSON.stringify(_commonFacts);
-			findCommonFacts(action.dims);
-			if (old != JSON.stringify(_commonFacts)) {
-				FieldsStore.emitChange();
-			}
-		break;
+		var values = action.put;
 
-		case ActionTypes.MODIFY_FIELD:
-
-			var values = action.put;
-
-			switch(action.fieldType) {
-				case 'fact':
-					var facts = _facts;
-					for(var i=0; i<facts.length; i++) {
-						var fact = facts[i];
-						if (fact.id == values.id) {
-							fact.label = values.label;
-							fact.description = values.description;
-						}
-						facts[i] = fact;
-					}
-					_facts = facts;
-				break;
-
-				case 'metric':
-					var facts = _facts;
-					for(var i=0; i<facts.length; i++) {
-						var fact = facts[i];
-						for(var j=0; j<fact.metrics.length; j++) {
-							var metric = fact.metrics[j];
-							if (metric.id == values.id) {
-								metric.label = values.label;
-								metric.description = values.description;
-								metric.format = values.format;
-								fact.metrics[j] = metric;
-							}
-						}
-						facts[i] = fact;
-					}
-					_facts = facts;
-				break;
-
-				case 'dimension':
-					var dimensions = _dimensions;
-					for(var i=0; i<dimensions.length; i++) {
-						var dimension = dimensions[i];
-						if (dimension.id == values.id) {
-							dimension.label = values.label
-							dimension.description = values.description
-							dimension.format = values.format
-							dimension.sort = values.sort || ''
-							dimension.color = values.color || undefined
-						}
-						for(var j=0; j<dimension.attributes.length; j++) {
-							var attribute = dimension.attributes[j];
-							if (attribute.id == values.id) {
-								attribute.label = values.label || ''
-								attribute.description = values.description || ''
-								attribute.format = values.format || ''
-								attribute.sort = values.sort || ''
-								attribute.color = values.color || undefined
-								dimension.attributes[j] = attribute
-							}
-						}
-						dimensions[i] = dimension;
-					}
-					_dimensions = dimensions
-				break;
-			}
-			//ReportActions.repivot();
-			FieldsStore.emitChange();
-		break;
-
-
-		case ActionTypes.ADD_FIELD:
-
-			var calcs = action.put;
-			var type = action.fieldType;
-
-			delete(calcs.apikey);
-			delete(calcs.uid);
-
-			switch(type) {
-				default:
-				case 'metric':
-					var facts = _facts;
-					for(var i=0; i<facts.length; i++) {
-						var fact = facts[i];
-						for(var id in calcs) {
-							if (id == fact.id) {
-								var virtual = calcs[id].put;
-								fact.metrics.push(virtual);
-								isVirtual = true;
-							}
-						}
-						facts[i] = fact;
-					}
-					_facts = facts;
-
-				break;
-
-				case 'dimension':
-					var dimensions = _dimensions;
-					dimensions = dimensions.map(function(dimension) {
-						for(var id in calcs) {
-							if (id.split('.')[0] == dimension.id) {
-								dimension.attributes.push(calcs[id].put);
-							}
-						}
-						return dimension
-					})
-					_dimensions = dimensions;
-
-				break;
-			}
-
-			FieldsStore.emitChange();
-		break;
-
-
-		case ActionTypes.DELETE_FIELD:
-
-			var id = action.id;
-
+		switch(action.fieldType) {
+		case 'fact':
 			var facts = _facts;
 			for(var i=0; i<facts.length; i++) {
 				var fact = facts[i];
-				fact.metrics = fact.metrics.filter(function(metric) {
-					if (metric.id == id) {
-						return false;
-					} else if (metric.calculations) {
-						metric.calculations = metric.calculations.filter(function(calculation) {
-							if (calculation.id == id) {
-								return false;
-							}
-							return true;
-						})
-					}
-					return true;
-				});
+				if (fact.id == values.id) {
+					fact.label = values.label;
+					fact.description = values.description;
+				}
+				facts[i] = fact;
 			}
+			_facts = facts;
+			break;
 
+		case 'metric':
+			var facts = _facts;
+			for(var i=0; i<facts.length; i++) {
+				var fact = facts[i];
+				for(var j=0; j<fact.metrics.length; j++) {
+					var metric = fact.metrics[j];
+					if (metric.id == values.id) {
+						metric.label = values.label;
+						metric.description = values.description;
+						metric.format = values.format;
+						fact.metrics[j] = metric;
+					}
+				}
+				facts[i] = fact;
+			}
+			_facts = facts;
+			break;
+
+		case 'dimension':
+			var dimensions = _dimensions;
+			for(var i=0; i<dimensions.length; i++) {
+				var dimension = dimensions[i];
+				if (dimension.id == values.id) {
+					dimension.label = values.label;
+					dimension.description = values.description;
+					dimension.format = values.format;
+					dimension.sort = values.sort || '';
+					dimension.color = values.color || undefined;
+				}
+				for(var j=0; j<dimension.attributes.length; j++) {
+					var attribute = dimension.attributes[j];
+					if (attribute.id == values.id) {
+						attribute.label = values.label || '';
+						attribute.description = values.description || '';
+						attribute.format = values.format || '';
+						attribute.sort = values.sort || '';
+						attribute.color = values.color || undefined;
+						dimension.attributes[j] = attribute;
+					}
+				}
+				dimensions[i] = dimension;
+			}
+			_dimensions = dimensions;
+			break;
+		}
+		//ReportActions.repivot();
+		FieldsStore.emitChange();
+		break;
+
+
+	case ActionTypes.ADD_FIELD:
+
+		var calcs = action.put;
+		var type = action.fieldType;
+
+		delete(calcs.apikey);
+		delete(calcs.uid);
+
+		switch(type) {
+		default:
+		case 'metric':
+			var facts = _facts;
+			for(var i=0; i<facts.length; i++) {
+				var fact = facts[i];
+				for(var id in calcs) {
+					if (id == fact.id) {
+						var virtual = calcs[id].put;
+						fact.metrics.push(virtual);
+						isVirtual = true;
+					}
+				}
+				facts[i] = fact;
+			}
+			_facts = facts;
+
+			break;
+
+		case 'dimension':
 			var dimensions = _dimensions;
 			dimensions = dimensions.map(function(dimension) {
-				dimension.attributes = dimension.attributes.filter(function(attribute) {
-					return (attribute.id != id);
-				})
+				for(var id in calcs) {
+					if (id.split('.')[0] == dimension.id) {
+						dimension.attributes.push(calcs[id].put);
+					}
+				}
 				return dimension;
-			})
+			});
+			_dimensions = dimensions;
 
-			FieldsStore.emitChange();
+			break;
+		}
+
+		FieldsStore.emitChange();
+		break;
+
+
+	case ActionTypes.DELETE_FIELD:
+
+		var id = action.id;
+
+		var facts = _facts;
+		for(var i=0; i<facts.length; i++) {
+			var fact = facts[i];
+			fact.metrics = fact.metrics.filter(function(metric) {
+				if (metric.id == id) {
+					return false;
+				} else if (metric.calculations) {
+					metric.calculations = metric.calculations.filter(function(calculation) {
+						if (calculation.id == id) {
+							return false;
+						}
+						return true;
+					});
+				}
+				return true;
+			});
+		}
+
+		var dimensions = _dimensions;
+		dimensions = dimensions.map(function(dimension) {
+			dimension.attributes = dimension.attributes.filter(function(attribute) {
+				return (attribute.id != id);
+			});
+			return dimension;
+		});
+
+		FieldsStore.emitChange();
 
 		break;
 
 
-		default:
+	default:
 			//do nothing
 	}
 });
@@ -484,8 +484,8 @@ module.exports = FieldsStore;
 function initFields(result) {
 
 	if (result.errorMessage) {
-		window.messageLogNotify('Error loading field', 'warning', result)
-		return
+		window.messageLogNotify('Error loading field', 'warning', result);
+		return;
 	}
 
 	_dimensions = [];
@@ -503,7 +503,7 @@ function initFields(result) {
 		dim.is_date = !!(dim.attributes && dim.attributes[0] && dim.attributes[0].quickFilters);
 
 		if (Object.keys(result.fact).filter(factId => result.fact[factId].dimensions.indexOf(dim.id) !== -1).length) {
-			_dimensions.push(dim)
+			_dimensions.push(dim);
 		}
 
 		_dimensionColumnLookup[dim.id] = dim;
@@ -530,7 +530,7 @@ function initFields(result) {
 				attribute.parent = {
 					label: newDim.label,
 					id: newDim.id
-				}
+				};
 
 				_columnLookup[attribute.id] = attribute;
 			});
@@ -539,7 +539,7 @@ function initFields(result) {
 			_dimensionColumnLookup[newDim.id] = newDim;
 
 			if (Object.keys(result.fact).filter(factId => result.fact[factId].dimensions.indexOf(alias) !== -1).length) {
-				_dimensions.push(newDim)
+				_dimensions.push(newDim);
 			}
 		}
 
@@ -550,7 +550,7 @@ function initFields(result) {
 			attribute.parent = {
 				label: dim.label,
 				id: dim.id
-			}
+			};
 
 			_columnLookup[attribute.id] = attribute;
 
@@ -569,7 +569,7 @@ function initFields(result) {
 
 	_dimensions.sort(function(a,b) {
 		return a.label.localeCompare(b.label);
-	})
+	});
 
 	/* outriggers */
 	for(var i=0; i<_dimensions.length; i++) {
@@ -591,7 +591,7 @@ function initFields(result) {
 					outrigger.attributes[j].id = dimension.id+'$'+outrigger.attributes[j].id;
 					outrigger.attributes[j].parent.label = dimension.label + ' ' + outrigger.attributes[j].parent.label;
 
-					_columnLookup[outrigger.attributes[j].id] = outrigger.attributes[j]
+					_columnLookup[outrigger.attributes[j].id] = outrigger.attributes[j];
 				}
 
 				if (!dimension.outriggers) {
@@ -602,7 +602,7 @@ function initFields(result) {
 
 				dimension.outriggers.sort(function(a,b) {
 					return a.label.localeCompare(b.label);
-				})
+				});
 
 				dimension.has_outrigger = true;
 
@@ -620,7 +620,7 @@ function initFields(result) {
 		$.each(fact.dimensions, function(j, dim) {
 			if (dim in outriggerLookup) {
 				$.each(outriggerLookup[dim], function(k, outrigger) {
-					fact.dimensions.push(outrigger)
+					fact.dimensions.push(outrigger);
 				});
 			}
 		});
@@ -632,7 +632,7 @@ function initFields(result) {
 					id: _dimensionColumnLookup[dim].id,
 					label: _dimensionColumnLookup[dim].label,
 					type: 'lag'
-				})
+				});
 			}
 		});
 
@@ -646,7 +646,7 @@ function initFields(result) {
 			metric.parent = {
 				label: fact.label,
 				id: fact.id
-			}
+			};
 
 			_columnLookup[metric.id] = metric;
 
@@ -655,10 +655,10 @@ function initFields(result) {
 
 		fact.metrics.sort(function(a,b) {
 			if (a.label == a.parent.label) {
-				return -1
+				return -1;
 			}
 			if (b.label == b.parent.label) {
-				return 1
+				return 1;
 			}
 			return a.label.localeCompare(b.label);
 		});
@@ -667,7 +667,7 @@ function initFields(result) {
 
 	_facts.sort(function(a,b) {
 		return a.label.localeCompare(b.label);
-	})
+	});
 
 }
 
@@ -690,7 +690,7 @@ function findCommonDimensions(metrics) {
 
 		if (typeof metrics[i] == 'string') {
 			var metric = metrics[i].split(/(\.[cw]_|\|)/)[0];
-			metricCount++
+			metricCount++;
 
 			if (metric in _factColumnLookup) {
 				var dims = _factColumnLookup[metric].dimensions;
@@ -732,7 +732,7 @@ function findCommonDimensions(metrics) {
 
 	_commonDimensions.sort(function(a,b) {
 		return a.label.localeCompare(b.label);
-	})
+	});
 
 }
 
@@ -753,7 +753,7 @@ function findCommonFacts(rawmetrics,returnInstead) {
 		}
 		if(canAdd) {
 			if(!returnInstead) _commonFacts.push(fact);
-			returnVal.push(fact.id)
+			returnVal.push(fact.id);
 		}
 	}
 	return returnVal;

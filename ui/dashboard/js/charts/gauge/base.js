@@ -29,12 +29,12 @@ module.exports = function (element,spec, options, my) {
 		
 		that.metrics = comparison.metrics;
 
-		var skipSetFilter = false
+		var skipSetFilter = false;
 		that.filters.forEach(function(filter) {
 			if (filter.id == comparison.filter.id) {
 				skipSetFilter = true;
 			}
-		})
+		});
 
 		if (!skipSetFilter) {
 			my.setFilter(comparison.filter, false);
@@ -150,8 +150,8 @@ module.exports = function (element,spec, options, my) {
 					'<div style="font-size:16px;color:silver">' + spec.label + '</div>'+
 					'<div style="font-size:12px;color:silver;">' + spec.prior.title + ': <span style="color: ' + ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">'+Highcharts.numberFormat(prevCompare,2)+'</span></div> ' +
 				'</div>'
-				}
 			}
+		}
 		);
 
 		 chart.redraw();

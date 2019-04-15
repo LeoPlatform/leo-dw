@@ -12,7 +12,7 @@ module.exports = require("../react/flux/action.js")(function (my,dispatcher) {
 			api: api,
 			isRequired: isRequired,
 			singleValue: singleValue,
-            isHidden: isHidden
+			isHidden: isHidden
 		});
 	};
 

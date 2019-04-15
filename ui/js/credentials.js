@@ -7,7 +7,7 @@ var read_cookie = function (name, dfault) {
 		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
 	}
 	return dfault;
-}
+};
 
 var url_params = {};
 try {

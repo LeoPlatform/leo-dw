@@ -75,14 +75,14 @@ module.exports = Object.freeze({
 		apiData.groups = groups;
 
 		if (window.parent.dashboardFilters) {
-			filters = JSON.parse(JSON.stringify(filters))
+			filters = JSON.parse(JSON.stringify(filters));
 			filters = filters.concat(
 				window.parent.dashboardFilters.filter((dashboardFilter) => {
 					return !filters.some((filter) => {
-						return dashboardFilter.id == filter.id
-					})
+						return dashboardFilter.id == filter.id;
+					});
 				})
-			)
+			);
 		}
 
 		for (var i = 0; i < filters.length; i++) {
