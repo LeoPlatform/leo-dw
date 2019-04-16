@@ -31,6 +31,22 @@ module.exports = {
 					]
 				}
 			]
+		},
+		"CreateAuroraPostgresResources": {
+			"Fn::Equals": [
+				{
+					"Ref": "AuroraType"
+				},
+				"Postgres"
+			]
+		},
+		"CreateAuroraMySqlResources": {
+			"Fn::Equals": [
+				{
+					"Ref": "AuroraType"
+				},
+				"MySql"
+			]
 		}
 	},
 	"Parameters": {
@@ -220,7 +236,8 @@ module.exports = {
 				"Name": {
 					"Fn::Sub": "${AWS::StackName}-RedshiftAddress"
 				}
-			}
+			},
+			"Condition": "CreateRedshiftResources"
 		},
 		"RedshiftPort": {
 			"Description": "Redshift Endpoint Port",
@@ -234,7 +251,8 @@ module.exports = {
 				"Name": {
 					"Fn::Sub": "${AWS::StackName}-RedshiftPort"
 				}
-			}
+			},
+			"Condition": "CreateRedshiftResources"
 		},
 		"AuroraClusterAddress": {
 			"Description": "Aurora Cluster Endpoint Address",
@@ -342,7 +360,7 @@ module.exports = {
 				"Name": {
 					"Fn::Sub": "${AWS::StackName}-DwKmsKey"
 				}
-			} 
+			}
 		}
 	}
 };

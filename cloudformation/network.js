@@ -9,7 +9,8 @@ module.exports = {
 						"Ref": "Subnet"
 					}
 				]
-			}
+			},
+			"DependsOn": ["Subnet"]
 		},
 		"VPC": {
 			"Type": "AWS::EC2::VPC",
@@ -39,7 +40,8 @@ module.exports = {
 						}
 					}
 				]
-			}
+			},
+			"DependsOn": ["VPC"]
 		},
 		"AttachInternetGateway": {
 			"Type": "AWS::EC2::VPCGatewayAttachment",
@@ -50,7 +52,8 @@ module.exports = {
 				"InternetGatewayId": {
 					"Ref": "InternetGateway"
 				}
-			}
+			},
+			"DependsOn": ["VPC", "InternetGateway"]
 		},
 		"RouteTable": {
 			"Type": "AWS::EC2::RouteTable",
@@ -64,7 +67,8 @@ module.exports = {
 						"Value": "Leo DW"
 					}
 				]
-			}
+			},
+			"DependsOn": ["VPC"]
 		},
 		"RedshiftRouteTable": {
 			"Type": "AWS::EC2::RouteTable",
@@ -78,7 +82,8 @@ module.exports = {
 						"Value": "Leo DW Redshift"
 					}
 				]
-			}
+			},
+			"DependsOn": ["VPC"]
 		},
 		"Subnet": {
 			"Type": "AWS::EC2::Subnet",
@@ -103,7 +108,8 @@ module.exports = {
 						"Value": "Leo DW Redshift Subnet"
 					}
 				]
-			}
+			},
+			"DependsOn": ["VPC"]
 		},
 		"Subnet2": {
 			"Type": "AWS::EC2::Subnet",
@@ -128,7 +134,8 @@ module.exports = {
 						"Value": "Leo DW Redshift Subnet"
 					}
 				]
-			}
+			},
+			"DependsOn": ["VPC"]
 		},
 		"RedshiftSubnetRouteMatch": {
 			"Type": "AWS::EC2::SubnetRouteTableAssociation",
@@ -139,7 +146,8 @@ module.exports = {
 				"SubnetId": {
 					"Ref": "Subnet"
 				}
-			}
+			},
+			"DependsOn": ["RedshiftRouteTable", "Subnet"]
 		},
 		"RedshiftSubnetRouteMatch2": {
 			"Type": "AWS::EC2::SubnetRouteTableAssociation",
@@ -150,7 +158,8 @@ module.exports = {
 				"SubnetId": {
 					"Ref": "Subnet2"
 				}
-			}
+			},
+			"DependsOn": ["RedshiftRouteTable", "Subnet2"]
 		},
 		"AuroraSubnetGroup": {
 			"Type": "AWS::RDS::DBSubnetGroup",
@@ -165,7 +174,8 @@ module.exports = {
 						"Ref": "Subnet2"
 					}
 				]
-			}
+			},
+			"DependsOn": ["Subnet", "Subnet2"]
 		},
 		"Security": {
 			"Type": "AWS::EC2::SecurityGroup",
@@ -222,7 +232,8 @@ module.exports = {
 						"Value": "Leo DW Security Group"
 					}
 				]
-			}
+			},
+			"DependsOn": ["VPC"]
 		},
 		"LambdaSubnetA": {
 			"Type": "AWS::EC2::Subnet",
@@ -247,7 +258,8 @@ module.exports = {
 						"Value": "Leo DW Lambda Subnet"
 					}
 				]
-			}
+			},
+			"DependsOn": ["VPC"]
 		},
 		"LambdaSubnetRouteMatchA": {
 			"Type": "AWS::EC2::SubnetRouteTableAssociation",
@@ -258,7 +270,8 @@ module.exports = {
 				"SubnetId": {
 					"Ref": "LambdaSubnetA"
 				}
-			}
+			},
+			"DependsOn": ["RouteTable", "LambdaSubnetA"]
 		},
 		"LambdaSubnetB": {
 			"Type": "AWS::EC2::Subnet",
@@ -283,7 +296,8 @@ module.exports = {
 						"Value": "Leo DW Lambda Subnet"
 					}
 				]
-			}
+			},
+			"DependsOn": ["VPC"]
 		},
 		"LambdaSubnetRouteMatchB": {
 			"Type": "AWS::EC2::SubnetRouteTableAssociation",
@@ -294,7 +308,8 @@ module.exports = {
 				"SubnetId": {
 					"Ref": "LambdaSubnetB"
 				}
-			}
+			},
+			"DependsOn": ["RouteTable","LambdaSubnetB"]
 		},
 		"LambdaSubnetC": {
 			"Type": "AWS::EC2::Subnet",
@@ -319,7 +334,8 @@ module.exports = {
 						"Value": "Leo DW Lambda Subnet"
 					}
 				]
-			}
+			},
+			"DependsOn": ["VPC"]
 		},
 		"LambdaSubnetRouteMatchC": {
 			"Type": "AWS::EC2::SubnetRouteTableAssociation",
@@ -330,7 +346,8 @@ module.exports = {
 				"SubnetId": {
 					"Ref": "LambdaSubnetC"
 				}
-			}
+			},
+			"DependsOn": ["RouteTable","LambdaSubnetC"]
 		},
 		"DynamodbEndpoint": {
 			"Type": "AWS::EC2::VPCEndpoint",
@@ -359,7 +376,8 @@ module.exports = {
 				"VpcId": {
 					"Ref": "VPC"
 				}
-			}
+			},
+			"DependsOn": ["VPC", "RouteTable", "RedshiftRouteTable"]
 		},
 		"S3Endpoint": {
 			"Type": "AWS::EC2::VPCEndpoint",
@@ -388,7 +406,8 @@ module.exports = {
 				"VpcId": {
 					"Ref": "VPC"
 				}
-			}
+			},
+			"DependsOn": ["VPC","RouteTable","RedshiftRouteTable"]
 		}
 	}
 };

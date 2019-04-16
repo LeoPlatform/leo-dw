@@ -49,14 +49,25 @@ module.exports = {
 				"RedshiftClusterSubnetGroup"
 			]
 		},
-		"AuroraClusterParameterGroup": {
+		"AuroraPostgresClusterParameterGroup": {
 			"Type": "AWS::RDS::DBClusterParameterGroup",
-			"Condition": "CreateAuroraResources",
+			"Condition": "CreateAuroraPostgresResources",
 			"Properties": {
-				"Description": "CloudFormation Sample Aurora Cluster Parameter Group",
+				"Description": "Postgres Aurora Cluster Parameter Group",
 				"Family": "manfred9.6",
 				"Parameters": {
 					"autovacuum": 0
+				}
+			}
+		},
+		"AuroraMySqlClusterParameterGroup": {
+			"Type": "AWS::RDS::DBClusterParameterGroup",
+			"Condition": "CreateAuroraMySqlResources",
+			"Properties": {
+				"Description": "MySql Aurora Cluster Parameter Group",
+				"Family": "aurora-mysql5.7",
+				"Parameters": {
+					"binlog_format": "OFF"
 				}
 			}
 		},
@@ -98,7 +109,21 @@ module.exports = {
 				],
 				"BackupRetentionPeriod": 7,
 				"DBClusterParameterGroupName": {
-					"Ref": "AuroraClusterParameterGroup"
+					"Fn::If": [
+						"CreateAuroraPostgresResources",
+						{
+							"Ref": "AuroraPostgresClusterParameterGroup"
+						}, {
+							"Fn::If": [
+								"CreateAuroraMySqlResources",
+								{
+									"Ref": "AuroraMySqlClusterParameterGroup"
+								}, {
+									"Ref": "AWS::NoValue"
+								}
+							]
+						}
+					]
 				},
 				"DatabaseName": "datawarehouse"
 			},
