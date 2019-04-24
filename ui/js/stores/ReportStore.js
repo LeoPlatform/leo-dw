@@ -26,12 +26,12 @@ var _showMissingDims = [];
 
 var _sortVars = [];
 var _sorted = {};
-var _limitAmount = 2000
+var _limitAmount = 2000;
 
 var _error = '';
 
-var _advanced = undefined
-var _chart_id = undefined
+var _advanced = undefined;
+var _chart_id = undefined;
 
 var _raw_data = {};
 
@@ -59,7 +59,7 @@ var ReportStore = assign({}, EventEmitter.prototype, {
 			rowheaders: _rowHeaders,
 			headers: _headers,
 			rows: _rows
-		}
+		};
 	},
 
 	getPartitions: function () {
@@ -185,55 +185,55 @@ var ReportStore = assign({}, EventEmitter.prototype, {
 	},
 
 	getLimit: function () {
-		return _limitAmount || 2000
+		return _limitAmount || 2000;
 	},
 
 	getLimitLabel: function () {
 		if (_sortVars[0]) {
-			var sort_column_index = _sortVars[0].column
+			var sort_column_index = _sortVars[0].column;
 			if (sort_column_index < _rowDims.length) {
-				var column_id = _rowDims[sort_column_index]
+				var column_id = _rowDims[sort_column_index];
 			} else if (_columnDims.length > 0) {
-				var column_id = _rowMetrics[(sort_column_index - _rowDims.length) % _rowMetrics.length]
+				var column_id = _rowMetrics[(sort_column_index - _rowDims.length) % _rowMetrics.length];
 			} else {
-				var column_id = _rowMetrics[_rowMetrics.length - 1]
+				var column_id = _rowMetrics[_rowMetrics.length - 1];
 			}
 			if (typeof column_id == 'object' && column_id.id) {
-				column_id = column_id.id
+				column_id = column_id.id;
 			}
-			var column = FieldsStore.getColumnDetails((column_id + '|').split('|')[0])
-			return column ? column.parent.label + ' ' + column.label : column_id
+			var column = FieldsStore.getColumnDetails((column_id + '|').split('|')[0]);
+			return column ? column.parent.label + ' ' + column.label : column_id;
 		}
 	},
 
 	getTopLimit: function () {
-		var field = ''
-		var direction = ''
-		var filters = []
+		var field = '';
+		var direction = '';
+		var filters = [];
 
 		if (_sortVars[0]) {
-			direction = _sortVars[0].direction
-			var sort_column_index = _sortVars[0].column
+			direction = _sortVars[0].direction;
+			var sort_column_index = _sortVars[0].column;
 			if (sort_column_index < _rowDims.length) {
-				field = _rowDims[sort_column_index]
+				field = _rowDims[sort_column_index];
 			} else if (_columnDims.length > 0) {
-				field = _rowMetrics[(sort_column_index - _rowDims.length) % _rowMetrics.length]
+				field = _rowMetrics[(sort_column_index - _rowDims.length) % _rowMetrics.length];
 				_headers.map(function (headers) {
 					if (headers[0].id != field && typeof headers[0].value !== 'undefined') {
-						var header = headers[Math.floor((sort_column_index - _rowDims.length) / headers[0].span)] || {}
+						var header = headers[Math.floor((sort_column_index - _rowDims.length) / headers[0].span)] || {};
 						filters.push({
 							id: header.id,
 							value: header.value
-						})
+						});
 					}
-				})
+				});
 			} else {
-				field = _rowMetrics[_rowMetrics.length - 1]
+				field = _rowMetrics[_rowMetrics.length - 1];
 			}
 		}
 
 		if (typeof field == 'object' && field.id) {
-			field = field.id
+			field = field.id;
 		}
 
 		return {
@@ -241,31 +241,31 @@ var ReportStore = assign({}, EventEmitter.prototype, {
 			field: field || undefined,
 			direction: direction || undefined,
 			filters: filters.length == 0 ? undefined : filters
-		}
+		};
 	},
 
 	getChartId: function () {
-		return _chart_id
+		return _chart_id;
 	},
 
 	getAdvanced: function () {
-		return _advanced
+		return _advanced;
 	},
 
 	setAdvanced: function (advanced) {
 		if (advanced.chart_id) {
-			_chart_id = advanced.chart_id
-			delete advanced.chart_id
+			_chart_id = advanced.chart_id;
+			delete advanced.chart_id;
 		}
-		_advanced = advanced
+		_advanced = advanced;
 	},
 
 	setData: function (data) {
-		_rowHeaders = data.rowheaders || []
-		_columns = data.columns || {}
-		_columnHeaders = data.columnheaders || []
-		_headers = data.header || []
-		_allRows = data.rows || []
+		_rowHeaders = data.rowheaders || [];
+		_columns = data.columns || {};
+		_columnHeaders = data.columnheaders || [];
+		_headers = data.header || [];
+		_allRows = data.rows || [];
 	}
 
 });
@@ -378,13 +378,13 @@ ReportStore.dispatchToken = LeoDispatcher.register(function (payload) {
 		break;
 
 	case ActionTypes.UPDATE_LIMIT:
-		_limitAmount = action.limitAmount
+		_limitAmount = action.limitAmount;
 		ReportStore.emitChange();
 		break;
 
 	default:
 		//do nothing
-		break
+		break;
 	}
 });
 
@@ -398,9 +398,9 @@ function assignInitialReportData(reportData) {
 	_rowMetrics = reportData.rowMetrics || [];
 	_isLocked = reportData.locked || false;
 	_sortVars = reportData.sort || [];
-	_limitAmount = reportData.top ? reportData.top.limit : 2000
+	_limitAmount = reportData.top ? reportData.top.limit : 2000;
 	_showMissingDims = reportData.showMissingDims || [];
-	_advanced = reportData.advanced || undefined
+	_advanced = reportData.advanced || undefined;
 
 	if (_columnMetrics.length == 0 && _rowMetrics.length == 0) {
 		FieldsStore.deleteCommonDimensions();
@@ -412,7 +412,7 @@ function assignReportData(reportData) {
 	_raw_data = reportData;
 	if (reportData.error || reportData.errorMessage || reportData.name == 'error') {
 
-		_error = reportData.error || reportData.errorMessage || reportData.detail || reportData.routine || 'An unknown error occurred'
+		_error = reportData.error || reportData.errorMessage || reportData.detail || reportData.routine || 'An unknown error occurred';
 
 		/* attempt to build the headers anyway */
 
@@ -421,10 +421,10 @@ function assignReportData(reportData) {
 			columnheaders = [],
 			headers = [
 				[]
-			]
+			];
 
 		_columnDims.forEach((partitionId) => {
-			var partition = FieldsStore.getColumnDetails(partitionId)
+			var partition = FieldsStore.getColumnDetails(partitionId);
 			if (partition) {
 				columns[partitionId] = {
 					id: partition.id,
@@ -433,17 +433,17 @@ function assignReportData(reportData) {
 					format: partition.format,
 					parent: partition.parent.label,
 					sort: partition.sort
-				}
+				};
 				columnheaders.push({
 					id: partitionId,
 					height: 38,
 					type: 'attribute', //partition.type,
-				})
+				});
 			}
-		})
+		});
 
 		_rowDims.forEach((dimensionId) => {
-			var dimension = FieldsStore.getColumnDetails(dimensionId)
+			var dimension = FieldsStore.getColumnDetails(dimensionId);
 			if (dimension) {
 				columns[dimensionId] = {
 					id: dimension.id,
@@ -452,20 +452,20 @@ function assignReportData(reportData) {
 					format: dimension.format,
 					parent: dimension.parent.label,
 					sort: dimension.sort
-				}
+				};
 				rowheaders.push({
 					id: dimensionId,
 					width: 150,
 					type: 'attribute', //dimension.type
-				})
+				});
 			}
-		})
+		});
 
 		_rowMetrics.forEach((metricId) => {
 			if (metricId.id) {
-				metricId = metricId.id
+				metricId = metricId.id;
 			}
-			var metric = FieldsStore.getColumnDetails(metricId.split('|')[0])
+			var metric = FieldsStore.getColumnDetails(metricId.split('|')[0]);
 			if (metric) {
 				columns[metricId] = {
 					id: metric.id,
@@ -474,25 +474,25 @@ function assignReportData(reportData) {
 					format: metric.format,
 					parent: metric.parent.label,
 					sort: metric.sort
-				}
+				};
 				rowheaders.push({
 					id: metricId,
 					width: 120,
 					type: metric.type
-				})
+				});
 				headers[0].push({
 					id: metricId,
 					span: 1,
 					type: metric.type,
 					width: 120
-				})
+				});
 			}
-		})
+		});
 
 		columnheaders.push({
 			height: 38,
 			type: 'metrics'
-		})
+		});
 
 		/*
 		console.log('columns', columns)
@@ -501,26 +501,26 @@ function assignReportData(reportData) {
 		console.log('headers', headers)
 		/* */
 
-		_columnHeaders = columnheaders
-		_columns = columns
-		_headers = headers
-		_rowHeaders = rowheaders
-		_allRows = _rows = []
-		_sorted = {}
+		_columnHeaders = columnheaders;
+		_columns = columns;
+		_headers = headers;
+		_rowHeaders = rowheaders;
+		_allRows = _rows = [];
+		_sorted = {};
 
 	} else {
 
 		//NEED TO REFACTOR THIS
 		//IMPORTANT!!! ROWHEADERS AND COLUMNHEADERS COME BACK IN REVERSE TO THE REST OF THE APPLICATION
-		_columnHeaders = reportData.rowheaders || []
-		_columns = reportData.columns || {}
-		_headers = reportData.headers || []
-		_rowHeaders = reportData.columnheaders || []
-		_rows = reportData.rows || []
-		_allRows = reportData.rows || []
-		_sorted = reportData.sorted || {}
-		_limitAmount = reportData.top ? reportData.top.limit : 2000
-		_showMissingDims = reportData.showMissingDims || []
+		_columnHeaders = reportData.rowheaders || [];
+		_columns = reportData.columns || {};
+		_headers = reportData.headers || [];
+		_rowHeaders = reportData.columnheaders || [];
+		_rows = reportData.rows || [];
+		_allRows = reportData.rows || [];
+		_sorted = reportData.sorted || {};
+		_limitAmount = reportData.top ? reportData.top.limit : 2000;
+		_showMissingDims = reportData.showMissingDims || [];
 
 	}
 }
@@ -694,7 +694,7 @@ function removeDimension(from, dimension, isUpdate) {
 				} else if (sortVar.column > index && sortVar.column > 0) {
 					sortVar.column--;
 				}
-			})
+			});
 
 			/*
 			for(var i=_sortVars.length-1; i>=0; i--) {
@@ -798,7 +798,7 @@ function addMetric(to, position, metric, isUpdate) {
 	//load the column/row header data
 	var facts = FieldsStore.getFieldFacts();
 
-	var metricId = (typeof metric == 'string') ? metric : metric.id
+	var metricId = (typeof metric == 'string') ? metric : metric.id;
 
 	//Depending on the metric, we have to divide it up differently
 	//to get down to the same pieces in the facts array
@@ -1169,7 +1169,7 @@ function formatDataForExport(use_tabs, show_headers) {
 		var filterData = ReportFilterStore.getReportFilters();
 
 		for (var i = 0; i < filterData.length; i++) {
-			row_2_filters.push(filterData[i].dimension + '.' + filterData[i].label + ' ' + (filterData[i].comparison || 'in') + ' ' + filterData[i].value.join(', '))
+			row_2_filters.push(filterData[i].dimension + '.' + filterData[i].label + ' ' + (filterData[i].comparison || 'in') + ' ' + filterData[i].value.join(', '));
 		}
 
 		rowsResult.push(quote + 'Filtered By: ' + (row_2_filters.length > 0 ? row_2_filters.join(' and ') : '') + quote);

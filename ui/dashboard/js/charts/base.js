@@ -58,7 +58,7 @@ var timeframes = {
 
 function getComparisonMetrics(timeframe, metric, options) {
 
-	const DATE_FORMAT = 'YYYY-MM-DD'
+	const DATE_FORMAT = 'YYYY-MM-DD';
 
 	var [metric, modifiers] = metric.split('|', 2);
 	var asOfDate = options.asOf || moment();
@@ -68,87 +68,87 @@ function getComparisonMetrics(timeframe, metric, options) {
 		id: timeframe.dimensions.d_date + ".id",
 		comparison: 'between',
 		value: [],
-        fromController:false
+		fromController:false
 	};
 
 	if (!timeframe.id && timeframe.value && typeof timeframe.value == 'object') {
-		var count = 0
+		var count = 0;
 
 		if (timeframe.value.length == 1) {
 
-			var s = timeframe.value[0].split(/[- +]+/)
+			var s = timeframe.value[0].split(/[- +]+/);
 			switch(s[0].toLowerCase()) {
-				case 'this':
-					count = 0
-					timeframe.id = s[1]
-				break
+			case 'this':
+				count = 0;
+				timeframe.id = s[1];
+				break;
 
-				case 'yesterday':
-					timeframe.id = 'day'
-					count = 1
-				break
+			case 'yesterday':
+				timeframe.id = 'day';
+				count = 1;
+				break;
 
-				case 'today':
-					timeframe.id = 'day'
-					count = 0
-				break
+			case 'today':
+				timeframe.id = 'day';
+				count = 0;
+				break;
 
-				default:
-					if (parseInt(s[1]) || s[1] == '0') {
-						count = parseInt(s[1])
-						timeframe.id = s[2]
-					} else {
-						count = 1
-						timeframe.id = s[1]
-					}
-				break
+			default:
+				if (parseInt(s[1]) || s[1] == '0') {
+					count = parseInt(s[1]);
+					timeframe.id = s[2];
+				} else {
+					count = 1;
+					timeframe.id = s[1];
+				}
+				break;
 			}
 
 		} else {
-			timeframe.id = 'day'
-			count = -(moment(timeframe.value[0]).diff(timeframe.value[1], 'days')-1)
+			timeframe.id = 'day';
+			count = -(moment(timeframe.value[0]).diff(timeframe.value[1], 'days')-1);
 		}
 
-		var parsedDate = parse_date(timeframe.value[0], asOfDate)
+		var parsedDate = parse_date(timeframe.value[0], asOfDate);
 		if (typeof parsedDate == 'string') {
-			parsedDate = [parsedDate]
+			parsedDate = [parsedDate];
 		}
-		var [currentStart, currentEnd] = parsedDate
+		var [currentStart, currentEnd] = parsedDate;
 
-		currentEnd = currentEnd || currentStart
-		var prevStart = moment(currentStart, DATE_FORMAT).subtract(count, timeframe.id).format(DATE_FORMAT)
-		var prevEnd = moment(currentEnd, DATE_FORMAT).subtract(count, timeframe.id).format(DATE_FORMAT)
-		var todayLastPeriod = prevEnd
+		currentEnd = currentEnd || currentStart;
+		var prevStart = moment(currentStart, DATE_FORMAT).subtract(count, timeframe.id).format(DATE_FORMAT);
+		var prevEnd = moment(currentEnd, DATE_FORMAT).subtract(count, timeframe.id).format(DATE_FORMAT);
+		var todayLastPeriod = prevEnd;
 
 	} else {
 
-		var [currentStart, currentEnd] = parse_date('last 0 ' + timeframe.id + ' to date', asOfDate)
-		currentEnd = currentEnd || currentStart
-		var [prevStart, prevEnd] = parse_date('last ' + timeframe.id, asOfDate)
-		var todayLastPeriod = parse_date('today last ' + timeframe.id, asOfDate)[0]
+		var [currentStart, currentEnd] = parse_date('last 0 ' + timeframe.id + ' to date', asOfDate);
+		currentEnd = currentEnd || currentStart;
+		var [prevStart, prevEnd] = parse_date('last ' + timeframe.id, asOfDate);
+		var todayLastPeriod = parse_date('today last ' + timeframe.id, asOfDate)[0];
 	}
 
-	filter.value = [prevStart, currentEnd]
+	filter.value = [prevStart, currentEnd];
 
 	var metrics = [
 		metric + `|filter:${timeframe.dimensions.d_date}._id between @date(${currentStart}) and @date(${currentEnd})|${modifiers}`,
 		metric + `|filter:${timeframe.dimensions.d_date}._id >= @date(${prevStart}) and (${timeframe.dimensions.d_date}._id < @date(${todayLastPeriod}) or (${timeframe.dimensions.d_date}._id = @date(${todayLastPeriod}) ${timeLimit}))|${modifiers}`,
 		metric + `|filter:${timeframe.dimensions.d_date}._id between @date(${prevStart}) and @date(${prevEnd})|${modifiers}`
-	]
+	];
 
 	return {
 		filter: filter,
 		metrics: metrics
-	}
+	};
 }
 
 module.exports = function (element, chart, options, my) {
 
 	var that = chart || {};
 
-	that.guid = that.guid || Date.now() + Math.random()
+	that.guid = that.guid || Date.now() + Math.random();
 
-	element.data('guid', that.guid)
+	element.data('guid', that.guid);
 
 	my = my || {};
 
@@ -167,14 +167,14 @@ module.exports = function (element, chart, options, my) {
 		|| (chart.advanced && chart.advanced.title
 			? (typeof chart.advanced.title == 'string' ? chart.advanced.title : chart.advanced.title.text)
 			: undefined
-		)
+		);
 
 	if (chartId) {
-		element.prop('id', chartId.replace(/[ .:#]/gi, '_'))
+		element.prop('id', chartId.replace(/[ .:#]/gi, '_'));
 	}
 
 	if (chart.type) {
-		element.addClass(chart.type)
+		element.addClass(chart.type);
 	}
 
 	var hasColumns = (that.columns && that.columns.length > 0);
@@ -229,7 +229,7 @@ module.exports = function (element, chart, options, my) {
 			};
 			newFilter.id = f.id;
 			newFilter.value = f.value;
-            newFilter.isHidden = f.isHidden;
+			newFilter.isHidden = f.isHidden;
 
 			that.filters.push(newFilter);
 		}
@@ -333,28 +333,28 @@ module.exports = function (element, chart, options, my) {
 		}
 	};
 
-	my.getComparisonMetrics = getComparisonMetrics
+	my.getComparisonMetrics = getComparisonMetrics;
 
 	my.getMetricValue = function (metricNumber) {
 		var result = my.getMetric(metricNumber);
 		if (!result.rows || !result.metricOffsets) {
-			return undefined
+			return undefined;
 		}
 		return result.rows[0][result.metricOffsets[0]];
 	};
 
 	my.getMetric = that.getMetric = function (metricNumber) {
-		var metric = that.metrics[metricNumber]
+		var metric = that.metrics[metricNumber];
 
 		if (typeof metric == 'string') {
 			metric = {
 				id: metric
-			}
+			};
 		}
-		var metricName = metric.id
+		var metricName = metric.id;
 		var columns = metric.columns || that.columns || [];
 
-		var partitions = metric.partitions || metric.colors || []
+		var partitions = metric.partitions || metric.colors || [];
 		var filters = metric.filters || [];
 
 		for (var i in my.dataSources) {
@@ -426,21 +426,21 @@ module.exports = function (element, chart, options, my) {
 
 	my.changeChart = that.changeChart = function(newParams, replace, keepFilters) {
 
-		my.graphWatching.stop()
+		my.graphWatching.stop();
 		if (replace) {
-			that.columns = []
+			that.columns = [];
 			if (!keepFilters) {
-				that.filters = []
+				that.filters = [];
 			}
-			that.metrics = []
+			that.metrics = [];
 		}
-		that.outColumns = [] // NEW - THIS LINE FIXES THE ISSUE WITH DUPLICATING COLUMNS
+		that.outColumns = []; // NEW - THIS LINE FIXES THE ISSUE WITH DUPLICATING COLUMNS
 		if (newParams.sort) {
-			that.sort = []
+			that.sort = [];
 		}
-		that = $.extend(true, that, newParams)
-		render()
-	}
+		that = $.extend(true, that, newParams);
+		render();
+	};
 
 	my.setFilter = function(filter, redraw = true) {
 
@@ -451,20 +451,20 @@ module.exports = function (element, chart, options, my) {
         }
 		/* */
 
-		that.filters = that.filters.filter(f => (f.id != filter.id))
+		that.filters = that.filters.filter(f => (f.id != filter.id));
 		that.filters.push({
 			id: filter.id,
 			value: filter.value,
 			comparison: filter.comparison || '=',
 			fromController: filter.fromController || false
-		})
+		});
 
 		if (filter.id.slice(-9) == 'd_date.id') {
-			my.updateTimeframe && my.updateTimeframe(that, filter)
+			my.updateTimeframe && my.updateTimeframe(that, filter);
 		}
 
 		if (redraw && my.graphWatching) {
-			render()
+			render();
 		}
 	};
 

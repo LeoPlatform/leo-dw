@@ -26,7 +26,7 @@ gulp.task('less', [], function () {
 		.pipe(less().on('error', gutil.log))
 		.pipe(concat('leo-oem.css'))
 		.pipe(gulp.dest('./static/css'))
-	)
+	);
 
 	builds.push(gulp.src('./ui/css/main.less').pipe(less()).on('error', function (err) {
 		console.log(err.message);
@@ -101,8 +101,8 @@ gulp.task('watch', ['less', 'views'], function () {
 
 gulp.task('common', [], function () {
 	return browserify({
-			transform: [babelify]
-		})
+		transform: [babelify]
+	})
 		.require("react")
 		.bundle().pipe(source('./ui/js/common.jsx'))
 		.pipe(rename('/static/js/common.js'))

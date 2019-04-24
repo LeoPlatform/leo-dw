@@ -7,25 +7,25 @@ module.exports = {
 
 	initFields : function() {
 
-        let redshift = true;
+		let redshift = true;
 
-        if ('useredshift' in window) {
-            redshift = window.useredshift;
-         } else {
-            var input = {};
-            if (window.location.hash) {
-                try {
-                    var input = JSON.parse(decodeURI(window.location.hash.slice(1)));
-                } catch(e) {
-                    try {
-                        var input = JSON.parse(window.location.hash.slice(1));
-                    } catch(e) {
-                    }
-                }
-            }
-            redshift = !input.useMysql;
-         };
-        WebAPI.get("fields?redshift=" + redshift, function(result) {
+		if ('useredshift' in window) {
+			redshift = window.useredshift;
+		} else {
+			var input = {};
+			if (window.location.hash) {
+				try {
+					var input = JSON.parse(decodeURI(window.location.hash.slice(1)));
+				} catch(e) {
+					try {
+						var input = JSON.parse(window.location.hash.slice(1));
+					} catch(e) {
+					}
+				}
+			}
+			redshift = !input.useMysql;
+		}
+		WebAPI.get("fields?redshift=" + redshift, function(result) {
 
 			LeoDispatcher.handleServerAction({
 				type: ActionTypes.INIT_FIELDS,
@@ -162,4 +162,4 @@ module.exports = {
 
 	}
 
-}
+};

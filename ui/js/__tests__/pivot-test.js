@@ -8,7 +8,7 @@ var util = require('util');
 var pivot = require('../pivot.js');
 
 describe('Simple Pivot', function() {
-  it('Should handle no dimensions with no pivot', function() {
+	it('Should handle no dimensions with no pivot', function() {
   	var result = pivot.transform([],[1,2],fixtures.simple);
   	result.should.eql({
   		columns: {
@@ -30,8 +30,8 @@ describe('Simple Pivot', function() {
 	   		[10.00,15.00]          
 	   	]
   	});
-  });
-  it('Should handle no dimensions with fact pivot', function() {
+	});
+	it('Should handle no dimensions with fact pivot', function() {
   	var result = pivot.transform([1,2],[],fixtures.simple);
   	result.should.eql({
   		columns: {
@@ -53,8 +53,8 @@ describe('Simple Pivot', function() {
 	   		[2, 15.00],
 	   	]
   	});
-  });
-  it('Should handle column dimensions with no fact pivot', function() {
+	});
+	it('Should handle column dimensions with no fact pivot', function() {
   	var result = pivot.transform([],[1,2,3,5,6],fixtures.multilineheaders);
   	result.should.eql({
   		columns: {
@@ -68,8 +68,8 @@ describe('Simple Pivot', function() {
   		  {type:"metrics", height: 38}
 			],       
   		columnheaders: [
-        {id: 1, width: 120},
-        {id: 2, width: 120},
+				{id: 1, width: 120},
+				{id: 2, width: 120},
   		  {id: 3, width: 120},
 				{id: 5, width: 60, type: 'metric'},
 				{id: 6, width: 60, type: 'metric'} 
@@ -85,8 +85,8 @@ describe('Simple Pivot', function() {
 	  	  ["Utah", "Salt Lake City","Computers", 5.00,6.00]
 	   	]
   	});
-  });
-  it('Should handle column dimensions with dimension pivot', function() {
+	});
+	it('Should handle column dimensions with dimension pivot', function() {
   	var result = pivot.transform([3],[1,2,6,5],fixtures.multilineheaders);
   	result.should.eql({
   		columns: {
@@ -101,8 +101,8 @@ describe('Simple Pivot', function() {
   		  {type:"metrics", height: 38}
 			],       
   		columnheaders: [
-        {id: 1, width: 120},
-        {id: 2, width: 120},
+				{id: 1, width: 120},
+				{id: 2, width: 120},
 				{id: 6, width: 60, type: 'metric'},
 				{id: 5, width: 60, type: 'metric'} 
 			],
@@ -149,8 +149,8 @@ describe('Simple Pivot', function() {
   	result.rows.should.eql([
    		[4,3, 8,7,15.00,10.00,6,5]
    	]);
-  });
-  it('Should handle facts on the left not on the top', function() {
+	});
+	it('Should handle facts on the left not on the top', function() {
   	var result = pivot.transform([3,6,5],[1,2],fixtures.multilineheaders);
   	result.should.eql({
   		columns: {
@@ -168,7 +168,7 @@ describe('Simple Pivot', function() {
   		columnheaders: [
   		  {id: 1, width: 120},
   		  {id: 2, width: 120},        
-        {type:"metrics", width: 120}				
+				{type:"metrics", width: 120}				
 			],
   		headers: [[
 				{id: 3, value: 'Apparel', span: 1, width: 60, last:true},
@@ -201,7 +201,7 @@ describe('Simple Pivot', function() {
 			],       
   		columnheaders: [
   		  {id: 3, width: 150},
-        {type:"metrics", width: 120}				
+				{type:"metrics", width: 120}				
 			],
   		headers: [[
 				{id: 1, value: 'Utah', span: 2, width: 120, last:true},
@@ -216,5 +216,5 @@ describe('Simple Pivot', function() {
 	   		["Computers", 5, 10, 5]
 	   	]
   	});
-  });
+	});
 });

@@ -28,7 +28,7 @@ var chartTypes = {
 	html: require("../charts/html.js"),
 	filter_bar: require("../charts/custom/filter_bar.js"),
 	table: require("../charts/custom/data_table.js")
-}
+};
 
 
 $(function() {
@@ -58,17 +58,17 @@ $(function() {
 				if ($(this).leo()) {
 
 					window.dashboardFilters = (window.dashboardFilters || []).filter((dashboardFilter) => {
-						return dashboardFilter.id !== column_id
-					})
+						return dashboardFilter.id !== column_id;
+					});
 
 					if (leo.active) {
 						var filter = {
 							id: column_id,
 							value: leo.series,
 							fromController: true
-						}
-						$(this).leo().setFilter(filter)
-						window.dashboardFilters.push(filter)
+						};
+						$(this).leo().setFilter(filter);
+						window.dashboardFilters.push(filter);
 					} else {
 						$(this).leo().removeFilter(column_id);
 					}
@@ -79,7 +79,7 @@ $(function() {
 		}
 	}, 'figure.is-controller, .leo-charts-controller figure');
 
-})
+});
 
 
 exports.runScripts = function() {
@@ -90,21 +90,21 @@ exports.runScripts = function() {
 		charts: {
 			colors: {}
 		}
-	})
+	});
 
 	if (window.leo.defaultColors) {
-		OptionActions.setDefaultColors('default', window.leo.defaultColors)
+		OptionActions.setDefaultColors('default', window.leo.defaultColors);
 	}
 
 	for(var color in window.leo.charts.colors) {
-		OptionActions.setColor('default', color, window.leo.charts.colors[color])
+		OptionActions.setColor('default', color, window.leo.charts.colors[color]);
 	}
 
 	if (window.leo.refreshDefault) {
-		OptionActions.setDefaultRefresh('default', window.leo.refreshDefault)
+		OptionActions.setDefaultRefresh('default', window.leo.refreshDefault);
 	}
-	window.leo.refresh = DataActions.refresh
-}
+	window.leo.refresh = DataActions.refresh;
+};
 
 
 exports.initAll = function(element, filters) {
@@ -113,12 +113,12 @@ exports.initAll = function(element, filters) {
 		charts.push(chartFigure($(this), filters));
 	});
 	return charts;
-}
+};
 
 
 exports.init = function(figure, filters) {
 	return chartFigure(figure, filters);
-}
+};
 
 
 exports.destroyAll = function(charts) {
@@ -127,9 +127,9 @@ exports.destroyAll = function(charts) {
 			if (chart.destroy) {
 				chart.destroy();
 			}
-		})
+		});
 	}
-}
+};
 
 
 function chartFigure(figure, filters) {
@@ -145,7 +145,7 @@ function chartFigure(figure, filters) {
 	if (specScript.length && $.trim(specScript.text()) != '') {
 		spec = (new Function("return " + specScript.text()))();
 		if (spec.type !== 'html') {
-			figure.attr('data-script', JSON.stringify(specScript.text()))
+			figure.attr('data-script', JSON.stringify(specScript.text()));
 			specScript.remove();
 		}
 	}
@@ -205,18 +205,18 @@ function chartFigure(figure, filters) {
 			data.select.options.push({
 				value: $(element).val(),
 				text: $(element).text()
-			})
+			});
 			if ($(element).prop('selected')) {
 				data.select.defaultValue = $(element).val();
 			}
-		})
+		});
 	}
 
 	if (figure.is(".leo-html")) {
 		figure.find('hr.vertical, .hover-menu').remove();
 		spec.type = figure.html().indexOf('text/x-leo-chart') != -1 ? "html" : '';
 		spec.template = figure.html();
-		figure.attr('data-html', figure.html())
+		figure.attr('data-html', figure.html());
 	}
 
 	if (!spec.type) {
@@ -224,7 +224,7 @@ function chartFigure(figure, filters) {
 	}
 
 	if (filters) {
-		spec.filters = (spec.filters || []).concat(JSON.parse(JSON.stringify(filters)))
+		spec.filters = (spec.filters || []).concat(JSON.parse(JSON.stringify(filters)));
 	}
 
 	try {

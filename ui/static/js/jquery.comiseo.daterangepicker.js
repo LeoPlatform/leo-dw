@@ -22,13 +22,13 @@ try { var moment = require("moment"); } catch(e) {}
 			// and must have the properties: text, dateStart, dateEnd.
 			// dateStart, dateEnd are functions returning a moment object
 			presetRanges: [
-				{text: 'Today', dateStart: function() { return moment() }, dateEnd: function() { return moment() } },
-				{text: 'Yesterday', dateStart: function() { return moment().subtract(1, 'days') }, dateEnd: function() { return moment().subtract(1, 'days') } },
-				{text: 'Last 7 Days', dateStart: function() { return moment().subtract(6, 'days') }, dateEnd: function() { return moment() } },
-				{text: 'Last Week (Mo-Su)', dateStart: function() { return moment().subtract(7, 'days').isoWeekday(1) }, dateEnd: function() { return moment().subtract(7, 'days').isoWeekday(7) } },
-				{text: 'Month to Date', dateStart: function() { return moment().startOf('month') }, dateEnd: function() { return moment() } },
-				{text: 'Previous Month', dateStart: function() { return moment().subtract(1, 'month').startOf('month') }, dateEnd: function() { return moment().subtract(1, 'month').endOf('month') } },
-				{text: 'Year to Date', dateStart: function() { return moment().startOf('year') }, dateEnd: function() { return moment() } }
+				{text: 'Today', dateStart: function() { return moment(); }, dateEnd: function() { return moment(); } },
+				{text: 'Yesterday', dateStart: function() { return moment().subtract(1, 'days'); }, dateEnd: function() { return moment().subtract(1, 'days'); } },
+				{text: 'Last 7 Days', dateStart: function() { return moment().subtract(6, 'days'); }, dateEnd: function() { return moment(); } },
+				{text: 'Last Week (Mo-Su)', dateStart: function() { return moment().subtract(7, 'days').isoWeekday(1); }, dateEnd: function() { return moment().subtract(7, 'days').isoWeekday(7); } },
+				{text: 'Month to Date', dateStart: function() { return moment().startOf('month'); }, dateEnd: function() { return moment(); } },
+				{text: 'Previous Month', dateStart: function() { return moment().subtract(1, 'month').startOf('month'); }, dateEnd: function() { return moment().subtract(1, 'month').endOf('month'); } },
+				{text: 'Year to Date', dateStart: function() { return moment().startOf('year'); }, dateEnd: function() { return moment(); } }
 			],
 			verticalOffset: 0,
 			initialText: 'Select date range...', // placeholder text - shown when nothing is selected
@@ -58,7 +58,7 @@ try { var moment = require("moment"); } catch(e) {}
 
 			datepickerOptions: { // object containing datepicker options. See http://api.jqueryui.com/datepicker/#options
 				numberOfMonths: 3,
-//				showCurrentAtPos: 1 // bug; use maxDate instead
+				//				showCurrentAtPos: 1 // bug; use maxDate instead
 				//maxDate: 0 // the maximum selectable date is today (also current month is displayed on the last position)
 				minDate: null,
 				maxDate: null,
@@ -186,10 +186,10 @@ try { var moment = require("moment"); } catch(e) {}
 
 			$.each(options.presetRanges, function() {
 				$('<li><a href="#">' + this.text + '</a></li>')
-				.data('dateStart', this.dateStart)
-				.data('dateEnd', this.dateEnd)
-				.click(onClick)
-				.appendTo($menu);
+					.data('dateStart', this.dateStart)
+					.data('dateEnd', this.dateEnd)
+					.click(onClick)
+					.appendTo($menu);
 			});
 
 			$self.append($menu);
@@ -261,9 +261,9 @@ try { var moment = require("moment"); } catch(e) {}
 				userResult = options.datepickerOptions.beforeShowDay(date);
 			}
 			return [
-					result[0] && userResult[0],
-					result[1] + ' ' + userResult[1]
-					];
+				result[0] && userResult[0],
+				result[1] + ' ' + userResult[1]
+			];
 		}
 
 		function updateAtMidnight() {
@@ -449,10 +449,10 @@ try { var moment = require("moment"); } catch(e) {}
 			//removed classes: ui-widget-content ui-corner-all
 			$container = $('<div></div>', {'class': classname + ' ' + classname + '-' + sides[hSide] + ' ui-widget  ui-front'}).css({ position:options.inline ? 'static' : 'absolute' })
 				.append($('<div></div>', {'class': classname + '-main ui-widget-content'})
-				.append(presetsMenu.getElement())
-				.append(calendar.getElement()))
+					.append(presetsMenu.getElement())
+					.append(calendar.getElement()))
 				.append($('<div class="ui-helper-clearfix"></div>')
-				.append(buttonPanel.getElement()))
+					.append(buttonPanel.getElement()))
 				.hide();
 			$originalElement.hide().after(triggerButton.getElement());
 

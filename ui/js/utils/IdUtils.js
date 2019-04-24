@@ -7,7 +7,7 @@ module.exports = {
 
 
 	reset: function() {
-		this._parsed = {}
+		this._parsed = {};
 	},
 
 
@@ -21,35 +21,35 @@ module.exports = {
 
 
 	parse: function(id) {
-		var parsed = {}
+		var parsed = {};
 		if (id) {
 			if (typeof id == 'object') {
 				//parsed = id
-				id = id.id
+				id = id.id;
 				//delete parsed.id
 			}
 			if (id.slice(0, 3) == 'fx(' || id[0] == '(') {
-				parsed[id.slice(0, id.lastIndexOf(')')+1)] = []
-				id = id.slice(id.lastIndexOf(')')+1)
+				parsed[id.slice(0, id.lastIndexOf(')')+1)] = [];
+				id = id.slice(id.lastIndexOf(')')+1);
 			}
-			var parts = id.split('|')
+			var parts = id.split('|');
 			for(var i=0;i<parts.length;i++) {
 				if (parts[i] != '') {
 					if (parts[i].indexOf('!') != -1) {
-						parts[i] = parts[i].split('!')[0]
+						parts[i] = parts[i].split('!')[0];
 					}
-					var temp = parts[i].split(':')
-					var name = temp.shift()
+					var temp = parts[i].split(':');
+					var name = temp.shift();
 					if (typeof temp == 'object' && temp[0] && temp[0].indexOf(';') !== -1) {
-						temp = temp[0].split(';')
+						temp = temp[0].split(';');
 					}
-					parsed[name] = temp //.join(':')
+					parsed[name] = temp; //.join(':')
 				}
 			}
 		}
-		this._parsed = parsed
+		this._parsed = parsed;
 		//console.log('parsed', id, parsed)
-		return parsed
+		return parsed;
 	},
 
 
@@ -121,7 +121,7 @@ module.exports = {
 		var transforms = [];
 		for(var j in parsed) {
 			if (all_transforms.indexOf(j) != -1) {
-				var transform = {}
+				var transform = {};
 				transform[j] = parsed[j];
 				transforms.push(transform);
 			}
@@ -149,7 +149,7 @@ module.exports = {
 		var joined = [];
 		for(var i in parsed) {
 			if (typeof parsed[i] == 'string' && parsed[i] != '') {
-				parsed[i] = [parsed[i]]
+				parsed[i] = [parsed[i]];
 			}
 			if (i !== 'filter' || parsed[i].length !== 0) {
 				joined.push(i + (parsed[i].length > 0 ? ':'+parsed[i].join(':') : ''));
@@ -172,21 +172,21 @@ module.exports = {
 
 	details: function(parsed) {
 		var parsed = this._check(parsed);
-		var raw = this.raw(parsed)
+		var raw = this.raw(parsed);
 		if (raw) {
 			if (raw.indexOf('date._id') > -1) {
-				raw = raw.replace('date._id', 'date.id')
+				raw = raw.replace('date._id', 'date.id');
 			}
-			return FieldsStore.getColumnDetails(raw + (raw.indexOf('.') === -1 ? '.id' : '')) || FieldsStore.getColumnDetails(raw)
+			return FieldsStore.getColumnDetails(raw + (raw.indexOf('.') === -1 ? '.id' : '')) || FieldsStore.getColumnDetails(raw);
 		}
-		return undefined
+		return undefined;
 	},
 
 
 	isDate: function() {
 		var parsed = this._check(parsed);
-		var raw = this.raw(parsed).toLowerCase()
-		return (raw.indexOf('date.id') > -1 || raw.indexOf('date._id') > -1 || raw.indexOf('date.date') !== -1)
+		var raw = this.raw(parsed).toLowerCase();
+		return (raw.indexOf('date.id') > -1 || raw.indexOf('date._id') > -1 || raw.indexOf('date.date') !== -1);
 	}
 
-}
+};

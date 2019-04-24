@@ -13,21 +13,21 @@ module.exports = {
 					id: column,
 					label: column.replace(/^f_/, '').replace(/^d_/, '').replace(/[\.|]/, ' '),
 					type: (column.match(/^f_/) ? 'metric' : '')
-				}
+				};
 			});
 			var inputRows = pivotrows.map(function (row) {
 				return {
 					id: row,
 					label: row.replace(/^f_/, '').replace(/^d_/, '').replace(/[\.|]/, ' '),
 					type: (row.match(/^f_/) ? 'metric' : '')
-				}
+				};
 			});
 			input = {
 				columns: inputColumns.concat(inputRows),
 				data: [
 					[]
 				]
-			}
+			};
 			input.error = 'An Unknown Error Occurred';
 		}
 
@@ -52,14 +52,14 @@ module.exports = {
 						id: column,
 						label: column.replace(/^f_/, '').replace(/^d_/, '').replace(/[\.|]/, ' '),
 						type: (column.match(/^f_/) ? 'metric' : '')
-					}
+					};
 				});
 				var inputRows = pivotrows.map(function (row) {
 					return {
 						id: row,
 						label: row.replace(/^f_/, '').replace(/^d_/, '').replace(/[\.|]/, ' '),
 						type: (row.match(/^f_/) ? 'metric' : '')
-					}
+					};
 				});
 				input.columns = inputColumns.concat(inputRows);
 			}
@@ -97,19 +97,19 @@ module.exports = {
 		String.prototype.width = function (font) {
 			var font = (font || '14px inherit'),
 				o = $('<div>' + this + '</div>')
-				.css({
-					position: 'absolute',
-					whiteSpace: 'nowrap',
-					visibility: 'hidden',
-					'font': font
-				})
-				.appendTo($('body')),
+					.css({
+						position: 'absolute',
+						whiteSpace: 'nowrap',
+						visibility: 'hidden',
+						'font': font
+					})
+					.appendTo($('body')),
 				w = o.width();
 			o.remove();
 			return w;
-		}
+		};
 
-		var widestRows = []
+		var widestRows = [];
 
 		input.data.forEach(function (row, i) {
 			row.forEach(function (cellData, j) {
@@ -119,14 +119,14 @@ module.exports = {
 				) {
 					widestRows[columnId] = cellData.toString();
 				}
-			})
-		})
+			});
+		});
 
 		input.columns.forEach(function (column, index) {
 			columnWidths[column.id] = Math.max(
 				(columnWidths[column.id] ? columnWidths[column.id] : minColumnWidth),
 				(widestRows[column.id] ? widestRows[column.id].replace(/[ijlty:\.]/g, 'x').width() : 0)
-			)
+			);
 
 			result.columns[column.id] = column;
 			column.formatter = format.get(column, numberOnly);
@@ -286,7 +286,7 @@ module.exports = {
 						}
 					} else {
 						last.span += hasColumnMetrics ? metrics.length : 1;
-						last.width += hasColumnMetrics ? metrics.length * columnWidths[pivotrows[level]] : columnWidths[pivotrows[level]] //minColumnWidth : minColumnWidth;
+						last.width += hasColumnMetrics ? metrics.length * columnWidths[pivotrows[level]] : columnWidths[pivotrows[level]]; //minColumnWidth : minColumnWidth;
 					}
 
 					if (i == (pivoted.columnHeaders.length - 1)) {
@@ -565,7 +565,7 @@ var pivot = (function () {
 					}
 				}
 				return 0;
-			}
+			};
 		}
 	};
 

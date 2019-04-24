@@ -54,7 +54,7 @@ ReportFilterStore.dispatchToken = LeoDispatcher.register(function (payload) {
 					delete(action.reportFilters[i].description);
 				}
 				if (typeof action.reportFilters[i].value == 'string') {
-					action.reportFilters[i].value = [action.reportFilters[i].value]
+					action.reportFilters[i].value = [action.reportFilters[i].value];
 				}
 			}
 			_reportFilters = action.reportFilters;
@@ -65,7 +65,7 @@ ReportFilterStore.dispatchToken = LeoDispatcher.register(function (payload) {
 		break;
 
 	case ActionTypes.ADD_REPORT_FILTER:
-		addReportFilter(action.reportFilter)
+		addReportFilter(action.reportFilter);
 		ReportFilterStore.emitChange();
 		break;
 
@@ -110,7 +110,7 @@ function addReportFilter(filter) {
 		}
 
 		if (found) {
-			filter.dimension = commonDimensions[i].label
+			filter.dimension = commonDimensions[i].label;
 			break;
 		}
 
@@ -156,7 +156,7 @@ function updateReportFilter(filterObject) {
 		}
 
 		return filter;
-	})
+	});
 
 	if (!found) {
 		_reportFilters.push(filterObject);
