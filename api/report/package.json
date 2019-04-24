@@ -54,10 +54,13 @@
 				"CustomDBType": "${CustomDBType}"
 			},
 			"VpcConfig": {
-				"SecurityGroupIds": [{
-					"Fn::Sub": "${Security}"
-				}],
-				"SubnetIds": [{
+				"SecurityGroupIds": [
+					{
+						"Fn::Sub": "${Security}"
+					}
+				],
+				"SubnetIds": [
+					{
 						"Fn::Sub": "${LambdaSubnetA}"
 					},
 					{
