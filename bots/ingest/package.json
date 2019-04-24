@@ -56,10 +56,13 @@
 			"memory": 1536,
 			"timeout": 300,
 			"VpcConfig": {
-				"SecurityGroupIds": [{
-					"Fn::Sub": "${Security}"
-				}],
-				"SubnetIds": [{
+				"SecurityGroupIds": [
+					{
+						"Fn::Sub": "${Security}"
+					}
+				],
+				"SubnetIds": [
+					{
 						"Fn::Sub": "${LambdaSubnetA}"
 					},
 					{

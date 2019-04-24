@@ -109,7 +109,7 @@ var s3 = new AWS.S3({
 });
 
 function uploadCDNFile(key, file, nocache, callback) {
-	var contentType = "application/x-javascript"
+	var contentType = "application/x-javascript";
 	if (file.match(/\.css/)) {
 		contentType = "text/css";
 	}

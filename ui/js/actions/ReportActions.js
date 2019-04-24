@@ -23,13 +23,13 @@ module.exports = {
 			type: ActionTypes.REPORT_LOADING
 		});
 
-		var columnMetrics = []
+		var columnMetrics = [];
 		var columnDims = ReportStore.getPartitions();
 		var rowMetrics = ReportStore.getMetrics();
 		var rowDims = ReportStore.getDimensions();
 		var reportFilters = ReportFilterStore.getReportFilters();
 		var sort = ReportStore.getSort();
-		var top = ReportStore.getTopLimit()
+		var top = ReportStore.getTopLimit();
 
 		if (columnMetrics.length || rowMetrics.length) {
 
@@ -44,28 +44,28 @@ module.exports = {
 
 				//metric partition fix
 				if (result.columnheaders) {
-					var metricPartitions = []
+					var metricPartitions = [];
 					result.columnheaders = result.columnheaders.reduce(function(columnheaders, columnheader) {
 						if (columnheader.id.indexOf('!') !== -1) {
-							var metricPartition = columnheader.id.split('!')[0]
+							var metricPartition = columnheader.id.split('!')[0];
 							if (metricPartitions.indexOf(metricPartition) === -1) {
-								metricPartitions.push(metricPartition)
+								metricPartitions.push(metricPartition);
 								rows.forEach((row) => {
 									if (typeof row == 'object') {
 										if (row.id == metricPartition) {
-											result.columns[metricPartition] = $.extend({}, result.columns[columnheader.id], row)
-											columnheader.partitions = row.partitions
+											result.columns[metricPartition] = $.extend({}, result.columns[columnheader.id], row);
+											columnheader.partitions = row.partitions;
 										}
 									}
-								})
-								columnheader.id = metricPartition
-								columnheaders.push(columnheader)
+								});
+								columnheader.id = metricPartition;
+								columnheaders.push(columnheader);
 							}
 						} else {
-							columnheaders.push(columnheader)
+							columnheaders.push(columnheader);
 						}
-						return columnheaders
-					}, [])
+						return columnheaders;
+					}, []);
 				}
 				//console.log('result', result)
 				/* */
@@ -77,12 +77,12 @@ module.exports = {
 								return result.filters[i];
 							}
 						}
-						return filter
+						return filter;
 					});
 				}
 
 				if (Object.keys(result).length == 0) {
-					result.error = 'An unknown error occurred'
+					result.error = 'An unknown error occurred';
 				}
 
 				LeoDispatcher.handleViewAction({
@@ -281,4 +281,4 @@ module.exports = {
 
 	}
 
-}
+};

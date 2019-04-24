@@ -1,7 +1,7 @@
 'use strict';
 let fs = require("fs");
 let path = require("path");
-let merge = require("lodash.merge")
+let merge = require("lodash.merge");
 let externalConfigPath = path.resolve(process.env.externalConfigPath || ".", "../config/dw/leo_cli_config.js");
 let externalConfig = {};
 if (fs.existsSync(externalConfigPath)) {
@@ -23,6 +23,7 @@ module.exports = merge({
 			parameters: {
 				AddRedshift: 'yes',
 				AuroraType: 'None',
+				AuroraNodeType: 'db.r4.large',
 				CognitoId: 'YOUR_COGNITO_POOL_ID',
 				CustomDBEndpoint: '',
 				CustomDBType: 'None',
@@ -34,6 +35,8 @@ module.exports = merge({
 				IngestSourceQueue: 'dw.load',
 				leoauth: 'DevAuth',
 				leosdk: 'DevBus',
+				RedshiftNodeType: 'dc2.large',
+				RedshiftNumberOfNodes: 1
 			}
 		}
 	},

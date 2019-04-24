@@ -162,7 +162,7 @@ function encrypt(event, key, data, out) {
 			util.encryptString(data, (err, value) => {
 				out[key] = value;
 				!err ? resolve() : reject(err);
-			})
+			});
 		} else {
 			resolve();
 		}
@@ -175,7 +175,7 @@ function decrypt(event, key, data, out) {
 			util.decryptString(data, (err, value) => {
 				out[key] = value;
 				!err ? resolve() : reject(err);
-			})
+			});
 		} else {
 			resolve();
 		}
@@ -202,8 +202,8 @@ function trigger(event, key, ids, out) {
 						reject(err);
 					else
 						resolve();
-				})
-			})
+				});
+			});
 		});
 		return Promise.all(tasks);
 	} else {
@@ -232,7 +232,7 @@ function fields(event, key, tables, out) {
 						resolve();
 					}
 				});
-			})
+			});
 		});
 		return Promise.all(tasks);
 	} else {
@@ -260,17 +260,17 @@ function fixTypes(node) {
 	let type = typeof node;
 	if (Array.isArray(node)) {
 		for (let i = 0; i < node.length; i++) {
-			node[i] = fixTypes(node[i])
+			node[i] = fixTypes(node[i]);
 		}
 	} else if (type == "object" && node !== null) {
 		Object.keys(node).map(key => {
 			node[key] = fixTypes(node[key]);
-		})
+		});
 	} else if (type == "string") {
 		if (numberRegex.test(node)) {
 			return parseFloat(node);
 		} else if (boolRegex.test(node)) {
-			return node.toLowerCase() == "true"
+			return node.toLowerCase() == "true";
 		} else if (nullRegex.test(node)) {
 			return null;
 		} else if (undefinedRegex.test(node)) {
@@ -290,9 +290,9 @@ let util = {
 		if (typeof value == "string") {
 			value = {
 				CiphertextBlob: new Buffer(value, 'base64')
-			}
+			};
 		} else {
-			value.CiphertextBlob = new Buffer(value.CiphertextBlob, 'base64')
+			value.CiphertextBlob = new Buffer(value.CiphertextBlob, 'base64');
 		}
 
 		kms.decrypt(value, function (err, data) {
@@ -311,7 +311,7 @@ let util = {
 			value = {
 				KeyId: config.Resources.DwKmsKey,
 				Plaintext: value
-			}
+			};
 		}
 		kms.encrypt(value, function (err, data) {
 			if (err) {
@@ -375,7 +375,7 @@ let util = {
 				return callback(err);
 			}
 			var data = extend(true, data, obj);
-			this.put(table, id, data, opts, callback)
+			this.put(table, id, data, opts, callback);
 		});
 	}
 };

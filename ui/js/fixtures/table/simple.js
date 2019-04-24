@@ -7,21 +7,21 @@ fixtures.simpledata = {
 		2: {type: 'metric', label: 'Taxes', format: 'money'}
 	},
 	rowheaders: [
-    {type:"metrics", height: 34}
+		{type:"metrics", height: 34}
 	],
 	columnheaders: [
 		{id: 1, type: 'metric', width: 100},
 		{id: 2, type: 'metric', width: 100}	    
 	],
 	headers: [[
-    {id: 1, width: 60},
-    {id: 2, width: 45, last:true}
+		{id: 1, width: 60},
+		{id: 2, width: 45, last:true}
 	]],
 	rows: [
-    [10.00,15.00],
-    [10.00,-15],
-    [-10,15]
-  ]
+		[10.00,15.00],
+		[10.00,-15],
+		[-10,15]
+	]
 };
 fixtures.multilineheaders = {
 	columns: {
@@ -54,7 +54,7 @@ fixtures.multilineheaders = {
 	   ["Utah", "Ogden", 10.00,15.00,10.00,15.00],
 	   ["Utah", "Salt Lake City",10.00,15.00,10.00,15.00]
 	]
-}
+};
 
 fixtures.factsonleft = {
 	columns: {
@@ -163,5 +163,5 @@ fixtures.complexheaders = {
 	  ["Nevada", "Las Vegas",10.00,15.00,10.00,15.00,10.00,15.00,10.00,15.00,10.00,15.00,10.00,15.00,10.00,15.00,10.00,15.00,10.00,15.00,10.00,15.00,10.00,15.00,10.00,15.00],
 	  ["Nevada", "Carson City",10.00,15.00,10.00,15.00,10.00,15.00,10.00,15.00,10.00,15.00,10.00,15.00,10.00,15.00,10.00,15.00,10.00,15.00,10.00,15.00,10.00,15.00,10.00,15.00]
 	]
-}
+};
 module.exports = fixtures;

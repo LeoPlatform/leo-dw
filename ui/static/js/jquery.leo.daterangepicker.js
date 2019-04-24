@@ -109,9 +109,9 @@ try { var moment = require("moment"); } catch(e) {}
 				userResult = options.datepickerOptions.beforeShowDay(date);
 			}
 			return [
-					result[0] && userResult[0],
-					result[1] + ' ' + userResult[1]
-					];
+				result[0] && userResult[0],
+				result[1] + ' ' + userResult[1]
+			];
 		}
 
 		function updateAtMidnight() {

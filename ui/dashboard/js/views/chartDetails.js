@@ -41,7 +41,7 @@ if (!chartDetails) {
 	
 		}
 
-	}
+	};
 }
 
 module.exports = chartDetails;

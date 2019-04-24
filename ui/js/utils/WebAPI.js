@@ -1,5 +1,5 @@
 
-var moment = require('moment-timezone')
+var moment = require('moment-timezone');
 
 var credentials = require('../credentials.js');
 
@@ -48,7 +48,7 @@ module.exports = {
 		lastUID[command] = new Date().valueOf();
 		data.apikey = apikey;
 		data.uid = lastUID[command];
-		data.timestamp = moment().tz(window.leo && window.leo.timezone ? window.leo.timezone : moment.tz.guess()).format()
+		data.timestamp = moment().tz(window.leo && window.leo.timezone ? window.leo.timezone : moment.tz.guess()).format();
 		$.ajax({
 			type:     "post",
 			data:     JSON.stringify(data),
@@ -58,11 +58,11 @@ module.exports = {
 			contentType: 'application/json',
 			error: function(xhr, status, error) {
 				if (xhr.responseText) {
-					xhr = xhr.responseText
+					xhr = xhr.responseText;
 					try {
-						xhr = JSON.parse(xhr)
+						xhr = JSON.parse(xhr);
 					} catch(e) {
-						xhr = { error: xhr }
+						xhr = { error: xhr };
 					}
 				}
 				if (lastUID[command] != 0) {
@@ -84,15 +84,15 @@ module.exports = {
 			},
 			complete: function(res, status) {
 				if (command == 'report') {
-					var history = JSON.parse(localStorage.getItem('DataExplorer.history') || '[]')
+					var history = JSON.parse(localStorage.getItem('DataExplorer.history') || '[]');
 					history.unshift({
 						hash: window.location.hash,
 						timestamp: Date.now(),
 						status: status,
 						statusText: res.statusText
-					})
-					history = history.slice(0, 10)
-					localStorage.setItem('DataExplorer.history', JSON.stringify(history))
+					});
+					history = history.slice(0, 10);
+					localStorage.setItem('DataExplorer.history', JSON.stringify(history));
 				}
 			}
 		});
@@ -142,4 +142,4 @@ module.exports = {
 		});
 	}
 
-}
+};

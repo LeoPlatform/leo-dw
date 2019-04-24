@@ -42,13 +42,13 @@ module.exports = {
 					var input = JSON.parse(window.location.hash.slice(1));
 					window.hasHash = true;
 				} catch (e) {
-					window.messageLogNotify('Invalid request', 'warning', e)
-					var input = {}
+					window.messageLogNotify('Invalid request', 'warning', e);
+					var input = {};
 				}
 			}
 		}
 
-		var inputFilters = input.filters || []
+		var inputFilters = input.filters || [];
 
 		input = {
 			pivots: input.pivots,
@@ -62,37 +62,37 @@ module.exports = {
 			top: input.top,
 			advanced: input.advanced || undefined,
 			useMysql: input.useMysql
-		}
+		};
 
 		if (input.columnDims.length == 0) {
-			var partitions = false
-			var setAsReportPartition = true
+			var partitions = false;
+			var setAsReportPartition = true;
 			input.rowMetrics.forEach((metric) => {
 				if (!partitions) {
-					partitions = metric.partitions
+					partitions = metric.partitions;
 				}
 				if (!metric.partitions || (JSON.stringify(partitions) != JSON.stringify(metric.partitions))) {
-					setAsReportPartition = false
+					setAsReportPartition = false;
 				}
-			})
+			});
 			if (setAsReportPartition) {
-				input.columnDims = partitions
+				input.columnDims = partitions;
 				input.rowMetrics.map((metric) => {
-					delete metric.partitions
-					return metric
-				})
+					delete metric.partitions;
+					return metric;
+				});
 			}
 		}
 
-		ReportActions.initReport(input)
+		ReportActions.initReport(input);
 
 		if (input.useMysql) {
-			window.useredshift = false
+			window.useredshift = false;
 		} else {
-			window.useredshift = true
+			window.useredshift = true;
 		}
 
-		ReportFilterActions.initReportFilters(inputFilters)
+		ReportFilterActions.initReportFilters(inputFilters);
 	}
 
 };
