@@ -994,12 +994,7 @@ exports.handler = require("leo-sdk/wrappers/resource")(async (event, context, ca
 					// if the value only contains numbers, add the = to keep long numbers from being displayed as scientific notation.
 					return quote + escapeQuotes(v.replace ? v.replace(/,/g, '') : v) + quote;
 				} else {
-					// regular escape if it's not excel format, or if there's a comma or it starts with "
-					if (!excel || /[",\n\r]/.test(v)) {
-						return quote + escapeQuotes(v) + quote;
-					} else {
-						return v;
-					}
+					return quote + escapeQuotes(v) + quote;
 				}
 			}).join(separator));
 		});
