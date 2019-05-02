@@ -902,9 +902,7 @@ exports.handler = require("leo-sdk/wrappers/resource")(async (event, context, ca
 		report.rowheaders.map((column, i) => {
 
 			if (column.type != "metric") {
-				if (column.type == "metrics") {
-					forceRowFormat = true;
-				} else {
+				if (column.type != "metrics") {
 					column_dimensions.push(report.columns[column.id].parent + '.' + report.columns[column.id].label);
 				}
 			} else {
@@ -994,7 +992,11 @@ exports.handler = require("leo-sdk/wrappers/resource")(async (event, context, ca
 					// if the value only contains numbers, add the = to keep long numbers from being displayed as scientific notation.
 					return quote + escapeQuotes(v.replace ? v.replace(/,/g, '') : v) + quote;
 				} else {
-					return quote + escapeQuotes(v) + quote;
+					if (!excel || /[",\n\r]/.test(v)) {
+						return quote + escapeQuotes(v) + quote;
+					} else {
+						return v
+					}
 				}
 			}).join(separator));
 		});
