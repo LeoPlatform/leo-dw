@@ -992,7 +992,7 @@ exports.handler = require("leo-sdk/wrappers/resource")(async (event, context, ca
 			rowsResult.push(column.map(v => {
 				if (excel && v != undefined && (typeof v == "number" || (v.match && v.match(/^[\d\,\.\-]+$/)))) {
 					// if the value only contains numbers, add the = to keep long numbers from being displayed as scientific notation.
-					return quote + escapeQuotes(v.replace(/,/g, '')) + quote;
+					return quote + escapeQuotes(v.replace ? v.replace(/,/g, '') : v) + quote;
 				} else {
 					// regular escape if it's not excel format, or if there's a comma or it starts with "
 					if (!excel || /[",\n\r]/.test(v)) {
