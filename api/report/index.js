@@ -995,7 +995,7 @@ exports.handler = require("leo-sdk/wrappers/resource")(async (event, context, ca
 					return quote + escapeQuotes(v.replace(/,/g, '')) + quote;
 				} else {
 					// regular escape if it's not excel format, or if there's a comma or it starts with "
-					if (!excel || /^"|,/.test(v)) {
+					if (!excel || /[",\n\r]/.test(v)) {
 						return quote + escapeQuotes(v) + quote;
 					} else {
 						return v;
