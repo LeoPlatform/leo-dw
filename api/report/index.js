@@ -249,21 +249,20 @@ exports.handler = require("leo-sdk/wrappers/resource")(async (event, context, ca
 				let baseFilename = `files/dw_reports/${now.format("YYYY/MM/DD/")}${s3prefix}report_${now.valueOf()}_${Math.floor(Math.random() * 1000000)}`
 				let streams = [{
 					filename: `${baseFilename}.${options.zip?'zip': 'csv'}`,
-					prefix: "",
 					field: "download"
 				}];
 				if (!options.noExcel) {
 					streams.push({
 						filename: `${baseFilename}_excel.${options.zip?'zip': 'csv'}`,
-						prefix: "=",
+						excel: true,
 						field: "exceldownload"
 					});
 				}
 				report.total = report.rows.length;
 
-				async.map(streams, (data, done) => {
+				async.map(streams, (streamConfig, done) => {
 					let archive = options.zip && archiver('zip') || undefined;
-					let csvFilename = data.filename
+					let csvFilename = streamConfig.filename
 					let stream = leo.streams.through((a, b) => b(null, a));
 					archive && archive.append(stream, {
 						name: "report.csv"
@@ -275,21 +274,21 @@ exports.handler = require("leo-sdk/wrappers/resource")(async (event, context, ca
 						(err) => {
 
 							if (!err) {
-								report[data.field] = {
+								report[streamConfig.field] = {
 									url: leo.aws.s3.getSignedUrl('getObject', {
 										Bucket: leo.configuration.s3,
 										Key: csvFilename
 									})
 								};
 							} else {
-								report[data.field] = {
+								report[streamConfig.field] = {
 									error: err.toString()
 								};
 							}
 							done();
 						}
 					);
-					createCSV(stream, report, options.use_tabs == undefined ? false : options.use_tabs, options.show_report_header == undefined ? true : options.show_report_header, options.show_headers == undefined ? true : options.show_headers, data.prefix);
+					createCSV(stream, report, options.use_tabs == undefined ? false : options.use_tabs, options.show_report_header == undefined ? true : options.show_report_header, options.show_headers == undefined ? true : options.show_headers, streamConfig.excel);
 					stream.end(() => {
 						archive && archive.finalize();
 					});
@@ -880,7 +879,7 @@ exports.handler = require("leo-sdk/wrappers/resource")(async (event, context, ca
 		return result;
 	}
 
-	function createCSV(stream, report, use_tabs, show_report_header, show_headers, dataPrefix = "") {
+	function createCSV(stream, report, use_tabs, show_report_header, show_headers, excel = false) {
 		var separator = (use_tabs ? '\t' : ',');
 		var quote = (true ? '"' : '');
 		let escapeQuotes = (v) => {
@@ -890,8 +889,6 @@ exports.handler = require("leo-sdk/wrappers/resource")(async (event, context, ca
 			return v
 		};
 
-		var forceRowFormat = false;
-		var dataOffset = 0;
 		var rowsResult = {
 			push: (data) => {
 				stream.write(data + "\n");
@@ -905,10 +902,7 @@ exports.handler = require("leo-sdk/wrappers/resource")(async (event, context, ca
 		report.rowheaders.map((column, i) => {
 
 			if (column.type != "metric") {
-				dataOffset++;
-				if (column.type == "metrics") {
-					forceRowFormat = true;
-				} else {
+				if (column.type != "metrics") {
 					column_dimensions.push(report.columns[column.id].parent + '.' + report.columns[column.id].label);
 				}
 			} else {
@@ -994,12 +988,15 @@ exports.handler = require("leo-sdk/wrappers/resource")(async (event, context, ca
 		//This is where we actually build the rows of data, including the row headers
 		report.rows.map((column, i) => {
 			rowsResult.push(column.map(v => {
-				if (dataPrefix && v != undefined && (typeof v == "number" || (v.match && v.match(/^[\d\,\.\-]+$/)))) {
+				if (excel && v != undefined && (typeof v == "number" || (v.match && v.match(/^[\d\,\.\-]+$/)))) {
 					// if the value only contains numbers, add the = to keep long numbers from being displayed as scientific notation.
-					return dataPrefix + quote + escapeQuotes(v) + quote;
+					return quote + escapeQuotes(v.replace ? v.replace(/,/g, '') : v) + quote;
 				} else {
-					// just regular escape if it's not a number.
-					return quote + escapeQuotes(v) + quote;
+					if (!excel || /[",\n\r]/.test(v)) {
+						return quote + escapeQuotes(v) + quote;
+					} else {
+						return v
+					}
 				}
 			}).join(separator));
 		});
