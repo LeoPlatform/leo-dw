@@ -186,6 +186,28 @@ module.exports = {
 				}
 			}
 		},
+		"ReportApi": {
+		    "Description": "Report API",
+		    "Value": {
+			"Fn::Sub": "${ReportApi}"
+		    },
+		    "Export": {
+			"Name": {
+			    "Fn::Sub": "${AWS::StackName}-ReportApi"
+			}
+		    }
+		},
+		"LoaderRole": {
+		    "Description": "Loader Role",
+		    "Value": {
+			"Fn::Sub": "${LoaderRole.Arn}"
+		    },
+		    "Export": {
+			"Name": {
+			    "Fn::Sub": "${AWS::StackName}-LoaderRole"
+			}
+		    }
+		},
 		"Region": {
 			"Description": "DW Region",
 			"Value": {
