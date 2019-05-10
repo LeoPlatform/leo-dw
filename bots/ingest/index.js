@@ -13,13 +13,14 @@ exports.handler = require("leo-sdk/wrappers/cron")(async (event, context, callba
 	const ID = event.botId;
 	const FIELDS_TABLE = config.Resources.Fields;
 
-	let stats = ls.stats(ID, event.source);
-	let primaryClientConfig = connections.getDefault();
-	let redshiftClientConfig = connections.getRedshift();
-	let redshiftVersion = redshiftClientConfig.version;
-	let primaryVersion = primaryClientConfig.version;
 	let cache = null;
 	let client;
+	let primaryClientConfig = connections.getDefault();
+	let primaryVersion = primaryClientConfig.version;
+	let redshiftClientConfig = connections.getRedshift();
+	let redshiftVersion = redshiftClientConfig.version;
+	let StackName = config.Resources.StackName || "dw";
+	let stats = ls.stats(ID, event.source);
 
 	if (primaryClientConfig.type === 'MySql') {
 		client = require("leo-connector-mysql/lib/dwconnect.js")(primaryClientConfig);
@@ -28,10 +29,9 @@ exports.handler = require("leo-sdk/wrappers/cron")(async (event, context, callba
 	}
 
 	if (redshiftVersion == primaryVersion) {
-		redshiftVersion = redshiftClientConfig.host;
+		// redshiftVersion = redshiftClientConfig.host;
 		primaryVersion = primaryClientConfig.host;
 	}
-	let StackName = config.Resources.StackName || "dw";
 	let systemQueue = `system:${StackName}_${primaryVersion}`;
 
 	function describeTables(callback) {
