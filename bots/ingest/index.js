@@ -9,29 +9,30 @@ exports.handler = require("leo-sdk/wrappers/cron")(async (event, context, callba
 	const ls = leo.streams;
 	const load = require("leo-connector-common/datawarehouse/load.js");
 	const connections = require("../../lib/connections");
-	var dynamodb = leo.aws.dynamodb;
+	const dynamodb = leo.aws.dynamodb;
+	const ID = event.botId;
+	const FIELDS_TABLE = config.Resources.Fields;
 
-	let primaryClientConfig = connections.getDefault();
-	let redshiftClientConfig = connections.getRedshift();
-
+	let cache = null;
 	let client;
+	let primaryClientConfig = connections.getDefault();
+	let primaryVersion = primaryClientConfig.version;
+	let redshiftClientConfig = connections.getRedshift();
+	let redshiftVersion = redshiftClientConfig.version;
+	let StackName = config.Resources.StackName || "dw";
+	let stats = ls.stats(ID, event.source);
+
 	if (primaryClientConfig.type === 'MySql') {
 		client = require("leo-connector-mysql/lib/dwconnect.js")(primaryClientConfig);
 	} else {
 		client = require("leo-connector-postgres/lib/dwconnect.js")(primaryClientConfig);
 	}
 
-	let redshiftVersion = redshiftClientConfig.version;
-	let primaryVersion = primaryClientConfig.version;
 	if (redshiftVersion == primaryVersion) {
-		redshiftVersion = redshiftClientConfig.host;
+		// redshiftVersion = redshiftClientConfig.host;
 		primaryVersion = primaryClientConfig.host;
 	}
-	let StackName = config.Resources.StackName || "dw";
 	let systemQueue = `system:${StackName}_${primaryVersion}`;
-
-	const FIELDS_TABLE = config.Resources.Fields;
-	let cache = null;
 
 	function describeTables(callback) {
 		if (cache) {
@@ -48,8 +49,7 @@ exports.handler = require("leo-sdk/wrappers/cron")(async (event, context, callba
 	client.setSchemaCache(cache);
 	deleteTmpFiles();
 	context.callbackWaitsForEmptyEventLoop = false;
-	const ID = event.botId;
-	let stats = ls.stats(ID, event.source);
+
 	dynamodb.scan(FIELDS_TABLE, {}, function (err, tables) {
 		if (err) {
 			return callback(err);
@@ -93,7 +93,7 @@ exports.handler = require("leo-sdk/wrappers/cron")(async (event, context, callba
 
 					}
 
-					load(client, desiredConfig, ls.pipeline.apply(ls, pipe), err => {
+					load(ID, event.source, client, desiredConfig, ls.pipeline.apply(ls, pipe), err => {
 						err && console.log(err);
 						//client.disconnect();
 						if (!err) {
