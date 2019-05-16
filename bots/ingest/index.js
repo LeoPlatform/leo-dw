@@ -93,7 +93,7 @@ exports.handler = require("leo-sdk/wrappers/cron")(async (event, context, callba
 
 					}
 
-					load(ID, client, desiredConfig, ls.pipeline.apply(ls, pipe), err => {
+					load(ID, event.source, client, desiredConfig, ls.pipeline.apply(ls, pipe), err => {
 						err && console.log(err);
 						//client.disconnect();
 						if (!err) {
