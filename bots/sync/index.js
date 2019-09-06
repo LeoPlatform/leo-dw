@@ -37,6 +37,7 @@ exports.handler = require("leo-sdk/wrappers/cron")(async (event, context, callba
 
 	let ID = event.botId;
 	let startTime = moment.now();
+	let runDirectory = `${(moment().format("YYYY/MM/DD/HH/mm/") + moment.now())}`;
 	dynamodb.scan(FIELDS_TABLE, {}, function (err, tables) {
 		if (err) {
 			return callback(err);
@@ -83,7 +84,7 @@ exports.handler = require("leo-sdk/wrappers/cron")(async (event, context, callba
 
 								primaryClient.exportChanges(tableName, fields, auditdate, {
 									bucket: leo.configuration.s3,
-									file: `files/Leo_dw_sync/${ID}`,
+									file: `files/Leo_dw_sync/${ID}/${runDirectory}`,
 									isDimension: table.isDimension
 								}, (err, file, count, oldest) => {
 									if (err) {
