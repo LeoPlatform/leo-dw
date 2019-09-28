@@ -53,7 +53,7 @@
 				"time": "0 */10 * * * ?"
 			},
 			"memory": 1536,
-			"timeout": 300,
+			"timeout": 900,
 			"VpcConfig": {
 				"SecurityGroupIds": [
 					{
