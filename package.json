@@ -1,6 +1,6 @@
 {
   "name": "dw",
-  "version": "2.2.12",
+  "version": "2.2.13",
   "description": "",
   "main": "app.js",
   "scripts": {
@@ -28,9 +28,9 @@
     "jquery-mousewheel": "^3.1.13",
     "leo-auth": "2.0.2",
     "leo-config": "1.1.0",
-    "leo-connector-common": "3.0.7",
+    "leo-connector-common": "2.1.8",
     "leo-connector-mysql": "2.0.0",
-    "leo-connector-postgres": "3.0.7",
+    "leo-connector-postgres": "2.0.4",
     "leo-sdk": "3.2.1",
     "lodash": "^4.17.15",
     "lodash.debounce": "^4.0.8",
@@ -45,7 +45,7 @@
     "react-autobind": "^1.0.6",
     "source-map-support": "^0.5.6",
     "temp": "^0.8.3",
-    "throttle-debounce": "^2.1.0",
+    "throttle-debounce": "^0.1.1",
     "uuid": "^2.0.2"
   },
   "devDependencies": {
