@@ -59,7 +59,7 @@
     "flux": "^2.0.1",
     "keymirror": "^0.1.1",
     "lodash.assign": "^4.2.0",
-    "mocha": "^2.3.3",
+    "mocha": "^10.2.0",
     "object-assign": "^2.0.0",
     "pg-native": "^3.0.0",
     "react": "^15.3.2",
