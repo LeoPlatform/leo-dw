@@ -18,7 +18,7 @@ async function doDecrypt(kms, value) {
 module.exports = merge({
 	/**defaults applied to every system**/
 	_global: {
-		run: (async function (cache) {
+		run: (async function(cache) {
 			const leoaws = require('leo-aws')(require("leo-sdk").configuration);
 			if (process.env.DBPassword) {
 				process.env.DBPassword = await doDecrypt(leoaws.kms, process.env.DBPassword);
@@ -34,7 +34,7 @@ module.exports = merge({
 			}
 			return (a => a);
 		}),
-		datasource: (async function (cache) {
+		datasource: (async function(cache) {
 			await this.run();
 			var redshiftConfig = process.env.RedshiftEndpoint && {
 				user: process.env.DBUsername,
@@ -74,7 +74,7 @@ module.exports = merge({
 		RedshiftEndpoint: process.env.RedshiftEndpoint,
 		ui: {
 			CustomFavicon: "//cdnleo.s3.amazonaws.com/logos/leo_icon.png",
-			staticAssets: "https://CLOUDFRONT_LINK_TO_STATIC_ASSETS/leo_dw"
+			staticAssets: "https://assets.leoplatform.io/leo_dw"
 		}
 	},
 	_local: {

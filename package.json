@@ -1,11 +1,16 @@
 {
   "name": "dw",
-  "version": "2.2.13",
+  "version": "2.3.0",
   "description": "",
   "main": "app.js",
   "scripts": {
     "start": "leo-cli test .",
     "test": "mocha \"+(apis|bots|tests|api|bot|test|lib)/**/*.utest.js\""
+  },
+  "overrides": {
+    "leo-connector-common": {
+      "leo-sdk": "5.0.34-latest-v5"
+    }
   },
   "dependencies": {
     "archiver": "^2.1.1",
@@ -27,12 +32,12 @@
     "handlebars": "^4.5.3",
     "highcharts": "^7.1.1",
     "jquery-mousewheel": "^3.1.13",
-    "leo-auth": "2.0.2",
+    "leo-auth": "3.0.2",
     "leo-config": "1.1.0",
-    "leo-connector-common": "^2.1.8",
-    "leo-connector-mysql": "^2.0.0",
-    "leo-connector-postgres": "^2.0.4",
-    "leo-sdk": "3.2.1",
+    "leo-connector-common": "^4.0.11-rc",
+    "leo-connector-mysql": "^3.0.2",
+    "leo-connector-postgres": "^4.0.7",
+    "leo-sdk": "5.0.34-latest-v5",
     "lodash": "^4.17.15",
     "lodash.debounce": "^4.0.8",
     "lodash.merge": "^4.6.2",
@@ -54,7 +59,6 @@
     "chai-as-promised": "^5.1.0",
     "ejs": "^2.3.1",
     "event-stream": "^3.3.1",
-    "extract-text-webpack-plugin": "^1.0.1",
     "fast-csv": "^2.1.0",
     "fixed-data-table": "^0.6.0",
     "flux": "^2.0.1",
@@ -62,7 +66,7 @@
     "lodash.assign": "^4.2.0",
     "mocha": "^6.2.2",
     "object-assign": "^2.0.0",
-    "pg-native": "^3.0.0",
+    "pg-native": "^3.0.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "sinon": "^1.17.5",
@@ -93,7 +97,8 @@
         }
       },
       "3rdParty": true,
-      "excludeProfiles": true
+      "excludeProfiles": true,
+      "runtime": "nodejs16.x"
     }
   },
   "author": "",
