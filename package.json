@@ -97,7 +97,8 @@
         }
       },
       "3rdParty": true,
-      "excludeProfiles": true
+      "excludeProfiles": true,
+      "runtime": "nodejs16.x"
     }
   },
   "author": "",
